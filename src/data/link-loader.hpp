@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -22,8 +23,46 @@ void saveLinks(const OneToOne<A, B>& map, const std::string& filename = A::stati
 }
 
 template <typename A, typename B>
+void saveLinks(const OneToMany<A, B>& map, const std::string& filename = A::staticClass() + "-to-" + B::staticClass() + "-links.txt") {
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error opening file for saving links: " << filename << std::endl;
+        return;
+    }
+    for (const auto& [a_weak, b_set] : map.getAMap()) {
+        auto a = a_weak.lock();
+        if (!a) continue;
+        
+        for (const auto& b_weak : b_set) {
+            if (auto b = b_weak.lock()) {
+                file << a->getId() << " " << b->getId() << "\n";
+            }
+        }
+    }
+}
+
+template <typename A, typename B>
+void saveLinks(const ManyToMany<A, B>& map, const std::string& filename = A::staticClass() + "-to-" + B::staticClass() + "-links.txt") {
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error opening file for saving links: " << filename << std::endl;
+        return;
+    }
+    for (const auto& [a_weak, b_set] : map.getAMap()) {
+        auto a = a_weak.lock();
+        if (!a) continue;
+        
+        for (const auto& b_weak : b_set) {
+            if (auto b = b_weak.lock()) {
+                file << a->getId() << " " << b->getId() << "\n";
+            }
+        }
+    }
+}
+
+template <typename Relation, typename A, typename B>
 void loadAllLinks(
-    OneToOne<A, B>& one_to_one,
+    Relation& relation,
     const std::vector<std::shared_ptr<A>>& a_list,
     const std::vector<std::shared_ptr<B>>& b_list,
     const std::string& folder = "."
@@ -52,7 +91,7 @@ void loadAllLinks(
         auto b_it = b_map.find(b_id);
 
         if (a_it != a_map.end() && b_it != b_map.end()) {
-            one_to_one.link(a_it->second, b_it->second);
+            relation.link(a_it->second, b_it->second);
         } else {
             std::cerr << "Warning: Link not found for IDs " << a_id << " and " << b_id << std::endl;
         }
