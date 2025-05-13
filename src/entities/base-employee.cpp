@@ -43,11 +43,3 @@ float Employee::getSalary() const
 {
   return salary;
 };
-
-// std::string Employee::serialize() const
-// {
-//     std::ostringstream oss;
-//     oss << getId() << " " << getFullName() << " " << getSex() << " " << getAge() << " "
-//         << getWorkExperience() << " " << getChildrenCount() << " " << getSalary();
-//     return oss.str();
-// };

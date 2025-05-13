@@ -1,5 +1,4 @@
 #include "data/entity-loader.hpp"
-#include "common/utils/fabric-creator.hpp"
 
 std::vector<std::shared_ptr<Base>> loadAllEntitiesFromFolder(const std::string& folder) {
     std::vector<std::shared_ptr<Base>> result;
