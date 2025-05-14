@@ -1,14 +1,18 @@
 #pragma once
 
-#include "entities/base.hpp"
+#include <iostream>
 #include <string>
 #include <memory>
 #include <vector>
+#include <sstream>
+#include "common/math/math.hpp"
+#include "entities/base.hpp"
 
 class Route : public Base
 {
 private:
     std::string route_name;
+    double distance = 0.0;
 
 public:
     Route(
@@ -18,6 +22,8 @@ public:
 
 public:
     std::string getRouteName() const;
+    double getDistance() const;
+    void setDistance(const std::vector<std::vector<int>>& positions);
 
 public:
     std::string getClass() const final;

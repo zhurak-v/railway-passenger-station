@@ -10,19 +10,19 @@ class Station : public Base
 {
 private:
     std::string station_name;
-    int position;
+    std::vector<int> position;
 
 public:
     Station(
         const std::string& id,
         const std::string& station_name,
-        const int position
+        const std::vector<int> position
     );
     ~Station() = default;
 
 public:
     std::string getStationName() const;
-    int getPosition() const;
+    std::vector<int> getPosition() const;
 
 public:
     std::string getClass() const final;
