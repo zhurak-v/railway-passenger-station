@@ -12,28 +12,26 @@
 
 int main()
 {
+    registerEntity();
 
-    auto station_a = std::make_shared<Station>("STN-31759", "A", std::vector<int> {0, 0});
-    auto station_b = std::make_shared<Station>("STN-19753", "B", std::vector<int> {60, 0});
-    auto station_c = std::make_shared<Station>("STN-34861", "C", std::vector<int> {120, 0});
 
-    auto route = std::make_shared<Route>("RTE-57319", "A-C");
+    // auto driver = std::make_shared<Driver>("DRV-16254", "Alex White", 0, 35, 10, 2, 22000.0, std::vector<int> {2020, 2022});
+    // std::cout << driver->getFullName();
 
-    ManyToMany<Route, Station> routes_to_stations;
-    routes_to_stations.link(route, station_a);
-    routes_to_stations.link(route, station_b);
-    routes_to_stations.link(route, station_c);
+    // saveEntitiesByType({driver});
+    
+    auto loaded_entities = loadAllEntitiesFromFolder();
+    std::vector<std::shared_ptr<Driver>> drivers;
 
-    std::vector<std::vector<int>> positions;
-
-    for (const auto& stations : routes_to_stations.getLinkedB(route))
+    for (const auto &entity : loaded_entities)
     {
-        positions.push_back(stations->getPosition());
+        if (auto driver = std::dynamic_pointer_cast<Driver>(entity))
+        {
+            drivers.push_back(driver);
+        }
     }
 
-    route->setDistance(positions);
-    std::cout << route->getDistance();
-    
+    std::cout << drivers[0]->getFullName();
 
     return 0;
 }

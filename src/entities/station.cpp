@@ -3,7 +3,7 @@
 Station::Station(
     const std::string& id,
     const std::string& station_name,
-    const std::vector<int> position
+    Position position
 ) : Base(id),
     station_name(station_name), position(position) {};
 
@@ -11,7 +11,7 @@ std::string Station::getStationName() const {
     return station_name;
 }
 
-std::vector<int> Station::getPosition() const {
+Position Station::getPosition() const {
     return position;
 }
 

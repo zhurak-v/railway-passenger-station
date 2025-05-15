@@ -2,6 +2,8 @@
 #include <cmath>
 #include <vector>
 #include <stdexcept>
+#include "common/date/date.hpp"
+#include "entities/position.hpp"
 
 class Math
 {
@@ -9,6 +11,6 @@ private:
     Math() = delete;
 
 public:
-    static double getDistanceBetweenPointsKm(const std::vector<int>& a, const std::vector<int>& b);
-    static int getTravelTimeMin(double distance, int speed = 60);
+    static double getDistanceBetweenPointsKm(const Position& a, const Position& b);
+    static Date getTravelTimeH(double distance, int speed = 60);
 };

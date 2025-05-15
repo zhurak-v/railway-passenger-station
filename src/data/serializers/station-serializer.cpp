@@ -1,9 +1,11 @@
 #include "entities/station.hpp"
+#include <iomanip>
 
 std::string Station::serialize() const
 {
     std::ostringstream oss;
-    oss << getId() << " " << getStationName() << " " << getPosition()[0] << " " << getPosition()[1];;
+    oss << getId() << " " << std::quoted(getStationName()) << " "
+        << getPosition().getX() << " " << getPosition().getY();
 
     return oss.str();
 }
@@ -11,12 +13,16 @@ std::string Station::serialize() const
 std::shared_ptr<Station> Station::deserialize(const std::string &data)
 {
     std::istringstream iss(data);
+
     std::string id;
+    iss >> id;
+
     std::string station_name;
-    int x, y;
+    iss >> std::quoted(station_name);
 
-    iss >> id >> station_name >> x >> y;
-    std::vector<int> position = {x, y};
+    double x, y;
+    iss >> x >> y;
 
+    Position position(x, y);
     return std::make_shared<Station>(id, station_name, position);
 }

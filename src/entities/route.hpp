@@ -6,13 +6,16 @@
 #include <vector>
 #include <sstream>
 #include "common/math/math.hpp"
+#include "common/date/date.hpp"
 #include "entities/base.hpp"
+#include "entities/position.hpp"
 
 class Route : public Base
 {
 private:
     std::string route_name;
-    double distance = 0.0;
+    double distance;
+    std::vector<double> distances;
 
 public:
     Route(
@@ -22,8 +25,11 @@ public:
 
 public:
     std::string getRouteName() const;
+    Date getDuration() const;
     double getDistance() const;
-    void setDistance(const std::vector<std::vector<int>>& positions);
+    std::vector<double> getDistances() const;
+    
+    void setDistance(const std::vector<Position>& positions);
 
 public:
     std::string getClass() const final;

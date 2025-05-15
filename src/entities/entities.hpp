@@ -5,3 +5,4 @@
 #include "entities/driver.hpp"
 #include "entities/route.hpp"
 #include "entities/station.hpp"
+#include "entities/trip.hpp"

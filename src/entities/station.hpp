@@ -5,24 +5,25 @@
 #include <vector>
 #include "entities/base.hpp"
 #include "common/date/date.hpp"
+#include "entities/position.hpp"
 
 class Station : public Base
 {
 private:
     std::string station_name;
-    std::vector<int> position;
+    Position position;
 
 public:
     Station(
         const std::string& id,
         const std::string& station_name,
-        const std::vector<int> position
+        Position position
     );
     ~Station() = default;
 
 public:
     std::string getStationName() const;
-    std::vector<int> getPosition() const;
+    Position getPosition() const;
 
 public:
     std::string getClass() const final;
