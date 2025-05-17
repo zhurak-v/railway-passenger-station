@@ -1,7 +1,7 @@
-#include "entities/head-department.hpp"
+#include "entities/technician.hpp"
 #include <iomanip>
 
-std::string HeadDepartment::serialize() const
+std::string Technician::serialize() const
 {
     std::ostringstream oss;
     oss << getId() << " "
@@ -14,7 +14,7 @@ std::string HeadDepartment::serialize() const
     return oss.str();
 }
 
-std::shared_ptr<HeadDepartment> HeadDepartment::deserialize(const std::string &data)
+std::shared_ptr<Technician> Technician::deserialize(const std::string &data)
 {
     std::istringstream iss(data);
 
@@ -30,5 +30,5 @@ std::shared_ptr<HeadDepartment> HeadDepartment::deserialize(const std::string &d
 
     iss >> sex >> age >> work_experience >> children_count >> salary;
 
-    return std::make_shared<HeadDepartment>(id, full_name, sex, age, work_experience, children_count, salary);
+    return std::make_shared<Technician>(id, full_name, sex, age, work_experience, children_count, salary);
 }

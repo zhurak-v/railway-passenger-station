@@ -1,5 +1,7 @@
 #pragma once
 
-#include "data/link-loader.hpp"
-#include "data/entity-loader.hpp"
-#include "data/regisetr-entity.hpp"
+#include "data/loaders/link-loader.hpp"
+#include "data/loaders/entity-loader.hpp"
+#include "data/loaders/regisetr-entity.hpp"
+
+#include "data/repositories/entity-repository.hpp"

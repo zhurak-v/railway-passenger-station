@@ -6,7 +6,7 @@ Employee::Employee(const std::string &id,
                    int age,
                    int work_experience,
                    int children_count,
-                   float salary)
+                   double salary)
     : Base(id),
       full_name(full_name),
       sex(sex),
@@ -39,7 +39,7 @@ int Employee::getChildrenCount() const
 {
   return children_count;
 };
-float Employee::getSalary() const
+double Employee::getSalary() const
 {
   return salary;
 };

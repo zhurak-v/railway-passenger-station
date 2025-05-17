@@ -4,10 +4,10 @@
 #include <string>
 #include "entities/base-employee.hpp"
 
-class HeadDepartment : public Employee
+class Technician : public Employee
 {
 public:
-    HeadDepartment(
+    Technician(
         const std::string& id,
         const std::string &full_name,
         bool sex,
@@ -16,7 +16,7 @@ public:
         int children_count,
         double salary);
 
-    ~HeadDepartment() = default;
+    ~Technician() = default;
 
 public:
     static std::string staticClass();
@@ -24,5 +24,5 @@ public:
 
 public:
     std::string serialize() const;
-    static std::shared_ptr<HeadDepartment> deserialize(const std::string& data);
+    static std::shared_ptr<Technician> deserialize(const std::string& data);
 };

@@ -1,10 +1,12 @@
 #pragma once
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <unordered_map>
 #include <vector>
 #include <algorithm>
+#include "common/relation/relation.hpp"
 
 template <typename A, typename B>
 void saveLinks(const OneToOne<A, B>& map, const std::string& filename = A::staticClass() + "-to-" + B::staticClass() + "-links.txt") {

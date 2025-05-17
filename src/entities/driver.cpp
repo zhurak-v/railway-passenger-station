@@ -7,7 +7,7 @@ Driver::Driver(
     int age,
     int work_experience,
     int children_count,
-    float salary,
+    double salary,
     std::vector<int>& passed_medexam
     )
     : Employee(id, full_name, sex, age, work_experience, children_count, salary),

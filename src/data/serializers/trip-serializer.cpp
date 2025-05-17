@@ -20,23 +20,14 @@ std::shared_ptr<Trip> Trip::deserialize(const std::string &data)
     std::istringstream iss(data);
 
     std::string id;
-    iss >> id;
-
     std::string trip_name;
-    iss >> std::quoted(trip_name);
-
     std::string departure_time_str;
-    iss >> departure_time_str;
-
     int status_int;
-    iss >> status_int;
-
     std::string trip_reason;
-    iss >> std::quoted(trip_reason);
-
     std::string delay_time_str;
-    iss >> delay_time_str;
 
+    iss >> id >> std::quoted(trip_name) >> departure_time_str >> status_int >> std::quoted(trip_reason) >> delay_time_str;
+    
     Date departure_time = Date::deserialize(departure_time_str);
     Date delay_time = Date::deserialize(delay_time_str);
 

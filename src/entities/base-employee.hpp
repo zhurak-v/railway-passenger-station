@@ -13,7 +13,7 @@ private:
     int age;
     int work_experience;
     int children_count;
-    float salary;
+    double salary;
 
 public:
     Employee(const std::string &id,
@@ -22,7 +22,7 @@ public:
              int age,
              int work_experience,
              int children_count,
-             float salary);
+             double salary);
     virtual ~Employee() = default;
 
 public:
@@ -31,7 +31,7 @@ public:
     int getAge() const;
     int getWorkExperience() const;
     int getChildrenCount() const;
-    float getSalary() const;
+    double getSalary() const;
 
 // public:
 //     std::string serialize() const override;

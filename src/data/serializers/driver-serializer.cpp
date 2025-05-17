@@ -23,7 +23,7 @@ std::shared_ptr<Driver> Driver::deserialize(const std::string& data) {
     std::string id, full_name;
     bool sex;
     int age, work_experience, children_count;
-    float salary;
+    double salary;
 
     iss >> id >> std::quoted(full_name) >> sex >> age >> work_experience >> children_count >> salary;
 

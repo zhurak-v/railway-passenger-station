@@ -1,6 +1,6 @@
-#include "entities/head-department.hpp"
+#include "entities/technician.hpp"
 
-HeadDepartment::HeadDepartment(
+Technician::Technician(
     const std::string &id,
     const std::string &full_name,
     bool sex,
@@ -10,10 +10,10 @@ HeadDepartment::HeadDepartment(
     double salary)
     : Employee(id, full_name, sex, age, work_experience, children_count, salary) {};
 
-std::string HeadDepartment::staticClass()
+std::string Technician::staticClass()
 {
-    return "HeadDepartment";
+    return "Technician";
 }
-std::string HeadDepartment::getClass() const { 
+std::string Technician::getClass() const { 
     return staticClass();
 }

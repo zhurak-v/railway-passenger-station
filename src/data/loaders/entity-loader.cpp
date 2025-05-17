@@ -1,4 +1,4 @@
-#include "data/entity-loader.hpp"
+#include "data/loaders/entity-loader.hpp"
 
 std::vector<std::shared_ptr<Base>> loadAllEntitiesFromFolder(const std::string& folder) {
     std::vector<std::shared_ptr<Base>> result;
@@ -34,7 +34,7 @@ void saveEntitiesByType(const std::vector<std::shared_ptr<Base>> &entities) {
     }
 
     for (const auto &[class_name, group] : buckets) {
-        std::ofstream file(class_name + ".txt");
+        std::ofstream file(class_name + ".txt", std::ios::app);
         for (const auto &e : group) {
             file << e->serialize() << "\n";
         }
