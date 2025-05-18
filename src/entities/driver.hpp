@@ -4,11 +4,12 @@
 #include <vector>
 #include <string>
 #include "entities/base-employee.hpp"
+#include "common/date/date.hpp"
 
 class Driver : public Employee
 {
 private:
-    std::vector<int> passed_medexam;
+    std::vector<Date> passed_medexam;
 
 public:
     Driver(
@@ -19,14 +20,14 @@ public:
         int work_experience,
         int children_count,
         double salary,
-        std::vector<int>& passed_medexam
+        std::vector<Date>& passed_medexam
     );
 
     ~Driver() = default;
 
 public:
-    std::vector<int> getPassedMedexam() const;
-    void setPassedMedexam(int year);
+    std::vector<Date> getPassedMedexam() const;
+    void setPassedMedexam(Date date);
 
 public:
     static std::string staticClass();

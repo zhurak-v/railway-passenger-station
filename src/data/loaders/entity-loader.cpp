@@ -1,7 +1,9 @@
 #include "data/loaders/entity-loader.hpp"
+#include "data/loaders/regisetr-entity.hpp"
 
 std::vector<std::shared_ptr<Base>> loadAllEntitiesFromFolder(const std::string& folder) {
     std::vector<std::shared_ptr<Base>> result;
+    registerEntity();
 
     for (const auto& entry : std::filesystem::directory_iterator(folder)) {
         if (!entry.is_regular_file()) continue;

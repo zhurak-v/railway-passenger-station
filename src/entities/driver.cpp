@@ -8,7 +8,7 @@ Driver::Driver(
     int work_experience,
     int children_count,
     double salary,
-    std::vector<int>& passed_medexam
+    std::vector<Date>& passed_medexam
     )
     : Employee(id, full_name, sex, age, work_experience, children_count, salary),
     passed_medexam(passed_medexam) {};
@@ -21,10 +21,10 @@ std::string Driver::getClass() const {
     return staticClass();
 }
 
-std::vector<int> Driver::getPassedMedexam() const {
+std::vector<Date> Driver::getPassedMedexam() const {
     return passed_medexam;
 }
 
-void Driver::setPassedMedexam(int year) {
-    passed_medexam.push_back(year);
+void Driver::setPassedMedexam(Date date) {
+    passed_medexam.push_back(date);
 }

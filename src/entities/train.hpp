@@ -1,5 +1,5 @@
 #pragma once
-
+#include <vector>
 #include "entities/base.hpp"
 
 enum class TrainType {

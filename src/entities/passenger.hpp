@@ -1,5 +1,6 @@
 #pragma once
 #include <sstream>
+#include <vector>
 #include "entities/base.hpp"
 
 class Passenger : public Base

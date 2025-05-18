@@ -2,7 +2,7 @@
 
 #include <string>
 #include <sstream>
-#include <memory>
+#include <vector>
 #include "entities/base.hpp"
 
 class Department : public Base

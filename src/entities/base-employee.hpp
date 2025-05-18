@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include <memory>
+#include <vector>
 #include "entities/base.hpp"
 
 class Employee : public Base
@@ -33,6 +34,7 @@ public:
     int getChildrenCount() const;
     double getSalary() const;
 
-// public:
-//     std::string serialize() const override;
+public:
+    static std::string staticClass();
+    std::string getClass() const override;
 };

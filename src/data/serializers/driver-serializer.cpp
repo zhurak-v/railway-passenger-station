@@ -11,8 +11,8 @@ std::string Driver::serialize() const {
         << getChildrenCount() << " "
         << getSalary();
 
-    for (int year : passed_medexam) {
-        oss << " " << year;
+    for (Date date : passed_medexam) {
+        oss << " " << date.serialize();
     }
 
     return oss.str();
@@ -27,10 +27,10 @@ std::shared_ptr<Driver> Driver::deserialize(const std::string& data) {
 
     iss >> id >> std::quoted(full_name) >> sex >> age >> work_experience >> children_count >> salary;
 
-    std::vector<int> passed_medexam;
-    int year;
-    while (iss >> year) {
-        passed_medexam.push_back(year);
+    std::vector<Date> passed_medexam;
+    Date date;
+    while (iss >> date.serialize()) {
+        passed_medexam.push_back(Date::deserialize(date.serialize()));
     }
 
     return std::make_shared<Driver>(id, full_name, sex, age, work_experience, children_count, salary, passed_medexam);

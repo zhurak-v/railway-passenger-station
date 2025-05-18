@@ -43,3 +43,11 @@ double Employee::getSalary() const
 {
   return salary;
 };
+
+std::string Employee::staticClass()
+{
+    return "Employee";
+}
+std::string Employee::getClass() const { 
+    return staticClass();
+}
