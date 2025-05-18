@@ -7,16 +7,7 @@
 class HeadDepartment : public Employee
 {
 public:
-    HeadDepartment(
-        const std::string& id,
-        const std::string &full_name,
-        bool sex,
-        int age,
-        int work_experience,
-        int children_count,
-        double salary);
-
-    ~HeadDepartment() = default;
+    using Employee::Employee;
 
 public:
     static std::string staticClass();

@@ -7,15 +7,7 @@
 class Technician : public Employee
 {
 public:
-    Technician(
-        const std::string& id,
-        const std::string &full_name,
-        bool sex,
-        int age,
-        int work_experience,
-        int children_count,
-        double salary);
-
+    using Employee::Employee;
     ~Technician() = default;
 
 public:

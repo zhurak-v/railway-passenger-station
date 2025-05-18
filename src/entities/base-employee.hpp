@@ -5,32 +5,39 @@
 #include <memory>
 #include <vector>
 #include "entities/base.hpp"
+#include "common/date/date.hpp"
+
+enum class SEX {
+    MALE,
+    FEMALE
+};
 
 class Employee : public Base
 {
 private:
     std::string full_name;
-    bool sex;
-    int age;
-    int work_experience;
+    SEX sex;
+    Date birth;
+    Date start_work;
     int children_count;
     double salary;
 
 public:
-    Employee(const std::string &id,
-             const std::string &full_name,
-             bool sex,
-             int age,
-             int work_experience,
-             int children_count,
-             double salary);
+    Employee(
+        const std::string &id,
+        const std::string &full_name,
+        SEX sex,
+        Date &birth,
+        Date &start_work,
+        int children_count,
+        double salary);
     virtual ~Employee() = default;
 
 public:
     std::string getFullName() const;
-    bool getSex() const;
-    int getAge() const;
-    int getWorkExperience() const;
+    SEX getSex() const;
+    Date getBrithDate() const;
+    Date getStartWork() const;
     int getChildrenCount() const;
     double getSalary() const;
 

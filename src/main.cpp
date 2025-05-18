@@ -13,14 +13,12 @@ int main()
 {
     SetConsoleOutputCP(CP_UTF8);
 
-    std::string id = "#dpm-42315";
-    
-    const std::vector<std::shared_ptr<Employee>>& employees = department_to_employee_service.getEmployeesByDepartment(id);
-    for (const auto& e : employees)
+    SEX sex = SEX::FEMALE;
+
+    for (const auto& e : employee_service.getEmployeesBySex(sex))
     {
-        std::cout << e->serialize() << std::endl;
+        std::cout << e->getFullName() << std::endl;
     }
     
-
     return 0;
 }

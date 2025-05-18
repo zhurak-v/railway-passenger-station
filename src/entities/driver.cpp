@@ -3,14 +3,14 @@
 Driver::Driver(
     const std::string &id,
     const std::string &full_name,
-    bool sex,
-    int age,
-    int work_experience,
+    SEX sex,
+    Date &birth,
+    Date &start_work,
     int children_count,
     double salary,
     std::vector<Date>& passed_medexam
     )
-    : Employee(id, full_name, sex, age, work_experience, children_count, salary),
+    : Employee(id, full_name, sex, birth, start_work, children_count, salary),
     passed_medexam(passed_medexam) {};
 
 std::string Driver::staticClass()

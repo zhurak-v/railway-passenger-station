@@ -2,16 +2,16 @@
 
 Employee::Employee(const std::string &id,
                    const std::string &full_name,
-                   bool sex,
-                   int age,
-                   int work_experience,
+                   SEX sex,
+                   Date& birth,
+                   Date& start_work,
                    int children_count,
                    double salary)
     : Base(id),
       full_name(full_name),
       sex(sex),
-      age(age),
-      work_experience(work_experience),
+      birth(birth),
+      start_work(start_work),
       children_count(children_count),
       salary(salary)
 {
@@ -22,18 +22,18 @@ std::string Employee::getFullName() const
   return full_name;
 };
 
-bool Employee::getSex() const
+SEX Employee::getSex() const
 {
   return sex;
 };
 
-int Employee::getAge() const
+Date Employee::getBrithDate() const
 {
-  return age;
+  return birth;
 };
-int Employee::getWorkExperience() const
+Date Employee::getStartWork() const
 {
-  return work_experience;
+  return start_work;
 };
 int Employee::getChildrenCount() const
 {

@@ -5,9 +5,9 @@ std::string Driver::serialize() const {
     std::ostringstream oss;
     oss << getId() << " "
         << std::quoted(getFullName()) << " "
-        << getSex() << " "
-        << getAge() << " "
-        << getWorkExperience() << " "
+        << static_cast<int>(getSex()) << " "
+        << getBrithDate().serialize() << " "
+        << getStartWork().serialize() << " "
         << getChildrenCount() << " "
         << getSalary();
 
@@ -21,17 +21,19 @@ std::string Driver::serialize() const {
 std::shared_ptr<Driver> Driver::deserialize(const std::string& data) {
     std::istringstream iss(data);
     std::string id, full_name;
-    bool sex;
-    int age, work_experience, children_count;
+    int sex;
+    std::string birth, start_work;
+    int children_count;
     double salary;
 
-    iss >> id >> std::quoted(full_name) >> sex >> age >> work_experience >> children_count >> salary;
+    iss >> id >> std::quoted(full_name) >> sex >> birth >> start_work >> children_count >> salary;
 
     std::vector<Date> passed_medexam;
+    
     Date date;
     while (iss >> date.serialize()) {
         passed_medexam.push_back(Date::deserialize(date.serialize()));
     }
 
-    return std::make_shared<Driver>(id, full_name, sex, age, work_experience, children_count, salary, passed_medexam);
+    return std::make_shared<Driver>(id, full_name, static_cast<SEX>(sex), Date::deserialize(birth), Date::deserialize(start_work), children_count, salary, passed_medexam);
 }

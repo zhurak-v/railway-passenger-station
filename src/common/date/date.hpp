@@ -43,6 +43,7 @@ public:
     static int differenceInMinutes(const Date& a, const Date& b);
     static int differenceInHours(const Date& a, const Date& b);
     static int differenceInDays(const Date& a, const Date& b);
+    static int differenceInYears(const Date& a, const Date& b);
 
     static Date fromHourMinute(int hour, int minute);
     static Date fromDoubleHours(double hours);

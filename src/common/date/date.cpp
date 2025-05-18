@@ -123,6 +123,16 @@ int Date::differenceInDays(const Date& a, const Date& b) {
     return differenceInMinutes(a, b) / 1440;
 }
 
+int Date::differenceInYears(const Date& a, const Date& b) {
+    int yearDiff = a.year - b.year;
+
+    if (a.month < b.month || (a.month == b.month && a.day < b.day)) {
+        yearDiff--;
+    }
+
+    return yearDiff;
+}
+
 Date Date::fromHourMinute(int hour, int minute) {
     return Date(hour, minute);
 }

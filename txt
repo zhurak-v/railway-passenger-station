@@ -139,13 +139,12 @@
 // ### Loading entities with relations from saved files ###
 
 
-
-    // auto head = std::make_shared<HeadDepartment>("#hdp-10001", "Anna", false, 40, 12, 3, 30000);
+// auto head = std::make_shared<HeadDepartment>("#hdp-10001", "Anna", false, Date(1980, 5, 25),  Date(2005, 9, 18), 2, 24000.0);
     // auto department = std::make_shared<Department>("#dpm-42315", "Main Department");
 
-    // auto driver1 = std::make_shared<Driver>("#hdp-10003", "Oleh", true, 38, 8, 4, 28000, std::vector<Date> { Date() });
-    // auto driver2 = std::make_shared<Driver>("#hdp-53266", "Alex", true, 38, 8, 4, 28000, std::vector<Date> { Date() });
-    // auto driver3 = std::make_shared<Driver>("#hdp-67432", "Roman", true, 38, 8, 4, 28000, std::vector<Date> { Date() });
+    // auto driver1 = std::make_shared<Driver>("#hdp-10003", "Oleh", true, Date(1980, 5, 25),  Date(1990, 1, 11), 2, 22000.0, std::vector<Date>{Date()});
+    // auto driver2 = std::make_shared<Driver>("#hdp-53266", "Alex", true, Date(1999, 5, 25),  Date(2018, 2, 8), 2, 28000.0, std::vector<Date>{Date()});
+    // auto driver3 = std::make_shared<Driver>("#hdp-67432", "Roman", true, Date(1975, 9, 28),  Date(2000, 7, 27), 2, 38000.0, std::vector<Date>{Date()});
 
     // OneToOne<Department, HeadDepartment> department_to_head_department;
     // department_to_head_department.link(department, head);
@@ -154,7 +153,6 @@
     // department_to_employee.link(department, driver1);
     // department_to_employee.link(department, driver2);
     // department_to_employee.link(department, driver3);
-
 
     // saveEntitiesByType({head, department, driver1, driver2, driver3});
 

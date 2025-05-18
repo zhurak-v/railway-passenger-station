@@ -13,15 +13,14 @@ private:
 
 public:
     Driver(
-        const std::string& id,
+        const std::string &id,
         const std::string &full_name,
-        bool sex,
-        int age,
-        int work_experience,
+        SEX sex,
+        Date &birth,
+        Date &start_work,
         int children_count,
         double salary,
-        std::vector<Date>& passed_medexam
-    );
+        std::vector<Date> &passed_medexam);
 
     ~Driver() = default;
 
@@ -35,5 +34,5 @@ public:
 
 public:
     std::string serialize() const;
-    static std::shared_ptr<Driver> deserialize(const std::string& data);
+    static std::shared_ptr<Driver> deserialize(const std::string &data);
 };
