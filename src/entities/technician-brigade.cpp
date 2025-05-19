@@ -2,9 +2,8 @@
 
 TechnicianBrigade::TechnicianBrigade(
     const std::string& id,
-    const std::string& brigade_name,
-    const std::string& specialization
-) : Brigade(id, brigade_name, specialization) {}
+    const std::string& brigade_name
+) : Brigade(id, brigade_name) {}
 
 std::string TechnicianBrigade::staticClass()
 {

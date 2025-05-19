@@ -1,8 +1,9 @@
 #pragma once
 
-#include "data/repositories/employee-repository.hpp"
 #include "data/repositories/driver-repository.hpp"
 #include "data/repositories/locomotive-repository.hpp"
+#include "data/repositories/cashier-repository.hpp"
+#include "data/repositories/dispatcher-repository.hpp"
 #include "data/repositories/head-department-repository.hpp"
 #include "data/repositories/department-repository.hpp"
 #include "data/repositories/station-repository.hpp"
@@ -14,8 +15,9 @@
 #include "data/repositories/technician-brigade-repository.hpp"
 #include "data/repositories/train-repository.hpp"
 
-extern EmployeeRepository employee_repository;
 extern DriverRepository driver_repository;
+extern CashierRepository cashier_repository;
+extern DispatcherRepository dispatcher_repository;
 extern LocomotiveRepository locomotive_repository;
 extern HeadDepartmentRepository head_department_repository;
 extern DepartmentRepository department_repository;

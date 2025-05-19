@@ -13,12 +13,7 @@ int main()
 {
     SetConsoleOutputCP(CP_UTF8);
 
-    SEX sex = SEX::FEMALE;
-
-    for (const auto& e : employee_service.getEmployeesBySex(sex))
-    {
-        std::cout << e->getFullName() << std::endl;
-    }
+    std::cout << employee_service.getEmployeeById("#hdp-53266")->getFullName();
     
     return 0;
 }

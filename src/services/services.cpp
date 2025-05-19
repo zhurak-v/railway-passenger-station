@@ -1,19 +1,10 @@
 #include "data/repositories/repositories.hpp"
-
-#include "services/department-to-head-department.hpp"
-#include "services/department-to-employee.hpp"
-#include "services/employee.hpp"
-
-inline DepartmentToHeadDepartmentSerice department_to_head_department_serice(
-    department_repository,
-    head_department_repository
-);
-
-inline DepartmentToEmployeeService department_to_employee_service(
-    department_repository,
-    employee_repository
-);
+#include "services/base/employee-service.hpp"
 
 inline EmployeeService employee_service(
-    employee_repository
+    driver_repository,
+    head_department_repository,
+    technician_repository,
+    cashier_repository,
+    dispatcher_repository
 );

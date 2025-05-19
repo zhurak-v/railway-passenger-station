@@ -6,8 +6,7 @@ class TechnicianBrigade : public Brigade
 public:
     TechnicianBrigade(
         const std::string& id,
-        const std::string& brigade_name,
-        const std::string& specialization
+        const std::string& brigade_name
     );
     ~TechnicianBrigade() = default;
  

@@ -4,8 +4,9 @@
 #include "entities/entities.hpp"
 
 struct EntitiesBuckets {
-    std::vector<std::shared_ptr<Employee>> employees;
     std::vector<std::shared_ptr<Driver>> drivers;
+    std::vector<std::shared_ptr<Cashier>> cashiers;
+    std::vector<std::shared_ptr<Dispatcher>> dispatchers;
     std::vector<std::shared_ptr<Locomotive>> locomotives;
     std::vector<std::shared_ptr<HeadDepartment>> head_departments;
     std::vector<std::shared_ptr<Department>> departments;

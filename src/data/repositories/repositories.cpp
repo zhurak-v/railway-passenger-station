@@ -6,8 +6,9 @@
 auto loaded_entities = loadAllEntitiesFromFolder();
 EntitiesBuckets buckets = splitEntities(loaded_entities);
 
-inline EmployeeRepository employee_repository(buckets.employees);
 inline DriverRepository driver_repository(buckets.drivers);
+inline CashierRepository cashier_repository(buckets.cashiers);
+inline DispatcherRepository dispatcher_repository(buckets.dispatchers);
 inline LocomotiveRepository locomotive_repository(buckets.locomotives);
 inline HeadDepartmentRepository head_department_repository(buckets.head_departments);
 inline DepartmentRepository department_repository(buckets.departments);
