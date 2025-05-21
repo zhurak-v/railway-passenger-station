@@ -6,7 +6,6 @@ std::string Route::serialize() const
     std::ostringstream oss;
     oss << getId() << " "
         << std::quoted(getRouteName()) << " "
-        << getDistance() << " "
         << static_cast<int>(getTypeRoute());
     return oss.str();
 }
@@ -20,10 +19,7 @@ std::shared_ptr<Route> Route::deserialize(const std::string &data)
 
     std::string route_name;
     iss >> std::quoted(route_name);
-
-    double distance;
-    iss >> distance;
-
+    
     int type_route_int;
     iss >> type_route_int;
 

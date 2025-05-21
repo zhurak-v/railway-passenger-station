@@ -15,6 +15,8 @@ private:
     int minute;
     bool timeOnly = false;
 
+    void normalize();
+
 public:
     Date();
     Date(int year, int month, int day, int hour = 0, int minute = 0);
@@ -39,6 +41,10 @@ public:
     void addMinutes(int minutes);
     void addHours(int hours);
     void addDays(int days);
+
+    void addMinutes(double minutes);
+    void addHours(double hours);
+    void addDays(double days);
 
     static int differenceInMinutes(const Date& a, const Date& b);
     static int differenceInHours(const Date& a, const Date& b);

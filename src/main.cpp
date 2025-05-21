@@ -13,7 +13,11 @@ int main()
 {
     SetConsoleOutputCP(CP_UTF8);
 
-    std::cout << employee_service.getEmployeeById("#hdp-53266")->getFullName();
-    
+    for (const auto locomotive : relation_service.getLocomotivesAtStationInTime("#sta-65434", Date(2025, 5, 21, 11, 10)))
+    {
+        // std::cout << locomotive->getId() << std::endl;
+    }
+
+
     return 0;
 }

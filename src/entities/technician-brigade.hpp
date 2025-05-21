@@ -13,4 +13,8 @@ public:
 public:
     std::string getClass() const final;
     static std::string staticClass();
+
+public:
+    std::string serialize() const;
+    static std::shared_ptr<TechnicianBrigade> deserialize(const std::string &data);
 };

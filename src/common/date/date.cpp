@@ -61,8 +61,7 @@ Date Date::deserialize(const std::string& data) {
         int h = std::stoi(match[4]);
         int min = std::stoi(match[5]);
         return Date(y, m, d, h, min);
-    }
-    else if (std::regex_match(data, match, timeOnlyPattern)) {
+    } else if (std::regex_match(data, match, timeOnlyPattern)) {
         int h = std::stoi(match[1]);
         int min = std::stoi(match[2]);
         return Date(h, min);
@@ -71,13 +70,14 @@ Date Date::deserialize(const std::string& data) {
     throw std::invalid_argument("Incorrect date format: " + data);
 }
 
-void Date::addMinutes(int minutes) {
+void Date::normalize() {
     std::tm timeStruct = {};
     timeStruct.tm_year = year - 1900;
     timeStruct.tm_mon = month - 1;
     timeStruct.tm_mday = day;
     timeStruct.tm_hour = hour;
-    timeStruct.tm_min = minute + minutes;
+    timeStruct.tm_min = minute;
+
     std::mktime(&timeStruct);
 
     year = timeStruct.tm_year + 1900;
@@ -87,12 +87,52 @@ void Date::addMinutes(int minutes) {
     minute = timeStruct.tm_min;
 }
 
+void Date::addMinutes(int minutes) {
+    minute += minutes;
+    normalize();
+}
+
 void Date::addHours(int hours) {
-    addMinutes(hours * 60);
+    hour += hours;
+    normalize();
 }
 
 void Date::addDays(int days) {
-    addMinutes(days * 1440);
+    day += days;
+    normalize();
+}
+
+void Date::addMinutes(double minutes) {
+    int full = static_cast<int>(minutes);
+    double frac = minutes - full;
+
+    addMinutes(full);
+    if (frac != 0.0) {
+        int extra_seconds = static_cast<int>(frac * 60 + 0.5);
+        std::tm timeStruct = {};
+        timeStruct.tm_year = year - 1900;
+        timeStruct.tm_mon = month - 1;
+        timeStruct.tm_mday = day;
+        timeStruct.tm_hour = hour;
+        timeStruct.tm_min = minute;
+        timeStruct.tm_sec += extra_seconds;
+
+        std::mktime(&timeStruct);
+
+        year = timeStruct.tm_year + 1900;
+        month = timeStruct.tm_mon + 1;
+        day = timeStruct.tm_mday;
+        hour = timeStruct.tm_hour;
+        minute = timeStruct.tm_min;
+    }
+}
+
+void Date::addHours(double hours) {
+    addMinutes(hours * 60.0);
+}
+
+void Date::addDays(double days) {
+    addMinutes(days * 1440.0);
 }
 
 int Date::differenceInMinutes(const Date& a, const Date& b) {

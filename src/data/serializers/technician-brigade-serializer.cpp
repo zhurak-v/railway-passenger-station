@@ -1,7 +1,7 @@
-#include "entities/brigade.hpp"
+#include "entities/technician-brigade.hpp"
 #include <iomanip>
 
-std::string Brigade::serialize() const
+std::string TechnicianBrigade::serialize() const
 {
     std::ostringstream oss;
     oss << getId() << " " << 
@@ -10,7 +10,7 @@ std::string Brigade::serialize() const
     return oss.str();
 }
 
-std::shared_ptr<Brigade> Brigade::deserialize(const std::string &data)
+std::shared_ptr<TechnicianBrigade> TechnicianBrigade::deserialize(const std::string &data)
 {
     std::istringstream iss(data);
     std::string id;
@@ -18,5 +18,5 @@ std::shared_ptr<Brigade> Brigade::deserialize(const std::string &data)
 
     iss >> id >> std::quoted(brigade_name);
 
-    return std::make_shared<Brigade>(id, brigade_name);
+    return std::make_shared<TechnicianBrigade>(id, brigade_name);
 }

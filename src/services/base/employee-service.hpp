@@ -35,6 +35,7 @@ public:
     std::shared_ptr<Technician> getTechnicianById(const std::string& id) const;
     std::shared_ptr<Dispatcher> getDispatcherById(const std::string& id) const;
     std::shared_ptr<Cashier> getCashierById(const std::string& id) const;
+    
 public:
     std::vector<std::shared_ptr<Employee>> getEmployeesByExp(int exp) const;
     std::vector<std::shared_ptr<Employee>> getEmployeesByAge(int age) const;

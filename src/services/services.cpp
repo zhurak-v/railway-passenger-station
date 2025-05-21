@@ -1,5 +1,5 @@
+#include "services/services.hpp"
 #include "data/repositories/repositories.hpp"
-#include "services/base/employee-service.hpp"
 
 inline EmployeeService employee_service(
     driver_repository,
@@ -7,4 +7,14 @@ inline EmployeeService employee_service(
     technician_repository,
     cashier_repository,
     dispatcher_repository
+);
+
+inline RelationServices relation_service(
+    employee_service,
+    driver_repository,
+    locomotive_repository,
+    technician_brigade_repository,
+    station_repository,
+    route_repository,
+    trip_repository
 );

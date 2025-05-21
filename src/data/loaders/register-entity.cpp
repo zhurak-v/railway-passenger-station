@@ -7,6 +7,7 @@ void registerEntity() {
     EntityFactory::instance().registerClass(Department::staticClass(), Department::deserialize);
     EntityFactory::instance().registerClass(Route::staticClass(), Route::deserialize);
     EntityFactory::instance().registerClass(Trip::staticClass(), Trip::deserialize);
+    EntityFactory::instance().registerClass(Station::staticClass(), Station::deserialize);
     EntityFactory::instance().registerClass(Ticket::staticClass(), Ticket::deserialize);
     EntityFactory::instance().registerClass(Technician::staticClass(), Technician::deserialize);
     EntityFactory::instance().registerClass(TechnicianBrigade::staticClass(), TechnicianBrigade::deserialize);

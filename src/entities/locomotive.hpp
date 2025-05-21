@@ -13,23 +13,29 @@ private:
     std::vector<Date> passed_tech_inspection;
     std::vector<Date> repairs;
     Date manufacture_date;
+    int completed_routes;
+    int completed_routes_before_repair;
 
 public:
     Locomotive(
         const std::string &id,
-        const Date& manufacture_date
+        const Date& manufacture_date,
+        std::vector<Date>& passed_tech_inspection,
+        std::vector<Date>& repairs,
+        int completed_routes,
+        int completed_routes_before_repair
     );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
     ~Locomotive() = default;
 
 public:
     std::vector<Date> getPassedTechInspection() const;
-    void setPassedTechInspection(Date date);
-
     std::vector<Date> getRepairs() const;
+
     int getRepairsCount() const;
-    void setRepairs(Date date);
-    
     Date getManufactureDate() const;
+
+    int getCompletedRoutes() const;
+    int getCompletedRoutesBeforeRepair() const;
 
 public: 
     std::string getClass() const final;   

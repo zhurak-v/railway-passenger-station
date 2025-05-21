@@ -2,14 +2,21 @@
 
 Locomotive::Locomotive(
     const std::string &id,
-    const Date &manufacture_year) : Base(id), manufacture_date(manufacture_date) {}
+    const Date &manufacture_date,
+    std::vector<Date>& passed_tech_inspection,
+    std::vector<Date>& repairs,
+    int completed_routes,
+    int completed_routes_before_repair
+
+) : Base(id), 
+    manufacture_date(manufacture_date), 
+    passed_tech_inspection(passed_tech_inspection), 
+    repairs(repairs), 
+    completed_routes(completed_routes),
+    completed_routes_before_repair(completed_routes_before_repair) {}
 
 std::vector<Date> Locomotive::getPassedTechInspection() const {
     return passed_tech_inspection;
-}
-
-void Locomotive::setPassedTechInspection(Date date) {
-    passed_tech_inspection.push_back(date);
 }
 
 std::vector<Date> Locomotive::getRepairs() const {
@@ -20,8 +27,12 @@ int Locomotive::getRepairsCount() const {
     return getRepairs().size();
 }
 
-void Locomotive::setRepairs(Date date) {
-    repairs.push_back(date);
+int Locomotive::getCompletedRoutes() const {
+    return completed_routes;
+}
+
+int Locomotive::getCompletedRoutesBeforeRepair() const {
+    return completed_routes_before_repair;
 }
 
 Date Locomotive::getManufactureDate() const {

@@ -1,160 +1,94 @@
-// One-To-One
-// ### Creating entites with relations and saving to files ###
-// auto head = std::make_shared<HeadDepartment>("#hdp-10001", "Anna", false, 40, 12, 3, 30000);
-// auto department = std::make_shared<Department>("#dpm-20001", "Legal");
+auto head = std::make_shared<HeadDepartment>("#hdp-10001", "Anna", SEX(SEX::FEMALE), Date(1980, 5, 25), Date(2005, 9, 18), 2, 24000.0);
 
-// OneToOne<HeadDepartment, Department> oneToOneRelation;
-// oneToOneRelation.link(head, department);
+auto department = std::make_shared<Department>("#dpm-42315", "Main Department");
 
-// std::cout << head->getFullName() << " -> "
-//           << oneToOneRelation.getLinkedB(head)->getDepartmentName() << std::endl;
+auto driver1 = std::make_shared<Driver>("#drv-10003", "Oleh", SEX(SEX::MALE), Date(1980, 5, 25), Date(1990, 1, 11), 2, 22000.0, std::vector<Date>{Date()});
+auto driver2 = std::make_shared<Driver>("#drv-53266", "Alex", SEX(SEX::MALE), Date(1999, 5, 25), Date(2018, 2, 8), 2, 28000.0, std::vector<Date>{Date()});
+auto driver3 = std::make_shared<Driver>("#drv-67432", "Roman", SEX(SEX::MALE), Date(1975, 9, 28), Date(2000, 7, 27), 2, 38000.0, std::vector<Date>{Date()});
+auto driver4 = std::make_shared<Driver>("#drv-53463", "Ivan", SEX(SEX::MALE), Date(1985, 6, 12), Date(2008, 5, 1), 2, 36000.0, std::vector<Date>{Date()});
+auto driver5 = std::make_shared<Driver>("#drv-34525", "Dmytro", SEX(SEX::MALE), Date(1990, 3, 14), Date(2012, 9, 20), 2, 30000.0, std::vector<Date>{Date()});
 
-// saveEntitiesByType({head, department});
-// saveLinks(oneToOneRelation);
-// // ### Creating entites with relations and saving to files ###
+auto loco1 = std::make_shared<Locomotive>("#lcm-78646", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
+auto loco2 = std::make_shared<Locomotive>("#lcm-47436", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
+auto loco3 = std::make_shared<Locomotive>("#lcm-44686", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
+auto loco4 = std::make_shared<Locomotive>("#lcm-65743", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
+auto loco5 = std::make_shared<Locomotive>("#lcm-53254", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
 
-// // ### Loading entites with relations from saved files ###
-// auto loaded_entities = loadAllEntitiesFromFolder();
+auto tech_brigade1 = std::make_shared<TechnicianBrigade>("tbr-43728", "Brigade 1");
+auto tech_brigade2 = std::make_shared<TechnicianBrigade>("tbr-42352", "Brigade 2");
 
-// std::vector<std::shared_ptr<HeadDepartment>> heads;
-// std::vector<std::shared_ptr<Department>> departments;
+auto stationA = std::make_shared<Station>("#sta-54363", "A", Position(10, 0));
+auto stationB = std::make_shared<Station>("#sta-54335", "B", Position(20, 0));
+auto stationC = std::make_shared<Station>("#sta-65434", "C", Position(30, 0));
 
-// for (const auto &entity : loaded_entities)
-// {
-//     if (auto head = std::dynamic_pointer_cast<HeadDepartment>(entity))
-//     {
-//         heads.push_back(head);
-//     }
-//     else if (auto dep = std::dynamic_pointer_cast<Department>(entity))
-//     {
-//         departments.push_back(dep);
-//     }
-// }
+auto routeAC = std::make_shared<Route>("#rte-59432", "A-C", TypeRoute(TypeRoute::Domestic));
 
-// OneToOne<HeadDepartment, Department> oneToOneRelation;
-// loadAllLinks(oneToOneRelation, heads, departments);
+auto tripACMorning = std::make_shared<Trip>("#trp-13972", "A-C-Morning", Date(2025, 5, 21, 10, 0));
+auto tripACEvening = std::make_shared<Trip>("#trp-43255", "A-C-Evening", Date(2025, 5, 21, 15, 0));
 
-// for (const auto &head : heads)
-// {
-//     auto linkedDep = oneToOneRelation.getLinkedB(head);
-//     if (linkedDep)
-//     {
-//         std::cout << head->getFullName() << " -> "
-//                   << linkedDep->getDepartmentName() << std::endl;
-//     }
-// }
-// ### Loading entites with relations from saved files ###
+OneToOne<Department, HeadDepartment> department_to_head_department;
+department_to_head_department.link(department, head);
 
-// One To Many
-// ### Creating entities with relations and saving to files ###
-// auto head = std::make_shared<HeadDepartment>("#hdp-10002", "Max", true, 50, 20, 5, 50000);
-// auto dep1 = std::make_shared<Department>("#dpm-20002", "IT");
-// auto dep2 = std::make_shared<Department>("#dpm-20003", "Finance");
+OneToMany<Department, Employee> department_to_employee;
+department_to_employee.link(department, driver1);
+department_to_employee.link(department, driver2);
+department_to_employee.link(department, driver3);
+department_to_employee.link(department, driver4);
+department_to_employee.link(department, driver5);
 
-// OneToMany<HeadDepartment, Department> oneToManyRelation;
-// oneToManyRelation.link(head, dep1);
-// oneToManyRelation.link(head, dep2);
+OneToMany<Station, Locomotive> station_to_locomotives;
+station_to_locomotives.link(stationA, loco1);
+station_to_locomotives.link(stationA, loco2);
+station_to_locomotives.link(stationB, loco3);
+station_to_locomotives.link(stationB, loco4);
+station_to_locomotives.link(stationC, loco5);
 
-// saveEntitiesByType({head, dep1, dep2});
-// saveLinks(oneToManyRelation);
-// ### Creating entities with relations and saving to files ###
+OneToMany<Locomotive, Driver> locomotive_to_drivers;
+locomotive_to_drivers.link(loco1, driver1);
+locomotive_to_drivers.link(loco1, driver2);
+locomotive_to_drivers.link(loco2, driver3);
+locomotive_to_drivers.link(loco2, driver4);
+locomotive_to_drivers.link(loco3, driver5);
+locomotive_to_drivers.link(loco4, driver1);
+locomotive_to_drivers.link(loco4, driver2);
+locomotive_to_drivers.link(loco5, driver3);
+locomotive_to_drivers.link(loco5, driver4);
 
-// ### Loading entities with relations from saved files ###
-// auto loaded_entities = loadAllEntitiesFromFolder();
+OneToMany<TechnicianBrigade, Locomotive> technician_brigade_to_locomotives;
+technician_brigade_to_locomotives.link(tech_brigade1, loco1);
+technician_brigade_to_locomotives.link(tech_brigade1, loco2);
+technician_brigade_to_locomotives.link(tech_brigade2, loco3);
+technician_brigade_to_locomotives.link(tech_brigade2, loco4);
+technician_brigade_to_locomotives.link(tech_brigade2, loco5);
 
-// std::vector<std::shared_ptr<HeadDepartment>> heads;
-// std::vector<std::shared_ptr<Department>> departments;
+ManyToMany<Route, Station> routes_to_stations;
+routes_to_stations.link(routeAC, stationA);
+routes_to_stations.link(routeAC, stationB);
+routes_to_stations.link(routeAC, stationC);
 
-// for (const auto &entity : loaded_entities)
-// {
-//     if (auto h = std::dynamic_pointer_cast<HeadDepartment>(entity))
-//         heads.push_back(h);
-//     else if (auto d = std::dynamic_pointer_cast<Department>(entity))
-//         departments.push_back(d);
-// }
+OneToMany<Route, Trip> route_to_trips;
+route_to_trips.link(routeAC, tripACMorning);
+route_to_trips.link(routeAC, tripACEvening);
 
-// OneToMany<HeadDepartment, Department> oneToManyRelationLoaded;
-// loadAllLinks(oneToManyRelationLoaded, heads, departments);
+ManyToMany<Locomotive, Trip> locomotives_to_trips;
+locomotives_to_trips.link(loco1, tripACMorning);
+locomotives_to_trips.link(loco1, tripACEvening);
+locomotives_to_trips.link(loco2, tripACEvening);
 
-// for (const auto &head : heads)
-// {
-//     auto linked = oneToManyRelationLoaded.getLinkedB(head);
-//     if (!linked.empty())
-//     {
-//         std::cout << head->getFullName() << " -> " << std::endl;
-//         for (const auto &dep : linked)
-//         {
-//             std::cout << " - " << dep->getDepartmentName() << std::endl;
-//         }
-//     }
-// }
-// ### Loading entities with relations from saved files ###
-
-// Many To Many
-// ### Creating entities with relations and saving to files ###
-// auto head1 = std::make_shared<HeadDepartment>("#hdp-10003", "Oleh", true, 38, 8, 4, 28000);
-// auto head2 = std::make_shared<HeadDepartment>("#hdp-10004", "Iryna", false, 42, 15, 6, 35000);
-
-// auto dep1 = std::make_shared<Department>("#dpm-20004", "Marketing");
-// auto dep2 = std::make_shared<Department>("#dpm-20005", "HR");
-
-// ManyToMany<HeadDepartment, Department> manyToManyRelation;
-// manyToManyRelation.link(head1, dep1);
-// manyToManyRelation.link(head1, dep2);
-// manyToManyRelation.link(head2, dep2); // one department — two heads
-
-// saveEntitiesByType({head1, head2, dep1, dep2});
-// saveLinks(manyToManyRelation);
-// ### Creating entities with relations and saving to files ###
-
-// ### Loading entities with relations from saved files ###
-// auto loaded_entities = loadAllEntitiesFromFolder();
-
-// std::vector<std::shared_ptr<HeadDepartment>> heads;
-// std::vector<std::shared_ptr<Department>> departments;
-
-// for (const auto &entity : loaded_entities)
-// {
-//     if (auto h = std::dynamic_pointer_cast<HeadDepartment>(entity))
-//         heads.push_back(h);
-//     else if (auto d = std::dynamic_pointer_cast<Department>(entity))
-//         departments.push_back(d);
-// }
-
-// ManyToMany<HeadDepartment, Department> manyToManyRelationLoaded;
-// loadAllLinks(manyToManyRelationLoaded, heads, departments);
-
-// for (const auto &head : heads)
-// {
-//     auto linked = manyToManyRelationLoaded.getLinkedB(head);
-//     if (!linked.empty())
-//     {
-//         std::cout << head->getFullName() << " co-manages:\n";
-//         for (const auto &dep : linked)
-//         {
-//             std::cout << " - " << dep->getDepartmentName() << std::endl;
-//         }
-//     }
-// }
-// ### Loading entities with relations from saved files ###
-
-
-// auto head = std::make_shared<HeadDepartment>("#hdp-10001", "Anna", false, Date(1980, 5, 25),  Date(2005, 9, 18), 2, 24000.0);
-    // auto department = std::make_shared<Department>("#dpm-42315", "Main Department");
-
-    // auto driver1 = std::make_shared<Driver>("#hdp-10003", "Oleh", true, Date(1980, 5, 25),  Date(1990, 1, 11), 2, 22000.0, std::vector<Date>{Date()});
-    // auto driver2 = std::make_shared<Driver>("#hdp-53266", "Alex", true, Date(1999, 5, 25),  Date(2018, 2, 8), 2, 28000.0, std::vector<Date>{Date()});
-    // auto driver3 = std::make_shared<Driver>("#hdp-67432", "Roman", true, Date(1975, 9, 28),  Date(2000, 7, 27), 2, 38000.0, std::vector<Date>{Date()});
-
-    // OneToOne<Department, HeadDepartment> department_to_head_department;
-    // department_to_head_department.link(department, head);
-
-    // OneToMany<Department, Employee> department_to_employee;
-    // department_to_employee.link(department, driver1);
-    // department_to_employee.link(department, driver2);
-    // department_to_employee.link(department, driver3);
-
-    // saveEntitiesByType({head, department, driver1, driver2, driver3});
-
-    // saveLinks(department_to_head_department);
-    // saveLinks(department_to_employee);
+saveEntitiesByType({
+    head, department,
+    driver1, driver2, driver3, driver4, driver5,
+    loco1, loco2, loco3, loco4, loco5,
+    tech_brigade1, tech_brigade2,
+    stationA, stationB, stationC,
+    routeAC,
+    tripACMorning, tripACEvening
+});
+saveLinks(department_to_head_department);
+saveLinks(department_to_employee);
+saveLinks(station_to_locomotives);
+saveLinks(locomotive_to_drivers);
+saveLinks(technician_brigade_to_locomotives);
+saveLinks(routes_to_stations);
+saveLinks(route_to_trips);
+saveLinks(locomotives_to_trips);

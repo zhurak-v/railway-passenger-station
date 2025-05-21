@@ -20,7 +20,8 @@ public:
         Date &start_work,
         int children_count,
         double salary,
-        std::vector<Date> &passed_medexam);
+        std::vector<Date> &passed_medexam
+    );
 
     ~Driver() = default;
 

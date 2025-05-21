@@ -22,7 +22,6 @@ class Route : public Base
 {
 private:
     std::string route_name;
-    double distance;
     TypeRoute type_route;
 
 public:
@@ -36,10 +35,7 @@ public:
 
 public:
     std::string getRouteName() const;
-    Date getDuration() const;
     TypeRoute getTypeRoute() const;
-    double getDistance() const;
-    void setDistance(const std::vector<Position> &positions);
 
 public:
     std::string getClass() const final;

@@ -25,8 +25,4 @@ public:
 public:
     std::string getClass() const override;
     static std::string staticClass();
-
-public:
-    std::string serialize() const override;
-    static std::shared_ptr<Brigade> deserialize(const std::string &data);
 };
