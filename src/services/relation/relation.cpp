@@ -2,21 +2,21 @@
 #include <iostream>
 
 RelationServices::RelationServices(
-    EmployeeService& employee_services,
     DriverRepository& driver_repository,
     LocomotiveRepository& locomotive_repository,
     TechnicianBrigadeRepository& technician_brigade_repository,
     StationRepository& station_repository,
     RouteRepository& route_repository,
-    TripRepository& trip_repository
+    TripRepository& trip_repository,
+    TrainRepository& train_repository
 
-) : employee_services(employee_services),
-    driver_repository(driver_repository),
+) : driver_repository(driver_repository),
     locomotive_repository(locomotive_repository),
     technician_brigade_repository(technician_brigade_repository),
     station_repository(station_repository),
     route_repository(route_repository),
-    trip_repository(trip_repository)
+    trip_repository(trip_repository),
+    train_repository(train_repository)
 {
     loadAllLinks(
         this->station_to_locomotives,
@@ -47,6 +47,11 @@ RelationServices::RelationServices(
         this->locomotives_to_trips,
         locomotive_repository.getAll(),
         trip_repository.getAll()
+    );
+    loadAllLinks(
+        this->train_to_locomotive,
+        train_repository.getAll(),
+        locomotive_repository.getAll()
     );
 }
 
@@ -85,29 +90,31 @@ RelationServices::getLocomotivesAtStationInTime(
         auto trips = route_to_trips.getLinkedB(route);
 
         for (const auto& trip : trips) {
-            auto startTime = trip->getDepartureTime();
-            auto startPos = stations.front()->getPosition();
+            auto departure_time = trip->getDepartureTime();
+
+            // std::cout << departure_time.serialize() << std::endl;
+
+            auto start_pos = stations[0]->getPosition();
 
             for (const auto& s : stations) {
-                double dist = Math::getDistanceBetweenPointsKm(startPos, s->getPosition());
-                double hours = dist / 60.0;
-                Date arrival = startTime;
-                arrival.addHours(hours);
+                double dist = Math::getDistanceBetweenPointsKm(start_pos, s->getPosition());
+                auto locomotives = locomotives_to_trips.getLinkedA(trip);
 
-                // if (s->getId() == id && Date::differenceInMinutes(arrival, time) == 0) {
-                //     auto locomotives = locomotives_to_trips.getLinkedA(trip);
-                //     // std::cout << arrival.serialize();
-                //     result.insert(result.end(), locomotives.begin(), locomotives.end());
-                //     break;
-                // }
+                for (const auto& loco : locomotives) {
+                    auto train = train_to_locomotive.getLinkedA(loco);
 
-                 std::cout << s->getStationName() << " " << s->getPosition().getX() << std::endl;
+                    double speed = static_cast<double>(train->getTrainType());
+                    double hours = dist / speed;
 
-                if (s->getId() == id) {
-                    auto locomotives = locomotives_to_trips.getLinkedA(trip);
-                    // std::cout << arrival.serialize();
-                    result.insert(result.end(), locomotives.begin(), locomotives.end());
-                    break;
+                    Date arrival = departure_time;
+                    arrival.addHours(hours);
+
+                    std::cout << arrival.serialize() << std::endl;
+
+                    if (s->getId() == id && Date::differenceInMinutes(arrival, time) == 0) {
+                        result.push_back(loco);
+                        break;
+                    }
                 }
             }
         }

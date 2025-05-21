@@ -1,94 +1,108 @@
 auto head = std::make_shared<HeadDepartment>("#hdp-10001", "Anna", SEX(SEX::FEMALE), Date(1980, 5, 25), Date(2005, 9, 18), 2, 24000.0);
 
-auto department = std::make_shared<Department>("#dpm-42315", "Main Department");
+    auto department = std::make_shared<Department>("#dpm-42315", "Main Department");
 
-auto driver1 = std::make_shared<Driver>("#drv-10003", "Oleh", SEX(SEX::MALE), Date(1980, 5, 25), Date(1990, 1, 11), 2, 22000.0, std::vector<Date>{Date()});
-auto driver2 = std::make_shared<Driver>("#drv-53266", "Alex", SEX(SEX::MALE), Date(1999, 5, 25), Date(2018, 2, 8), 2, 28000.0, std::vector<Date>{Date()});
-auto driver3 = std::make_shared<Driver>("#drv-67432", "Roman", SEX(SEX::MALE), Date(1975, 9, 28), Date(2000, 7, 27), 2, 38000.0, std::vector<Date>{Date()});
-auto driver4 = std::make_shared<Driver>("#drv-53463", "Ivan", SEX(SEX::MALE), Date(1985, 6, 12), Date(2008, 5, 1), 2, 36000.0, std::vector<Date>{Date()});
-auto driver5 = std::make_shared<Driver>("#drv-34525", "Dmytro", SEX(SEX::MALE), Date(1990, 3, 14), Date(2012, 9, 20), 2, 30000.0, std::vector<Date>{Date()});
+    auto driver1 = std::make_shared<Driver>("#drv-10003", "Oleh", SEX(SEX::MALE), Date(1980, 5, 25), Date(1990, 1, 11), 2, 22000.0, std::vector<Date>{Date()});
+    auto driver2 = std::make_shared<Driver>("#drv-53266", "Alex", SEX(SEX::MALE), Date(1999, 5, 25), Date(2018, 2, 8), 2, 28000.0, std::vector<Date>{Date()});
+    auto driver3 = std::make_shared<Driver>("#drv-67432", "Roman", SEX(SEX::MALE), Date(1975, 9, 28), Date(2000, 7, 27), 2, 38000.0, std::vector<Date>{Date()});
+    auto driver4 = std::make_shared<Driver>("#drv-53463", "Ivan", SEX(SEX::MALE), Date(1985, 6, 12), Date(2008, 5, 1), 2, 36000.0, std::vector<Date>{Date()});
+    auto driver5 = std::make_shared<Driver>("#drv-34525", "Dmytro", SEX(SEX::MALE), Date(1990, 3, 14), Date(2012, 9, 20), 2, 30000.0, std::vector<Date>{Date()});
 
-auto loco1 = std::make_shared<Locomotive>("#lcm-78646", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
-auto loco2 = std::make_shared<Locomotive>("#lcm-47436", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
-auto loco3 = std::make_shared<Locomotive>("#lcm-44686", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
-auto loco4 = std::make_shared<Locomotive>("#lcm-65743", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
-auto loco5 = std::make_shared<Locomotive>("#lcm-53254", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
+    auto loco1 = std::make_shared<Locomotive>("#lcm-78646", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
+    auto loco2 = std::make_shared<Locomotive>("#lcm-47436", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
+    auto loco3 = std::make_shared<Locomotive>("#lcm-44686", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
+    auto loco4 = std::make_shared<Locomotive>("#lcm-65743", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
+    auto loco5 = std::make_shared<Locomotive>("#lcm-53254", Date(), std::vector<Date>{Date()}, std::vector<Date>{Date()}, 100, 50);
 
-auto tech_brigade1 = std::make_shared<TechnicianBrigade>("tbr-43728", "Brigade 1");
-auto tech_brigade2 = std::make_shared<TechnicianBrigade>("tbr-42352", "Brigade 2");
+    auto tech_brigade1 = std::make_shared<TechnicianBrigade>("tbr-43728", "Brigade 1");
+    auto tech_brigade2 = std::make_shared<TechnicianBrigade>("tbr-42352", "Brigade 2");
 
-auto stationA = std::make_shared<Station>("#sta-54363", "A", Position(10, 0));
-auto stationB = std::make_shared<Station>("#sta-54335", "B", Position(20, 0));
-auto stationC = std::make_shared<Station>("#sta-65434", "C", Position(30, 0));
+    auto stationA = std::make_shared<Station>("#sta-54363", "A", Position(10, 0));
+    auto stationB = std::make_shared<Station>("#sta-54335", "B", Position(20, 0));
+    auto stationC = std::make_shared<Station>("#sta-65434", "C", Position(30, 0));
 
-auto routeAC = std::make_shared<Route>("#rte-59432", "A-C", TypeRoute(TypeRoute::Domestic));
+    auto routeAC = std::make_shared<Route>("#rte-59432", "A-C", TypeRoute(TypeRoute::Domestic));
 
-auto tripACMorning = std::make_shared<Trip>("#trp-13972", "A-C-Morning", Date(2025, 5, 21, 10, 0));
-auto tripACEvening = std::make_shared<Trip>("#trp-43255", "A-C-Evening", Date(2025, 5, 21, 15, 0));
+    auto tripACMorning = std::make_shared<Trip>("#trp-13972", "A-C-Morning", Date(2025, 5, 21, 10, 0));
+    auto tripACEvening = std::make_shared<Trip>("#trp-43255", "A-C-Evening", Date(2025, 5, 21, 15, 0));
 
-OneToOne<Department, HeadDepartment> department_to_head_department;
-department_to_head_department.link(department, head);
+    auto train1 = std::make_shared<Train>("#trn-67153", TrainType(TrainType::FAST));
+    auto train2 = std::make_shared<Train>("#trn-48165", TrainType(TrainType::PASSANGERS));
+    auto train3 = std::make_shared<Train>("#trn-14786", TrainType(TrainType::FAST));
+    auto train4 = std::make_shared<Train>("#trn-48674", TrainType(TrainType::PASSANGERS));
+    auto train5 = std::make_shared<Train>("#trn-46846", TrainType(TrainType::FAST));
 
-OneToMany<Department, Employee> department_to_employee;
-department_to_employee.link(department, driver1);
-department_to_employee.link(department, driver2);
-department_to_employee.link(department, driver3);
-department_to_employee.link(department, driver4);
-department_to_employee.link(department, driver5);
+    OneToOne<Department, HeadDepartment> department_to_head_department;
+    department_to_head_department.link(department, head);
 
-OneToMany<Station, Locomotive> station_to_locomotives;
-station_to_locomotives.link(stationA, loco1);
-station_to_locomotives.link(stationA, loco2);
-station_to_locomotives.link(stationB, loco3);
-station_to_locomotives.link(stationB, loco4);
-station_to_locomotives.link(stationC, loco5);
+    OneToMany<Department, Employee> department_to_employee;
+    department_to_employee.link(department, driver1);
+    department_to_employee.link(department, driver2);
+    department_to_employee.link(department, driver3);
+    department_to_employee.link(department, driver4);
+    department_to_employee.link(department, driver5);
 
-OneToMany<Locomotive, Driver> locomotive_to_drivers;
-locomotive_to_drivers.link(loco1, driver1);
-locomotive_to_drivers.link(loco1, driver2);
-locomotive_to_drivers.link(loco2, driver3);
-locomotive_to_drivers.link(loco2, driver4);
-locomotive_to_drivers.link(loco3, driver5);
-locomotive_to_drivers.link(loco4, driver1);
-locomotive_to_drivers.link(loco4, driver2);
-locomotive_to_drivers.link(loco5, driver3);
-locomotive_to_drivers.link(loco5, driver4);
+    OneToMany<Station, Locomotive> station_to_locomotives;
+    station_to_locomotives.link(stationA, loco1);
+    station_to_locomotives.link(stationA, loco2);
+    station_to_locomotives.link(stationB, loco3);
+    station_to_locomotives.link(stationB, loco4);
+    station_to_locomotives.link(stationC, loco5);
 
-OneToMany<TechnicianBrigade, Locomotive> technician_brigade_to_locomotives;
-technician_brigade_to_locomotives.link(tech_brigade1, loco1);
-technician_brigade_to_locomotives.link(tech_brigade1, loco2);
-technician_brigade_to_locomotives.link(tech_brigade2, loco3);
-technician_brigade_to_locomotives.link(tech_brigade2, loco4);
-technician_brigade_to_locomotives.link(tech_brigade2, loco5);
+    OneToMany<Locomotive, Driver> locomotive_to_drivers;
+    locomotive_to_drivers.link(loco1, driver1);
+    locomotive_to_drivers.link(loco1, driver2);
+    locomotive_to_drivers.link(loco2, driver3);
+    locomotive_to_drivers.link(loco2, driver4);
+    locomotive_to_drivers.link(loco3, driver5);
+    locomotive_to_drivers.link(loco4, driver1);
+    locomotive_to_drivers.link(loco4, driver2);
+    locomotive_to_drivers.link(loco5, driver3);
+    locomotive_to_drivers.link(loco5, driver4);
 
-ManyToMany<Route, Station> routes_to_stations;
-routes_to_stations.link(routeAC, stationA);
-routes_to_stations.link(routeAC, stationB);
-routes_to_stations.link(routeAC, stationC);
+    OneToMany<TechnicianBrigade, Locomotive> technician_brigade_to_locomotives;
+    technician_brigade_to_locomotives.link(tech_brigade1, loco1);
+    technician_brigade_to_locomotives.link(tech_brigade1, loco2);
+    technician_brigade_to_locomotives.link(tech_brigade2, loco3);
+    technician_brigade_to_locomotives.link(tech_brigade2, loco4);
+    technician_brigade_to_locomotives.link(tech_brigade2, loco5);
 
-OneToMany<Route, Trip> route_to_trips;
-route_to_trips.link(routeAC, tripACMorning);
-route_to_trips.link(routeAC, tripACEvening);
+    ManyToMany<Route, Station> routes_to_stations;
+    routes_to_stations.link(routeAC, stationA);
+    routes_to_stations.link(routeAC, stationB);
+    routes_to_stations.link(routeAC, stationC);
 
-ManyToMany<Locomotive, Trip> locomotives_to_trips;
-locomotives_to_trips.link(loco1, tripACMorning);
-locomotives_to_trips.link(loco1, tripACEvening);
-locomotives_to_trips.link(loco2, tripACEvening);
+    OneToMany<Route, Trip> route_to_trips;
+    route_to_trips.link(routeAC, tripACMorning);
+    route_to_trips.link(routeAC, tripACEvening);
 
-saveEntitiesByType({
-    head, department,
-    driver1, driver2, driver3, driver4, driver5,
-    loco1, loco2, loco3, loco4, loco5,
-    tech_brigade1, tech_brigade2,
-    stationA, stationB, stationC,
-    routeAC,
-    tripACMorning, tripACEvening
-});
-saveLinks(department_to_head_department);
-saveLinks(department_to_employee);
-saveLinks(station_to_locomotives);
-saveLinks(locomotive_to_drivers);
-saveLinks(technician_brigade_to_locomotives);
-saveLinks(routes_to_stations);
-saveLinks(route_to_trips);
-saveLinks(locomotives_to_trips);
+    ManyToMany<Locomotive, Trip> locomotives_to_trips;
+    locomotives_to_trips.link(loco1, tripACMorning);
+    locomotives_to_trips.link(loco1, tripACEvening);
+    locomotives_to_trips.link(loco2, tripACEvening);
+
+    OneToOne<Train, Locomotive> trains_to_locomotive;
+    trains_to_locomotive.link(train1, loco1);
+    trains_to_locomotive.link(train2, loco2);
+    trains_to_locomotive.link(train3, loco3);
+    trains_to_locomotive.link(train4, loco4);
+    trains_to_locomotive.link(train5, loco5);
+
+    saveEntitiesByType({head, department,
+                        driver1, driver2, driver3, driver4, driver5,
+                        loco1, loco2, loco3, loco4, loco5,
+                        tech_brigade1, tech_brigade2,
+                        stationA, stationB, stationC,
+                        routeAC,
+                        tripACMorning, tripACEvening,
+                        train1, train2, train3, train4
+                        , train5});
+    saveLinks(department_to_head_department);
+    saveLinks(department_to_employee);
+    saveLinks(station_to_locomotives);
+    saveLinks(locomotive_to_drivers);
+    saveLinks(technician_brigade_to_locomotives);
+    saveLinks(routes_to_stations);
+    saveLinks(route_to_trips);
+    saveLinks(locomotives_to_trips);
+    saveLinks(trains_to_locomotive);

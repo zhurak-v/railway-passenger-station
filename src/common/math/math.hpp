@@ -12,5 +12,5 @@ private:
 
 public:
     static double getDistanceBetweenPointsKm(const Position& a, const Position& b);
-    static Date getTravelTimeH(double distance, int speed = 60);
+    static Date getTravelTime(double distance, int speed = 60);
 };

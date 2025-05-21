@@ -5,17 +5,9 @@
 
 #include "services/base/employee-service.hpp"
 
-#include "entities/driver.hpp"
-#include "entities/locomotive.hpp"
-#include "entities/brigade.hpp"
-#include "entities/technician-brigade.hpp"
-
-#include "entities/station.hpp"
-#include "entities/route.hpp"
-#include "entities/trip.hpp"
-
 #include "data/repositories/driver-repository.hpp"
 #include "data/repositories/locomotive-repository.hpp"
+#include "data/repositories/train-repository.hpp"
 #include "data/repositories/station-repository.hpp"
 #include "data/repositories/route-repository.hpp"
 #include "data/repositories/trip-repository.hpp"
@@ -23,34 +15,32 @@
 
 class RelationServices {
 private:
-    EmployeeService& employee_services;
-
     DriverRepository& driver_repository;
     LocomotiveRepository& locomotive_repository;
     TechnicianBrigadeRepository& technician_brigade_repository;
     StationRepository& station_repository;
     RouteRepository& route_repository;
     TripRepository& trip_repository;
+    TrainRepository& train_repository;
 
 private:
     OneToMany<Station, Locomotive> station_to_locomotives;
     OneToMany<Locomotive, Driver> locomotive_to_drivers;
     OneToMany<TechnicianBrigade, Locomotive> technician_brigade_to_locomotives;
-
-private:
     ManyToMany<Route, Station> routes_to_stations;
     OneToMany<Route, Trip> route_to_trips;
     ManyToMany<Locomotive, Trip> locomotives_to_trips;
+    OneToOne<Train, Locomotive> train_to_locomotive;
 
 public:
     RelationServices(
-        EmployeeService& employee_services,
         DriverRepository& driver_repository,
         LocomotiveRepository& locomotive_repository,
         TechnicianBrigadeRepository& technician_brigade_repository,
         StationRepository& station_repository,
         RouteRepository& route_repository,
-        TripRepository& trip_repository
+        TripRepository& trip_repository,
+        TrainRepository& train_repository
     );
     ~RelationServices() = default;
 

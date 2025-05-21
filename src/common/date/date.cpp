@@ -71,6 +71,24 @@ Date Date::deserialize(const std::string& data) {
 }
 
 void Date::normalize() {
+    if (timeOnly) {
+        while (minute >= 60) {
+            minute -= 60;
+            hour += 1;
+        }
+        while (minute < 0) {
+            minute += 60;
+            hour -= 1;
+        }
+        while (hour >= 24) {
+            hour -= 24;
+        }
+        while (hour < 0) {
+            hour += 24;
+        }
+        return;
+    }
+
     std::tm timeStruct = {};
     timeStruct.tm_year = year - 1900;
     timeStruct.tm_mon = month - 1;
@@ -103,27 +121,36 @@ void Date::addDays(int days) {
 }
 
 void Date::addMinutes(double minutes) {
-    int full = static_cast<int>(minutes);
-    double frac = minutes - full;
+    int fullMinutes = static_cast<int>(minutes);
+    double fracMinutes = minutes - fullMinutes;
 
-    addMinutes(full);
-    if (frac != 0.0) {
-        int extra_seconds = static_cast<int>(frac * 60 + 0.5);
+    minute += fullMinutes;
+
+    normalize();
+
+    if (fracMinutes != 0.0) {
+        int extraSeconds = static_cast<int>(fracMinutes * 60 + 0.5);
+
         std::tm timeStruct = {};
         timeStruct.tm_year = year - 1900;
         timeStruct.tm_mon = month - 1;
         timeStruct.tm_mday = day;
         timeStruct.tm_hour = hour;
         timeStruct.tm_min = minute;
-        timeStruct.tm_sec += extra_seconds;
+        timeStruct.tm_sec = 0;
 
-        std::mktime(&timeStruct);
+        std::time_t t = std::mktime(&timeStruct);
+        if (t == -1) throw std::runtime_error("Invalid time in addMinutes");
 
-        year = timeStruct.tm_year + 1900;
-        month = timeStruct.tm_mon + 1;
-        day = timeStruct.tm_mday;
-        hour = timeStruct.tm_hour;
-        minute = timeStruct.tm_min;
+        t += extraSeconds;
+
+        std::tm* newTime = std::localtime(&t);
+
+        year = newTime->tm_year + 1900;
+        month = newTime->tm_mon + 1;
+        day = newTime->tm_mday;
+        hour = newTime->tm_hour;
+        minute = newTime->tm_min;
     }
 }
 
@@ -173,13 +200,10 @@ int Date::differenceInYears(const Date& a, const Date& b) {
     return yearDiff;
 }
 
-Date Date::fromHourMinute(int hour, int minute) {
-    return Date(hour, minute);
-}
-
-Date Date::fromDoubleHours(double hours) {
+Date Date::fromHours(double hours) {
     int h = static_cast<int>(hours);
     int m = static_cast<int>((hours - h) * 60 + 0.5);
+
     return Date(h, m);
 }
 

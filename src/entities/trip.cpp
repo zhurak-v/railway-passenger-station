@@ -3,17 +3,19 @@
 Trip::Trip(
     const std::string& id,
     const std::string& trip_name,
-    const Date& departure_time) : 
-    Base(id),
-    trip_name(trip_name), departure_time(departure_time), status(TripStatus()) {};
-
-Trip::Trip(
-    const std::string& id,
-    const std::string& trip_name,
     const Date& departure_time,
+    const Date& break_duration,
     const TripStatus& status) : 
     Base(id),
-    trip_name(trip_name), departure_time(departure_time), status(status) {};
+    trip_name(trip_name), 
+    departure_time(departure_time), 
+    break_duration(break_duration),
+    status(status) {
+        int h = this->status.getDelayTime().getHour();
+        int m = this->status.getDelayTime().getHour();
+        this->departure_time.setHour(this->departure_time.getHour() + h);
+        this->departure_time.setMinute(this->departure_time.getMinute() + m);
+    };
 
 std::string Trip::getTripName() const {
     return trip_name;
@@ -32,6 +34,10 @@ std::string Trip::getTripReason() const {
 
 Date Trip::getDelayTime() const {
     return status.getDelayTime();
+}
+
+Date Trip::getBreakDuration() const {
+    return break_duration;
 }
 
 std::string Trip::staticClass() {

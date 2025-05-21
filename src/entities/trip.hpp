@@ -10,21 +10,18 @@
 class Trip : public Base
 {
 private:
-    std::string trip_name;
+    const std::string trip_name;
     Date departure_time;
-    TripStatus status;
+    const TripStatus status;
+    const Date break_duration;
 
 public:
     Trip(
         const std::string& id,
         const std::string& trip_name,
-        const Date& departure_time
-    );
-    Trip(
-        const std::string& id,
-        const std::string& trip_name,
         const Date& departure_time,
-        const TripStatus& status
+        const Date& break_duration = Date(0, 15),
+        const TripStatus& status = TripStatus()
     );
     ~Trip() = default;
 
@@ -35,6 +32,7 @@ public:
     Status getTripStatus() const;
     std::string getTripReason() const;
     Date getDelayTime() const;
+    Date getBreakDuration() const;
     
 public:
     std::string getClass() const final;

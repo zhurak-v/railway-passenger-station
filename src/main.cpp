@@ -15,7 +15,7 @@ int main()
 
     for (const auto locomotive : relation_service.getLocomotivesAtStationInTime("#sta-65434", Date(2025, 5, 21, 11, 10)))
     {
-        // std::cout << locomotive->getId() << std::endl;
+        std::cout << locomotive->getId() << std::endl;
     }
 
 

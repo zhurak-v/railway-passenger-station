@@ -10,11 +10,11 @@ inline EmployeeService employee_service(
 );
 
 inline RelationServices relation_service(
-    employee_service,
     driver_repository,
     locomotive_repository,
     technician_brigade_repository,
     station_repository,
     route_repository,
-    trip_repository
+    trip_repository,
+    train_repository
 );

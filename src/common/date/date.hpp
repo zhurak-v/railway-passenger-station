@@ -51,7 +51,7 @@ public:
     static int differenceInDays(const Date& a, const Date& b);
     static int differenceInYears(const Date& a, const Date& b);
 
-    static Date fromHourMinute(int hour, int minute);
-    static Date fromDoubleHours(double hours);
+    static Date fromHours(double hours);
+
     bool isTimeOnly() const;
 };
