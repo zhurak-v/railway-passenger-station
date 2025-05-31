@@ -13,11 +13,14 @@ int main()
 {
     SetConsoleOutputCP(CP_UTF8);
 
-    for (const auto locomotive : relation_service.getLocomotivesAtStationInTime("#sta-65434", Date(2025, 5, 21, 11, 10)))
-    {
-        std::cout << locomotive->getId() << std::endl;
+    auto results = relation_service.getLocomotivesArrivalTimeAtStation("#sta-54335");
+    for (const auto& [loco, arrival] : results) {
+        std::cout << loco->getId() << " прибуває о " << arrival.serialize() << std::endl;
     }
 
+    // Date t(2025, 6, 1, 0, 0);
+    // t.addHours(0);
+    // std::cout << t.serialize() << std::endl;
 
     return 0;
 }

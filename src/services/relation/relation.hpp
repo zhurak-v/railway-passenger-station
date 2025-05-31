@@ -44,15 +44,35 @@ public:
     );
     ~RelationServices() = default;
 
-    std::vector<std::shared_ptr<Station>> getStationsByRoute(const std::string& id) const;
-    std::vector<std::shared_ptr<Route>> getRoutesByStation(const std::string& id) const;
+    std::vector<std::shared_ptr<Station>> getStationsByRoute(
+        const std::string& id
+    ) const;
+    std::vector<std::shared_ptr<Route>> getRoutesByStation(
+        const std::string& id
+    ) const;
 
-    std::vector<std::shared_ptr<Trip>> getTripsByRoute(const std::string& id) const;
-    std::shared_ptr<Route> getRouteByTrip(const std::string& id) const;
+    std::vector<std::shared_ptr<Trip>> getTripsByRoute(
+        const std::string& id
+    ) const;
+
+    std::shared_ptr<Route> getRouteByTrip(
+        const std::string& id
+    ) const;
     
     std::vector<std::shared_ptr<Locomotive>> getLocomotivesAtStationInTime(
         const std::string& id,
         const Date& time
     ) const;
+
+    std::vector<std::shared_ptr<Locomotive>> getLocomotivesByStation(
+        const std::string& id
+    ) const;
+
+    std::vector<std::shared_ptr<Locomotive>> getLocomotivesByCompletedRoutest(
+        const int completed_routest
+    ) const;
+
+    std::vector<std::pair<std::shared_ptr<Locomotive>, Date>>
+    getLocomotivesArrivalTimeAtStation(const std::string& station_id) const;
 
 }; 

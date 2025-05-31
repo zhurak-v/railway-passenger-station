@@ -1,8 +1,17 @@
 #include "common/date/date.hpp"
+#ifdef _WIN32
+#include <windows.h>
+time_t timegm(struct tm* t) {
+    struct tm tmp = *t;
+    return _mkgmtime(&tmp);
+}
+#endif
+
 
 Date::Date() {
-    std::time_t t = std::time(nullptr);
-    std::tm* now = std::localtime(&t);
+    std::time_t t = std::time(nullptr) + 3 * 3600;
+    std::tm* now = std::gmtime(&t);
+    if (!now) throw std::runtime_error("Failed to get UTC time");
 
     year = now->tm_year + 1900;
     month = now->tm_mon + 1;
@@ -95,71 +104,63 @@ void Date::normalize() {
     timeStruct.tm_mday = day;
     timeStruct.tm_hour = hour;
     timeStruct.tm_min = minute;
+    timeStruct.tm_sec = 0;
 
-    std::mktime(&timeStruct);
+    std::time_t t = timegm(&timeStruct);
+    if (t == -1) throw std::runtime_error("Invalid time in normalize");
 
-    year = timeStruct.tm_year + 1900;
-    month = timeStruct.tm_mon + 1;
-    day = timeStruct.tm_mday;
-    hour = timeStruct.tm_hour;
-    minute = timeStruct.tm_min;
+    std::tm* newTime = std::gmtime(&t);
+    if (!newTime) throw std::runtime_error("gmtime failed");
+
+    year = newTime->tm_year + 1900;
+    month = newTime->tm_mon + 1;
+    day = newTime->tm_mday;
+    hour = newTime->tm_hour;
+    minute = newTime->tm_min;
 }
 
 void Date::addMinutes(int minutes) {
-    minute += minutes;
-    normalize();
+    std::tm timeStruct = {};
+    timeStruct.tm_year = year - 1900;
+    timeStruct.tm_mon = month - 1;
+    timeStruct.tm_mday = day;
+    timeStruct.tm_hour = hour;
+    timeStruct.tm_min = minute;
+    timeStruct.tm_sec = 0;
+
+    std::time_t t = timegm(&timeStruct);
+    if (t == -1) throw std::runtime_error("Invalid time in addMinutes");
+
+    t += minutes * 60;
+
+    std::tm* newTime = std::gmtime(&t);
+    if (!newTime) throw std::runtime_error("gmtime failed");
+
+    year = newTime->tm_year + 1900;
+    month = newTime->tm_mon + 1;
+    day = newTime->tm_mday;
+    hour = newTime->tm_hour;
+    minute = newTime->tm_min;
 }
 
 void Date::addHours(int hours) {
-    hour += hours;
-    normalize();
+    addMinutes(hours * 60);
 }
 
 void Date::addDays(int days) {
-    day += days;
-    normalize();
+    addMinutes(days * 1440);
 }
 
 void Date::addMinutes(double minutes) {
-    int fullMinutes = static_cast<int>(minutes);
-    double fracMinutes = minutes - fullMinutes;
-
-    minute += fullMinutes;
-
-    normalize();
-
-    if (fracMinutes != 0.0) {
-        int extraSeconds = static_cast<int>(fracMinutes * 60 + 0.5);
-
-        std::tm timeStruct = {};
-        timeStruct.tm_year = year - 1900;
-        timeStruct.tm_mon = month - 1;
-        timeStruct.tm_mday = day;
-        timeStruct.tm_hour = hour;
-        timeStruct.tm_min = minute;
-        timeStruct.tm_sec = 0;
-
-        std::time_t t = std::mktime(&timeStruct);
-        if (t == -1) throw std::runtime_error("Invalid time in addMinutes");
-
-        t += extraSeconds;
-
-        std::tm* newTime = std::localtime(&t);
-
-        year = newTime->tm_year + 1900;
-        month = newTime->tm_mon + 1;
-        day = newTime->tm_mday;
-        hour = newTime->tm_hour;
-        minute = newTime->tm_min;
-    }
+    addMinutes(static_cast<int>(minutes + 0.5));
 }
 
 void Date::addHours(double hours) {
-    addMinutes(hours * 60.0);
+    addMinutes(static_cast<int>(hours * 60 + 0.5));
 }
 
 void Date::addDays(double days) {
-    addMinutes(days * 1440.0);
+    addMinutes(static_cast<int>(days * 86400 + 0.5));
 }
 
 int Date::differenceInMinutes(const Date& a, const Date& b) {
@@ -169,15 +170,17 @@ int Date::differenceInMinutes(const Date& a, const Date& b) {
     ta.tm_mday = a.day;
     ta.tm_hour = a.hour;
     ta.tm_min = a.minute;
+    ta.tm_sec = 0;
 
     tb.tm_year = b.year - 1900;
     tb.tm_mon = b.month - 1;
     tb.tm_mday = b.day;
     tb.tm_hour = b.hour;
     tb.tm_min = b.minute;
+    tb.tm_sec = 0;
 
-    time_t t_a = std::mktime(&ta);
-    time_t t_b = std::mktime(&tb);
+    std::time_t t_a = timegm(&ta);
+    std::time_t t_b = timegm(&tb);
 
     return static_cast<int>(std::difftime(t_a, t_b) / 60);
 }
@@ -203,7 +206,6 @@ int Date::differenceInYears(const Date& a, const Date& b) {
 Date Date::fromHours(double hours) {
     int h = static_cast<int>(hours);
     int m = static_cast<int>((hours - h) * 60 + 0.5);
-
     return Date(h, m);
 }
 
