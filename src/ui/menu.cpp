@@ -37,6 +37,10 @@ void RelationMenu::showMainMenu() const {
     std::cout << "19. Отримати перелік і загальне число усіх водіїв за статевою ознакою\n";
     std::cout << "20. Отримати перелік і загальне число усіх водіїв за віком\n";
     std::cout << "21. Отримати перелік і загальне число усіх водіїв за зарплатою\n";
+    std::cout << "22. Отримати перелік і загальне число усіх локомотивів відправлених у ремонт в означений час\n";
+    std::cout << "23. Отримати перелік і загальне число усіх локомотивів ремонтованих вказане число разів\n";
+    std::cout << "24. Отримати перелік і загальне число усіх локомотивів за кількістю скоєних рейсів до ремонту\n";
+    std::cout << "25. Отримати перелік і загальне число усіх локомотивів за віком локомотива\n";
 
     std::cout << "Ваш вибір: ";
 }
@@ -109,6 +113,18 @@ void RelationMenu::handleUserChoice() const {
             break;
         case 21:
             getDriversBySalary();
+            break;
+        case 22:
+            getLocomotiveByRepairInTime();
+            break;
+        case 23:
+            getLocomotiveByRepairCount();
+            break;
+        case 24:
+            getLocomotivesByCompletedRoutesBeforeRepair();
+            break;
+        case 25:
+            getLocomotiveByAge();
             break;
         
         default:
@@ -354,3 +370,49 @@ void RelationMenu::getDriversBySalary() const {
     }
     std::cout << "Кількість " << drivers.size() << std::endl;
 } 
+void RelationMenu::getLocomotiveByRepairInTime() const {
+    std::string date;
+    std::cout << "Введіть дату відправлення у ремонт у форматі YYYY-MM-DD-HH:MM: ";
+    std::cin >> date;
+
+    auto locomtives = relation_services.getLocomotiveByRepairInTime(
+        Date::deserialize(date)
+    );
+    for (const auto& locomotive : locomtives) {
+        std::cout << "Локомотив: " << locomotive->getId() << std::endl;
+    }
+    std::cout << "Кількість " << locomtives.size() << std::endl;
+}
+void RelationMenu::getLocomotiveByRepairCount() const {
+    int count;
+    std::cout << "Введіть кількість ремонтів: ";
+    std::cin >> count;
+
+    auto locomtives = relation_services.getLocomotiveByRepairCount(count);
+    for (const auto& locomotive : locomtives) {
+        std::cout << "Локомотив: " << locomotive->getId() << std::endl;
+    }
+    std::cout << "Кількість " << locomtives.size() << std::endl;
+}
+void RelationMenu::getLocomotivesByCompletedRoutesBeforeRepair() const {
+    int count;
+    std::cout << "Введіть кількість рейсів до ремонту: ";
+    std::cin >> count;
+
+    auto locomtives = relation_services.getLocomotivesByCompletedRoutesBeforeRepair(count);
+    for (const auto& locomotive : locomtives) {
+        std::cout << "Локомотив: " << locomotive->getId() << std::endl;
+    }
+    std::cout << "Кількість " << locomtives.size() << std::endl;
+}
+void RelationMenu::getLocomotiveByAge() const {
+    int age;
+    std::cout << "Введіть вік локомотиву в роках: ";
+    std::cin >> age;
+
+    auto locomtives = relation_services.getLocomotiveByAge(age);
+    for (const auto& locomotive : locomtives) {
+        std::cout << "Локомотив: " << locomotive->getId() << std::endl;
+    }
+    std::cout << "Кількість " << locomtives.size() << std::endl;
+}

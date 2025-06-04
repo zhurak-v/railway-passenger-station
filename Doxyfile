@@ -1,0 +1,15 @@
+PROJECT_NAME           = MyProject
+INPUT                  = ./src
+RECURSIVE              = YES
+
+GENERATE_LATEX         = NO
+GENERATE_HTML          = YES
+
+HAVE_DOT               = YES
+DOT_PATH               = C:/Program Files/Graphviz/bin
+
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+CLASS_DIAGRAMS         = YES
+
+DOT_GRAPH_MAX_NODES    = 50

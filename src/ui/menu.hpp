@@ -35,7 +35,12 @@ private:
     void getLocomotivesByCompletedRoutes() const;
     
     void getLocomotiveByPassedTechInsp() const;
+    void getLocomotiveByRepairInTime() const;
+    void getLocomotiveByRepairCount() const;
+    void getLocomotivesByCompletedRoutesBeforeRepair() const;
+    void getLocomotiveByAge() const;
 
+    // void getTrainsByRoute() const; 
 
 public:
     RelationMenu(
