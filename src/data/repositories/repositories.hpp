@@ -12,7 +12,9 @@
 #include "data/repositories/ticket-repository.hpp"
 #include "data/repositories/passenger-repository.hpp"
 #include "data/repositories/technician-repository.hpp"
+#include "data/repositories/locomotive-staff-repository.hpp"
 #include "data/repositories/technician-brigade-repository.hpp"
+#include "data/repositories/locomotive-brigade-repository.hpp"
 #include "data/repositories/train-repository.hpp"
 
 extern DriverRepository driver_repository;
@@ -28,4 +30,6 @@ extern TicketRepository ticket_repository;
 extern TrainRepository train_repository;
 extern PassengerRepository passenger_repository;
 extern TechnicianRepository technician_repository;
+extern StaffRepository staff_repository;
 extern TechnicianBrigadeRepository technician_brigade_repository;
+extern LocomotiveBrigadeRepository locomotive_brigade_repository;

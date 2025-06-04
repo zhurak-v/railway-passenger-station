@@ -16,6 +16,8 @@ struct EntitiesBuckets {
     std::vector<std::shared_ptr<Ticket>> tickets;
     std::vector<std::shared_ptr<Passenger>> passengers;
     std::vector<std::shared_ptr<Technician>> technicians;
+    std::vector<std::shared_ptr<Staff>> staffs;
     std::vector<std::shared_ptr<TechnicianBrigade>> technician_brigades;
+    std::vector<std::shared_ptr<LocomotiveBrigade>> locomotive_brigades;
     std::vector<std::shared_ptr<Train>> trains;
 };

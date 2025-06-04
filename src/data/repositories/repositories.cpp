@@ -19,4 +19,6 @@ inline TicketRepository ticket_repository(buckets.tickets);
 inline TrainRepository train_repository(buckets.trains);
 inline PassengerRepository passenger_repository(buckets.passengers);
 inline TechnicianRepository technician_repository(buckets.technicians);
+inline StaffRepository staff_repository(buckets.staffs);
 inline TechnicianBrigadeRepository technician_brigade_repository(buckets.technician_brigades);
+inline LocomotiveBrigadeRepository locomotive_brigade_repository(buckets.locomotive_brigades);

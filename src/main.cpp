@@ -8,19 +8,17 @@
 #include "data/loaders/entity-loader.hpp"
 
 #include "services/services.hpp"
+#include "ui/menu.hpp"
 
 int main()
 {
     SetConsoleOutputCP(CP_UTF8);
 
-    auto results = relation_service.getLocomotivesArrivalTimeAtStation("#sta-54335");
-    for (const auto& [loco, arrival] : results) {
-        std::cout << loco->getId() << " прибуває о " << arrival.serialize() << std::endl;
-    }
+    RelationMenu menu(
+        relation_service
+    );
+    menu.run();
 
-    // Date t(2025, 6, 1, 0, 0);
-    // t.addHours(0);
-    // std::cout << t.serialize() << std::endl;
 
     return 0;
 }

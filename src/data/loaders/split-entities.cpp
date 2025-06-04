@@ -40,8 +40,14 @@ EntitiesBuckets splitEntities(const std::vector<std::shared_ptr<Base>> &entities
         else if (auto technician = std::dynamic_pointer_cast<Technician>(entity))
             buckets.technicians.push_back(technician);
 
+        else if (auto staff = std::dynamic_pointer_cast<Staff>(entity))
+            buckets.staffs.push_back(staff);
+
         else if (auto technician_brigade = std::dynamic_pointer_cast<TechnicianBrigade>(entity))
             buckets.technician_brigades.push_back(technician_brigade);
+
+        else if (auto locomotive_brigade = std::dynamic_pointer_cast<LocomotiveBrigade>(entity))
+            buckets.locomotive_brigades.push_back(locomotive_brigade);
 
         else if (auto train = std::dynamic_pointer_cast<Train>(entity))
             buckets.trains.push_back(train);

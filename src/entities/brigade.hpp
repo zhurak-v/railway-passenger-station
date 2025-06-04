@@ -8,7 +8,6 @@ class Brigade : public Base
 {
 private:
     std::string brigade_name;
-    double average_salary = 0;
 
 public:
     Brigade(
@@ -19,8 +18,6 @@ public:
 
 public:
     std::string getBrigadeName() const;
-    double getAvarageSalary() const;
-    void setAverageSalary(const std::vector<double>& salaries);
     
 public:
     std::string getClass() const override;

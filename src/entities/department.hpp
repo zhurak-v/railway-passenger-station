@@ -23,7 +23,7 @@ public:
     std::string getDepartmentName() const;
 
 public:
-    std::string serialize() const override;
+    std::string serialize() const final;
 
     static std::shared_ptr<Department> deserialize(const std::string &data);
 };

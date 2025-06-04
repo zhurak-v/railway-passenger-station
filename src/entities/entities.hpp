@@ -13,5 +13,7 @@
 #include "entities/passenger.hpp"
 #include "entities/locomotive.hpp"
 #include "entities/technician.hpp"
+#include "entities/locomotive-staff.hpp"
 #include "entities/technician-brigade.hpp"
+#include "entities/locomotive-brigade.hpp"
 #include "entities/train.hpp"
