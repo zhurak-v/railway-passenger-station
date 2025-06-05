@@ -22,7 +22,7 @@
 #include "data/repositories/technician-brigade-repository.hpp"
 #include "data/repositories/locomotive-brigade-repository.hpp"
 
-class RelationServices
+class Services
 {
 private:
     DriverRepository &driver_repository;
@@ -59,7 +59,7 @@ private:
     OneToOne<Ticket, Passenger> ticket_to_passenger;
 
 public:
-    RelationServices(
+    Services(
         DriverRepository &driver_repository,
         HeadDepartmentRepository &head_department_repository,
         DepartmentRepository &department_repository,
@@ -76,7 +76,7 @@ public:
         TrainRepository &train_repository,
         TicketRepository &ticket_repository,
         PassengerRepository &passenger_repository);
-    ~RelationServices() = default;
+    ~Services() = default;
 
 
 public:
@@ -170,7 +170,7 @@ public:
     std::vector<std::shared_ptr<Trip>> getCanceledTripsByRoute(
         const std::string &id) const;
 
-    std::vector<std::shared_ptr<Trip>> RelationServices::getTripsByTwoStationsInOrder(
+    std::vector<std::shared_ptr<Trip>> Services::getTripsByTwoStationsInOrder(
         const std::string &stationA_id,
         const std::string &stationB_id) const;
 

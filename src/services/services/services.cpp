@@ -1,7 +1,7 @@
-#include "services/relation/relation.hpp"
+#include "services/services/services.hpp"
 #include <iostream>
 
-RelationServices::RelationServices(
+Services::Services(
     DriverRepository &driver_repository,
     HeadDepartmentRepository &head_department_repository,
     DepartmentRepository &department_repository,
@@ -94,7 +94,7 @@ RelationServices::RelationServices(
         passenger_repository.getAll());
 }
 
-std::vector<std::shared_ptr<Employee>> RelationServices::getAllEmployees() const
+std::vector<std::shared_ptr<Employee>> Services::getAllEmployees() const
 {
     std::vector<std::shared_ptr<Employee>> employees;
 
@@ -122,7 +122,7 @@ std::vector<std::shared_ptr<Employee>> RelationServices::getAllEmployees() const
     return employees;
 }
 
-std::shared_ptr<Employee> RelationServices::getEmployeeById(const std::string &id) const
+std::shared_ptr<Employee> Services::getEmployeeById(const std::string &id) const
 {
     if (const auto driver = driver_repository.findById(id))
         return driver;
@@ -142,32 +142,32 @@ std::shared_ptr<Employee> RelationServices::getEmployeeById(const std::string &i
     return nullptr;
 }
 
-std::shared_ptr<Driver> RelationServices::getDriverById(const std::string &id) const
+std::shared_ptr<Driver> Services::getDriverById(const std::string &id) const
 {
     return driver_repository.findById(id);
 }
 
-std::shared_ptr<HeadDepartment> RelationServices::getHeadDepartmentById(const std::string &id) const
+std::shared_ptr<HeadDepartment> Services::getHeadDepartmentById(const std::string &id) const
 {
     return head_department_repository.findById(id);
 }
 
-std::shared_ptr<Technician> RelationServices::getTechnicianById(const std::string &id) const
+std::shared_ptr<Technician> Services::getTechnicianById(const std::string &id) const
 {
     return technician_repository.findById(id);
 }
 
-std::shared_ptr<Dispatcher> RelationServices::getDispatcherById(const std::string &id) const
+std::shared_ptr<Dispatcher> Services::getDispatcherById(const std::string &id) const
 {
     return dispatcher_repository.findById(id);
 }
 
-std::shared_ptr<Cashier> RelationServices::getCashierById(const std::string &id) const
+std::shared_ptr<Cashier> Services::getCashierById(const std::string &id) const
 {
     return cashier_repository.findById(id);
 }
 
-std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByExp(int exp) const
+std::vector<std::shared_ptr<Employee>> Services::getEmployeesByExp(int exp) const
 {
     const auto &all_employees = this->getAllEmployees();
     std::vector<std::shared_ptr<Employee>> employees;
@@ -179,7 +179,7 @@ std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByExp(int e
     return employees;
 }
 
-std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByAge(int age) const
+std::vector<std::shared_ptr<Employee>> Services::getEmployeesByAge(int age) const
 {
     const auto &all_employees = this->getAllEmployees();
     std::vector<std::shared_ptr<Employee>> employees;
@@ -193,7 +193,7 @@ std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByAge(int a
     return employees;
 }
 
-std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesBySex(const SEX &sex) const
+std::vector<std::shared_ptr<Employee>> Services::getEmployeesBySex(const SEX &sex) const
 {
     const auto &all_employees = this->getAllEmployees();
     std::vector<std::shared_ptr<Employee>> employees;
@@ -205,7 +205,7 @@ std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesBySex(const
     return employees;
 }
 
-std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByChildCount(int child_count) const
+std::vector<std::shared_ptr<Employee>> Services::getEmployeesByChildCount(int child_count) const
 {
     const auto &all_employees = this->getAllEmployees();
     std::vector<std::shared_ptr<Employee>> employees;
@@ -217,7 +217,7 @@ std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByChildCoun
     return employees;
 }
 
-std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByHasChild(bool is_has_child) const
+std::vector<std::shared_ptr<Employee>> Services::getEmployeesByHasChild(bool is_has_child) const
 {
     const auto &all_employees = this->getAllEmployees();
     std::vector<std::shared_ptr<Employee>> employees;
@@ -229,7 +229,7 @@ std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByHasChild(
     return employees;
 }
 
-std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesBySalary(double salary) const
+std::vector<std::shared_ptr<Employee>> Services::getEmployeesBySalary(double salary) const
 {
     const auto &all_employees = this->getAllEmployees();
     std::vector<std::shared_ptr<Employee>> employees;
@@ -241,18 +241,18 @@ std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesBySalary(do
     return employees;
 }
 
-std::vector<std::shared_ptr<HeadDepartment>> RelationServices::getAllHeadDepartment() const
+std::vector<std::shared_ptr<HeadDepartment>> Services::getAllHeadDepartment() const
 {
     return head_department_repository.getAll();
 }
 
-std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByDepartment(const std::string &id) const
+std::vector<std::shared_ptr<Employee>> Services::getEmployeesByDepartment(const std::string &id) const
 {
     const auto department = department_repository.findById(id);
     return department_to_employee.getLinkedB(department);
 }
 
-std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByBrigade(const std::string &id) const
+std::vector<std::shared_ptr<Employee>> Services::getEmployeesByBrigade(const std::string &id) const
 {
     std::vector<std::shared_ptr<Employee>> result;
 
@@ -279,7 +279,7 @@ std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByBrigade(c
     return result;
 }
 
-std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByAllDepartments() const
+std::vector<std::shared_ptr<Employee>> Services::getEmployeesByAllDepartments() const
 {
     std::vector<std::shared_ptr<Employee>> result;
 
@@ -296,7 +296,7 @@ std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByAllDepart
     return result;
 }
 
-std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByServicingLocomotive(const std::string &id) const
+std::vector<std::shared_ptr<Employee>> Services::getEmployeesByServicingLocomotive(const std::string &id) const
 {
     std::vector<std::shared_ptr<Employee>> result;
     const auto locomotive = locomotive_repository.findById(id);
@@ -319,7 +319,7 @@ std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByServicing
     return result;
 }
 
-std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByAverageSalaryInBrigade(double salary) const
+std::vector<std::shared_ptr<Employee>> Services::getEmployeesByAverageSalaryInBrigade(double salary) const
 {
     std::vector<std::shared_ptr<Employee>> result;
 
@@ -351,7 +351,7 @@ std::vector<std::shared_ptr<Employee>> RelationServices::getEmployeesByAverageSa
     return result;
 }
 
-std::vector<std::shared_ptr<Driver>> RelationServices::getDriversByPassedMedInsp(const int year, const bool is_passed) const
+std::vector<std::shared_ptr<Driver>> Services::getDriversByPassedMedInsp(const int year, const bool is_passed) const
 {
     const auto all_drivers = driver_repository.getAll();
     std::vector<std::shared_ptr<Driver>> drivers;
@@ -379,7 +379,7 @@ std::vector<std::shared_ptr<Driver>> RelationServices::getDriversByPassedMedInsp
     return drivers;
 }
 
-std::vector<std::shared_ptr<Driver>> RelationServices::getDriversBySex(const SEX &sex) const
+std::vector<std::shared_ptr<Driver>> Services::getDriversBySex(const SEX &sex) const
 {
     const auto all_drivers = driver_repository.getAll();
     std::vector<std::shared_ptr<Driver>> drivers;
@@ -394,7 +394,7 @@ std::vector<std::shared_ptr<Driver>> RelationServices::getDriversBySex(const SEX
     return drivers;
 }
 
-std::vector<std::shared_ptr<Driver>> RelationServices::getDriversByAge(int age) const
+std::vector<std::shared_ptr<Driver>> Services::getDriversByAge(int age) const
 {
     const auto &all_drivers = driver_repository.getAll();
     std::vector<std::shared_ptr<Driver>> drivers;
@@ -408,7 +408,7 @@ std::vector<std::shared_ptr<Driver>> RelationServices::getDriversByAge(int age) 
     return drivers;
 }
 
-std::vector<std::shared_ptr<Driver>> RelationServices::getDriversBySalary(double salary) const
+std::vector<std::shared_ptr<Driver>> Services::getDriversBySalary(double salary) const
 {
     const auto &all_drivers = driver_repository.getAll();
     std::vector<std::shared_ptr<Driver>> drivers;
@@ -420,32 +420,32 @@ std::vector<std::shared_ptr<Driver>> RelationServices::getDriversBySalary(double
     return drivers;
 }
 
-std::vector<std::shared_ptr<Station>> RelationServices::getStationsByRoute(const std::string &id) const
+std::vector<std::shared_ptr<Station>> Services::getStationsByRoute(const std::string &id) const
 {
     const auto route = route_repository.findById(id);
     return routes_to_stations.getLinkedB(route);
 }
 
-std::vector<std::shared_ptr<Route>> RelationServices::getRoutesByStation(const std::string &id) const
+std::vector<std::shared_ptr<Route>> Services::getRoutesByStation(const std::string &id) const
 {
     const auto station = station_repository.findById(id);
     return routes_to_stations.getLinkedA(station);
 }
 
-std::vector<std::shared_ptr<Trip>> RelationServices::getTripsByRoute(const std::string &id) const
+std::vector<std::shared_ptr<Trip>> Services::getTripsByRoute(const std::string &id) const
 {
     const auto route = route_repository.findById(id);
     return route_to_trips.getLinkedB(route);
 }
 
-std::shared_ptr<Route> RelationServices::getRouteByTrip(const std::string &id) const
+std::shared_ptr<Route> Services::getRouteByTrip(const std::string &id) const
 {
     const auto trip = trip_repository.findById(id);
     return route_to_trips.getLinkedA(trip);
 }
 
 std::vector<std::shared_ptr<Locomotive>>
-RelationServices::getLocomotivesAtStationInTime(
+Services::getLocomotivesAtStationInTime(
     const std::string &id,
     const Date &time) const
 {
@@ -501,14 +501,14 @@ RelationServices::getLocomotivesAtStationInTime(
     return result;
 }
 
-std::vector<std::shared_ptr<Locomotive>> RelationServices::getLocomotivesByStation(
+std::vector<std::shared_ptr<Locomotive>> Services::getLocomotivesByStation(
     const std::string &id) const
 {
     auto station = station_repository.findById(id);
     return station_to_locomotives.getLinkedB(station);
 }
 
-std::vector<std::shared_ptr<Locomotive>> RelationServices::getLocomotivesByCompletedRoutes(
+std::vector<std::shared_ptr<Locomotive>> Services::getLocomotivesByCompletedRoutes(
     const int completed_routest) const
 {
     auto locomotives = locomotive_repository.getAll();
@@ -523,7 +523,7 @@ std::vector<std::shared_ptr<Locomotive>> RelationServices::getLocomotivesByCompl
 }
 
 std::vector<std::pair<std::shared_ptr<Locomotive>, Date>>
-RelationServices::getLocomotivesArrivalTimeAtStation(const std::string &station_id) const
+Services::getLocomotivesArrivalTimeAtStation(const std::string &station_id) const
 {
     auto station = station_repository.findById(station_id);
     auto routes = routes_to_stations.getLinkedA(station);
@@ -572,7 +572,7 @@ RelationServices::getLocomotivesArrivalTimeAtStation(const std::string &station_
     return result;
 }
 
-std::vector<std::shared_ptr<Locomotive>> RelationServices::getLocomotiveByPassedTechInsp(
+std::vector<std::shared_ptr<Locomotive>> Services::getLocomotiveByPassedTechInsp(
     const Date &from, const Date &to) const
 {
     const auto locomotives = locomotive_repository.getAll();
@@ -593,7 +593,7 @@ std::vector<std::shared_ptr<Locomotive>> RelationServices::getLocomotiveByPassed
     return result;
 }
 
-std::vector<std::shared_ptr<Locomotive>> RelationServices::getLocomotiveByRepairInTime(
+std::vector<std::shared_ptr<Locomotive>> Services::getLocomotiveByRepairInTime(
     const Date &repair_date) const
 {
     const auto locomotives = locomotive_repository.getAll();
@@ -614,7 +614,7 @@ std::vector<std::shared_ptr<Locomotive>> RelationServices::getLocomotiveByRepair
     return result;
 }
 
-std::vector<std::shared_ptr<Locomotive>> RelationServices::getLocomotiveByRepairCount(
+std::vector<std::shared_ptr<Locomotive>> Services::getLocomotiveByRepairCount(
     const int repair_count) const
 {
     const auto locomotives = locomotive_repository.getAll();
@@ -630,7 +630,7 @@ std::vector<std::shared_ptr<Locomotive>> RelationServices::getLocomotiveByRepair
     return result;
 }
 
-std::vector<std::shared_ptr<Locomotive>> RelationServices::getLocomotivesByCompletedRoutesBeforeRepair(
+std::vector<std::shared_ptr<Locomotive>> Services::getLocomotivesByCompletedRoutesBeforeRepair(
     const int completed_routes_before_repair) const
 {
     const auto locomotives = locomotive_repository.getAll();
@@ -646,7 +646,7 @@ std::vector<std::shared_ptr<Locomotive>> RelationServices::getLocomotivesByCompl
     return result;
 }
 
-std::vector<std::shared_ptr<Locomotive>> RelationServices::getLocomotiveByAge(
+std::vector<std::shared_ptr<Locomotive>> Services::getLocomotiveByAge(
     const int age) const
 {
     const auto locomotives = locomotive_repository.getAll();
@@ -662,7 +662,7 @@ std::vector<std::shared_ptr<Locomotive>> RelationServices::getLocomotiveByAge(
     return result;
 }
 
-std::vector<std::shared_ptr<Train>> RelationServices::getTrainsByRoute(const std::string &id) const
+std::vector<std::shared_ptr<Train>> Services::getTrainsByRoute(const std::string &id) const
 {
     const auto route = route_repository.findById(id);
     const auto trips = route_to_trips.getLinkedB(route);
@@ -699,7 +699,7 @@ std::vector<std::shared_ptr<Train>> RelationServices::getTrainsByRoute(const std
     return result;
 }
 
-std::vector<std::shared_ptr<Train>> RelationServices::getTrainsByRouteDistance(
+std::vector<std::shared_ptr<Train>> Services::getTrainsByRouteDistance(
     const double distance) const
 {
     const auto all_routes = route_repository.getAll();
@@ -755,7 +755,7 @@ std::vector<std::shared_ptr<Train>> RelationServices::getTrainsByRouteDistance(
     return result;
 }
 
-std::vector<std::shared_ptr<Train>> RelationServices::getTrainsByticketPrice(
+std::vector<std::shared_ptr<Train>> Services::getTrainsByticketPrice(
     const double price) const
 {
     const auto all_tickets = ticket_repository.getAll();
@@ -808,7 +808,7 @@ std::vector<std::shared_ptr<Train>> RelationServices::getTrainsByticketPrice(
     return result;
 }
 
-std::vector<std::shared_ptr<Train>> RelationServices::getTrainsByRouteByRouteDistanceByticketPrice(
+std::vector<std::shared_ptr<Train>> Services::getTrainsByRouteByRouteDistanceByticketPrice(
     const std::string &id,
     const double distance,
     const double price) const
@@ -853,7 +853,7 @@ std::vector<std::shared_ptr<Train>> RelationServices::getTrainsByRouteByRouteDis
     return result;
 }
 
-std::vector<std::shared_ptr<Trip>> RelationServices::getCanceledTrips() const
+std::vector<std::shared_ptr<Trip>> Services::getCanceledTrips() const
 {
     const auto all_trips = trip_repository.getAll();
     std::vector<std::shared_ptr<Trip>> result;
@@ -869,7 +869,7 @@ std::vector<std::shared_ptr<Trip>> RelationServices::getCanceledTrips() const
     return result;
 }
 
-std::vector<std::shared_ptr<Trip>> RelationServices::getCanceledTripsByRoute(
+std::vector<std::shared_ptr<Trip>> Services::getCanceledTripsByRoute(
     const std::string &id) const
 {
     const auto route = route_repository.findById(id);
@@ -887,7 +887,7 @@ std::vector<std::shared_ptr<Trip>> RelationServices::getCanceledTripsByRoute(
     return result;
 }
 
-std::vector<std::shared_ptr<Trip>> RelationServices::getTripsByTwoStationsInOrder(
+std::vector<std::shared_ptr<Trip>> Services::getTripsByTwoStationsInOrder(
     const std::string &stationA_id,
     const std::string &stationB_id) const
 {
@@ -923,7 +923,7 @@ std::vector<std::shared_ptr<Trip>> RelationServices::getTripsByTwoStationsInOrde
     return result;
 }
 
-std::vector<std::shared_ptr<Trip>> RelationServices::getDelayedTrips() const
+std::vector<std::shared_ptr<Trip>> Services::getDelayedTrips() const
 {
     const auto all_trips = trip_repository.getAll();
     std::vector<std::shared_ptr<Trip>> result;
@@ -939,7 +939,7 @@ std::vector<std::shared_ptr<Trip>> RelationServices::getDelayedTrips() const
     return result;
 }
 
-std::vector<std::shared_ptr<Trip>> RelationServices::getDelayedTripsByReason(
+std::vector<std::shared_ptr<Trip>> Services::getDelayedTripsByReason(
     const std::string &reason) const
 {
     const auto all_trips = trip_repository.getAll();
@@ -956,7 +956,7 @@ std::vector<std::shared_ptr<Trip>> RelationServices::getDelayedTripsByReason(
     return result;
 }
 
-std::vector<std::shared_ptr<Trip>> RelationServices::getDelayedTripsByRoute(
+std::vector<std::shared_ptr<Trip>> Services::getDelayedTripsByRoute(
     const std::string &id) const
 {
     const auto route = route_repository.findById(id);
@@ -974,7 +974,7 @@ std::vector<std::shared_ptr<Trip>> RelationServices::getDelayedTripsByRoute(
     return result;
 }
 
-std::vector<std::shared_ptr<Ticket>> RelationServices::getSoldTicketsByRoute(
+std::vector<std::shared_ptr<Ticket>> Services::getSoldTicketsByRoute(
     const std::string &id,
     const Date &start, const Date &end) const
 {
@@ -1025,7 +1025,7 @@ std::vector<std::shared_ptr<Ticket>> RelationServices::getSoldTicketsByRoute(
     return all_sold_tickets;
 }
 
-std::vector<std::shared_ptr<Ticket>> RelationServices::getSoldTicketsByRouteDistance(
+std::vector<std::shared_ptr<Ticket>> Services::getSoldTicketsByRouteDistance(
     const double distance,
     const Date &start, const Date &end) const
 {
@@ -1100,7 +1100,7 @@ std::vector<std::shared_ptr<Ticket>> RelationServices::getSoldTicketsByRouteDist
 }
 
 std::vector<std::shared_ptr<Ticket>>
-RelationServices::getSoldTicketByTicketPrice(
+Services::getSoldTicketByTicketPrice(
     const double price,
     const Date &start, const Date &end) const
 {
@@ -1121,7 +1121,7 @@ RelationServices::getSoldTicketByTicketPrice(
     return result;
 }
 
-std::vector<std::shared_ptr<Ticket>> RelationServices::getUnredeemedTicketByTrip(
+std::vector<std::shared_ptr<Ticket>> Services::getUnredeemedTicketByTrip(
     const std::string &id) const
 {
     const auto trip = trip_repository.findById(id);
@@ -1139,7 +1139,7 @@ std::vector<std::shared_ptr<Ticket>> RelationServices::getUnredeemedTicketByTrip
     return result;
 }
 
-std::vector<std::shared_ptr<Ticket>> RelationServices::getUnredeemedTicketByRoute(
+std::vector<std::shared_ptr<Ticket>> Services::getUnredeemedTicketByRoute(
     const std::string &id) const
 {
     const auto route = route_repository.findById(id);
@@ -1166,7 +1166,7 @@ std::vector<std::shared_ptr<Ticket>> RelationServices::getUnredeemedTicketByRout
     return result;
 }
 
-std::vector<std::shared_ptr<Ticket>> RelationServices::getUnredeemedTicketByDate(
+std::vector<std::shared_ptr<Ticket>> Services::getUnredeemedTicketByDate(
     const Date &date) const
 {
     std::vector<std::shared_ptr<Ticket>> result;
@@ -1189,7 +1189,7 @@ std::vector<std::shared_ptr<Ticket>> RelationServices::getUnredeemedTicketByDate
     return result;
 }
 
-std::vector<std::shared_ptr<Ticket>> RelationServices::getReturnedTicketsForAllDelayedTrips() const
+std::vector<std::shared_ptr<Ticket>> Services::getReturnedTicketsForAllDelayedTrips() const
 {
     std::vector<std::shared_ptr<Ticket>> result;
 
@@ -1221,7 +1221,7 @@ std::vector<std::shared_ptr<Ticket>> RelationServices::getReturnedTicketsForAllD
     return result;
 }
 
-std::vector<std::shared_ptr<Route>> RelationServices::getRoutesByCategory(const TypeRoute &category) const
+std::vector<std::shared_ptr<Route>> Services::getRoutesByCategory(const TypeRoute &category) const
 {
     const auto all_routes = route_repository.getAll();
     std::vector<std::shared_ptr<Route>> result;
@@ -1235,7 +1235,7 @@ std::vector<std::shared_ptr<Route>> RelationServices::getRoutesByCategory(const 
     return result;
 }
 
-std::vector<std::shared_ptr<Route>> RelationServices::getRoutesByCategoryPositon(
+std::vector<std::shared_ptr<Route>> Services::getRoutesByCategoryPositon(
     const std::vector<TypeRoute> &position) const
 {
     const auto all_routes = route_repository.getAll();
@@ -1255,7 +1255,7 @@ std::vector<std::shared_ptr<Route>> RelationServices::getRoutesByCategoryPositon
     return result;
 }
 
-std::vector<std::shared_ptr<Passenger>> RelationServices::getPassengersByTrip(
+std::vector<std::shared_ptr<Passenger>> Services::getPassengersByTrip(
     const std::string &id) const
 {
     const auto trip = trip_repository.findById(id);
@@ -1270,7 +1270,7 @@ std::vector<std::shared_ptr<Passenger>> RelationServices::getPassengersByTrip(
     return passengers;
 }
 
-std::vector<std::shared_ptr<Passenger>> RelationServices::getPassengersByLeft(
+std::vector<std::shared_ptr<Passenger>> Services::getPassengersByLeft(
     const Date &date) const
 {
     const auto all_passangers = passenger_repository.getAll();
@@ -1293,7 +1293,7 @@ std::vector<std::shared_ptr<Passenger>> RelationServices::getPassengersByLeft(
     return result;
 }
 
-std::vector<std::shared_ptr<Passenger>> RelationServices::getPassengersByLeftForeign(
+std::vector<std::shared_ptr<Passenger>> Services::getPassengersByLeftForeign(
     const Date &date) const
 {
     const auto all_passangers = passenger_repository.getAll();
@@ -1317,7 +1317,7 @@ std::vector<std::shared_ptr<Passenger>> RelationServices::getPassengersByLeftFor
     return result;
 }
 
-std::vector<std::shared_ptr<Passenger>> RelationServices::getPassengersByHasBaggage(
+std::vector<std::shared_ptr<Passenger>> Services::getPassengersByHasBaggage(
     const bool has_baggage) const
 {
     const auto all_passangers = passenger_repository.getAll();
@@ -1333,7 +1333,7 @@ std::vector<std::shared_ptr<Passenger>> RelationServices::getPassengersByHasBagg
 
     return result;
 }
-std::vector<std::shared_ptr<Passenger>> RelationServices::getPassengersBySex(
+std::vector<std::shared_ptr<Passenger>> Services::getPassengersBySex(
     const SEX &sex) const
 {
     const auto all_passangers = passenger_repository.getAll();
@@ -1348,7 +1348,7 @@ std::vector<std::shared_ptr<Passenger>> RelationServices::getPassengersBySex(
     }
     return result;
 }
-std::vector<std::shared_ptr<Passenger>> RelationServices::getPassengersByAge(
+std::vector<std::shared_ptr<Passenger>> Services::getPassengersByAge(
     const int age) const
 {
     const auto all_passangers = passenger_repository.getAll();
@@ -1363,7 +1363,7 @@ std::vector<std::shared_ptr<Passenger>> RelationServices::getPassengersByAge(
     return result;
 }
 
-std::vector<std::shared_ptr<Ticket>> RelationServices::getReturnedTicketsByTrip(const std::string &id) const
+std::vector<std::shared_ptr<Ticket>> Services::getReturnedTicketsByTrip(const std::string &id) const
 {
     std::vector<std::shared_ptr<Ticket>> result;
     const auto trip = trip_repository.findById(id);
@@ -1392,7 +1392,7 @@ std::vector<std::shared_ptr<Ticket>> RelationServices::getReturnedTicketsByTrip(
     return result;
 }
 
-std::vector<std::shared_ptr<Ticket>> RelationServices::getReturnedTicketsByDate(const Date& date) const
+std::vector<std::shared_ptr<Ticket>> Services::getReturnedTicketsByDate(const Date& date) const
 {
     std::vector<std::shared_ptr<Ticket>> result;
     const auto all_tickets = ticket_repository.getAll();
@@ -1418,7 +1418,7 @@ std::vector<std::shared_ptr<Ticket>> RelationServices::getReturnedTicketsByDate(
     
 }
 
-std::vector<std::shared_ptr<Ticket>> RelationServices::getReturnedTicketsByRoute(const std::string &id) const
+std::vector<std::shared_ptr<Ticket>> Services::getReturnedTicketsByRoute(const std::string &id) const
 {
     std::vector<std::shared_ptr<Ticket>> result;
 

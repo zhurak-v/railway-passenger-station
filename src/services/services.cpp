@@ -1,7 +1,7 @@
 #include "services/services.hpp"
 #include "data/repositories/repositories.hpp"
 
-inline RelationServices relation_service(
+inline Services service(
     driver_repository,
     head_department_repository,
     department_repository,

@@ -1,10 +1,10 @@
 #pragma once
-#include "services/relation/relation.hpp"
+#include "services/services/services.hpp"
 #include "common/utils/parse-type-route.hpp"
 
-class RelationMenu {
+class Menu {
 private:
-    RelationServices& relation_services;
+    Services& services;
 
 private:
     void showMainMenu() const;
@@ -77,8 +77,8 @@ private:
     void getReturnedTicketsByRoute() const;
 
 public:
-    RelationMenu(
-        RelationServices& relation_services
+    Menu(
+        Services& services
     );
     void run() const;
 };
