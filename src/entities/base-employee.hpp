@@ -6,11 +6,7 @@
 #include <vector>
 #include "entities/base.hpp"
 #include "common/date/date.hpp"
-
-enum class SEX {
-    MALE,
-    FEMALE
-};
+#include "entities/sex.hpp"
 
 class Employee : public Base
 {

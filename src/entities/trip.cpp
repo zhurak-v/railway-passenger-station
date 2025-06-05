@@ -10,12 +10,7 @@ Trip::Trip(
     trip_name(trip_name), 
     departure_time(departure_time), 
     break_duration(break_duration),
-    status(status) {
-        int h = this->status.getDelayTime().getHour();
-        int m = this->status.getDelayTime().getHour();
-        this->departure_time.setHour(this->departure_time.getHour() + h);
-        this->departure_time.setMinute(this->departure_time.getMinute() + m);
-    };
+    status(status) {};
 
 std::string Trip::getTripName() const {
     return trip_name;

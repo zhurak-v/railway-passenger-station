@@ -16,5 +16,6 @@ inline RelationServices relation_service(
     route_repository,
     trip_repository,
     train_repository,
-    ticket_repository
+    ticket_repository,
+    passenger_repository
 );

@@ -1,5 +1,6 @@
 #pragma once
 #include "services/relation/relation.hpp"
+#include "common/utils/parse-type-route.hpp"
 
 class RelationMenu {
 private:
@@ -40,7 +41,40 @@ private:
     void getLocomotivesByCompletedRoutesBeforeRepair() const;
     void getLocomotiveByAge() const;
 
-    // void getTrainsByRoute() const; 
+    void getTrainsByRoute() const; 
+    void getTrainsByRouteDistance() const;
+    void getTrainsByticketPrice() const;
+    void getTrainsByRouteByRouteDistanceByticketPrice() const;
+
+    void getCanceledTrips() const;
+    void getCanceledTripsByRoute() const;
+    void getTripsByTwoStationsInOrder() const;
+
+    void getDelayedTrips() const;
+    void getDelayedTripsByReason() const;
+    void getDelayedTripsByRoute() const;
+    void getReturnedTicketsForAllDelayedTrips() const;
+
+    void getSoldTicketsByRoute() const;
+    void getSoldTicketsByRouteDistance() const;
+    void getSoldTicketsByTicketPrice() const;
+
+    void getRoutesByCategory() const;
+    void getRoutesByCategoryPositon() const;
+
+    void getPassengersByTrip() const;
+    void getPassengersByLeft() const;
+    void getPassengersByLeftForeign() const;
+    void getPassengersByHasBaggage() const;
+    void getPassengersBySex() const;
+
+    void getUnredeemedTicketByTrip() const;
+    void getUnredeemedTicketByRoute() const;
+    void getUnredeemedTicketByDate() const;
+
+    void getReturnedTicketsByTrip() const;
+    void getReturnedTicketsByDate() const;
+    void getReturnedTicketsByRoute() const;
 
 public:
     RelationMenu(

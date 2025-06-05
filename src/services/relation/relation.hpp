@@ -10,6 +10,7 @@
 #include "data/repositories/technician-repository.hpp"
 #include "data/repositories/locomotive-staff-repository.hpp"
 #include "data/repositories/cashier-repository.hpp"
+#include "data/repositories/passenger-repository.hpp"
 #include "data/repositories/dispatcher-repository.hpp"
 #include "data/repositories/locomotive-repository.hpp"
 #include "data/repositories/train-repository.hpp"
@@ -39,6 +40,7 @@ private:
     TripRepository &trip_repository;
     TrainRepository &train_repository;
     TicketRepository &ticket_repository;
+    PassengerRepository &passenger_repository;
 
 private:
     OneToMany<Department, Employee> department_to_employee;
@@ -54,6 +56,7 @@ private:
     ManyToMany<Locomotive, Trip> locomotives_to_trips;
     OneToOne<Train, Locomotive> train_to_locomotive;
     OneToMany<Trip, Ticket> trip_to_tickets;
+    OneToOne<Ticket, Passenger> ticket_to_passenger;
 
 public:
     RelationServices(
@@ -71,7 +74,8 @@ public:
         RouteRepository &route_repository,
         TripRepository &trip_repository,
         TrainRepository &train_repository,
-        TicketRepository &ticket_repository);
+        TicketRepository &ticket_repository,
+        PassengerRepository &passenger_repository);
     ~RelationServices() = default;
 
 
@@ -194,5 +198,47 @@ public:
         const std::string &id) const;
 
     std::vector<std::shared_ptr<Ticket>> getUnredeemedTicketByRoute(
+        const std::string &id) const;
+
+    std::vector<std::shared_ptr<Ticket>> getReturnedTicketsForAllDelayedTrips() const;
+
+    std::vector<std::shared_ptr<Ticket>> getUnredeemedTicketByDate(
+        const Date &date) const;
+
+    std::vector<std::shared_ptr<Route>> getRoutesByCategory(
+        const TypeRoute& category
+    ) const;
+    
+    std::vector<std::shared_ptr<Route>> getRoutesByCategoryPositon(
+        const std::vector<TypeRoute>& position
+    ) const;
+
+    std::vector<std::shared_ptr<Passenger>> getPassengersByTrip(
+        const std::string& id
+    ) const;
+
+    std::vector<std::shared_ptr<Passenger>> getPassengersByLeft(
+        const Date& date
+    ) const;
+    std::vector<std::shared_ptr<Passenger>> getPassengersByLeftForeign(
+        const Date& date
+    ) const;
+
+    std::vector<std::shared_ptr<Passenger>> getPassengersByHasBaggage(
+        const bool has_baggage
+    ) const;
+    std::vector<std::shared_ptr<Passenger>> getPassengersBySex(
+        const SEX& sex
+    ) const;
+    std::vector<std::shared_ptr<Passenger>> getPassengersByAge(
+        const int age
+    ) const;
+    std::vector<std::shared_ptr<Ticket>> getReturnedTicketsByTrip(
+        const std::string &id) const;
+        
+    std::vector<std::shared_ptr<Ticket>> getReturnedTicketsByDate(
+        const Date& date) const;
+
+    std::vector<std::shared_ptr<Ticket>> getReturnedTicketsByRoute(
         const std::string &id) const;
 };

@@ -10,6 +10,9 @@ EntitiesBuckets splitEntities(const std::vector<std::shared_ptr<Base>> &entities
         if (auto cashier = std::dynamic_pointer_cast<Cashier>(entity))
             buckets.cashiers.push_back(cashier);
 
+        else if (auto passenger = std::dynamic_pointer_cast<Passenger>(entity))
+            buckets.passengers.push_back(passenger);
+
         else if (auto dispatcher = std::dynamic_pointer_cast<Dispatcher>(entity))
             buckets.dispatchers.push_back(dispatcher);
 

@@ -6,7 +6,7 @@ TripStatus::TripStatus() :
     delay_time(Date(0, 0)) {}
 
 TripStatus::TripStatus(
-    const Status status, 
+    const Status& status, 
     const std::string& reason, 
     const Date& delay_time )
     : status(status), reason(reason), delay_time(delay_time) {}

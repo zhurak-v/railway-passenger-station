@@ -163,6 +163,30 @@ void Date::addDays(double days) {
     addMinutes(static_cast<int>(days * 86400 + 0.5));
 }
 
+void Date::removeMinutes(int minutes) {
+    addMinutes(-minutes);
+}
+
+void Date::removeHours(int hours) {
+    addMinutes(-hours * 60);
+}
+
+void Date::removeDays(int days) {
+    addMinutes(-days * 1440);
+}
+
+void Date::removeMinutes(double minutes) {
+    addMinutes(-static_cast<int>(minutes + 0.5));
+}
+
+void Date::removeHours(double hours) {
+    addMinutes(-static_cast<int>(hours * 60 + 0.5));
+}
+
+void Date::removeDays(double days) {
+    addMinutes(-static_cast<int>(days * 1440 + 0.5));
+}
+
 int Date::differenceInMinutes(const Date& a, const Date& b) {
     std::tm ta = {}, tb = {};
     ta.tm_year = a.year - 1900;

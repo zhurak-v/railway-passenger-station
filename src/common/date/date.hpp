@@ -45,6 +45,14 @@ public:
     void addHours(double hours);
     void addDays(double days);
 
+    void removeMinutes(int minutes);
+    void removeHours(int hours);
+    void removeDays(int days);
+
+    void removeMinutes(double minutes);
+    void removeHours(double hours);
+    void removeDays(double days);
+
     static int differenceInMinutes(const Date& a, const Date& b);
     static int differenceInHours(const Date& a, const Date& b);
     static int differenceInDays(const Date& a, const Date& b);

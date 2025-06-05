@@ -1,4 +1,4 @@
-// 1. Департамент і керівник
+ // 1. Департамент і керівник
     auto head = std::make_shared<HeadDepartment>("#hdp-0001", "Olena", SEX(SEX::FEMALE), Date(1975, 3, 10), Date(2000, 5, 1), 1, 30000.0);
     auto department = std::make_shared<Department>("#dpm-0001", "Transport Department");
 
@@ -41,23 +41,30 @@
     auto routeLvivKyivKharkiv = std::make_shared<Route>("#rte-003", "Lviv-Kyiv-Kharkiv", TypeRoute(TypeRoute::Domestic));
 
     // 7. Рейси
-    auto tripLvivKyivKharkivMorning = std::make_shared<Trip>("#trp-005", "Lviv-Kyiv-Kharkiv Morning", Date(2025, 6, 2, 9, 30));
+    auto tripLvivKyivKharkivMorning = std::make_shared<Trip>("#trp-005", "Lviv-Kyiv-Kharkiv Morning", Date(2025, 6, 2, 9, 30), Date(0, 15), TripStatus(Status::Delayed, "Delayed", Date(2, 15)));
     auto tripLvivKyivKharkivEvening = std::make_shared<Trip>("#trp-006", "Lviv-Kyiv-Kharkiv Evening", Date(2025, 6, 2, 17, 30));
 
     // 8. Поїзди
     auto train1 = std::make_shared<Train>("#trn-001", TrainType(TrainType::PASSANGERS));
-    auto train2 = std::make_shared<Train>("#trn-002", TrainType(TrainType::PASSANGERS));
+    auto train2 = std::make_shared<Train>("#trn-002", TrainType(TrainType::FAST));
     auto train3 = std::make_shared<Train>("#trn-003", TrainType(TrainType::PASSANGERS));
 
-    auto ticket1 = std::make_shared<Ticket>("#tck-001", 100, Date());
+    auto ticket1 = std::make_shared<Ticket>("#tck-001", 100, Date(2025, 6, 2, 7, 30), TicketStatus(true, Date(2025, 06, 02, 12, 45)));
     auto ticket2 = std::make_shared<Ticket>("#tck-002", 200, Date());
     auto ticket3 = std::make_shared<Ticket>("#tck-003", 300, Date());
 
-
+    auto passenger1 = std::make_shared<Passenger>("#psg-1876", true, SEX(SEX::MALE), Date(1990, 3, 5));
+    auto passenger2 = std::make_shared<Passenger>("#psg-8468429", false, SEX(SEX::MALE), Date(1999, 1, 8));
+    auto passenger3 = std::make_shared<Passenger>("#psg-41864", true, SEX(SEX::FEMALE), Date(2006, 2, 11));
 
     // 9. Зв'язки
     OneToOne<Department, HeadDepartment> department_to_head_department;
     department_to_head_department.link(department, head);
+
+    OneToOne<Ticket, Passenger> ticket_to_passenger;
+    ticket_to_passenger.link(ticket1, passenger1);
+    ticket_to_passenger.link(ticket2, passenger2);
+    ticket_to_passenger.link(ticket3, passenger3);
 
     OneToOne<LocomotiveBrigade, Locomotive> locomotive_brigade_to_locomotive;
     locomotive_brigade_to_locomotive.link(loco_brigade1, loco1);

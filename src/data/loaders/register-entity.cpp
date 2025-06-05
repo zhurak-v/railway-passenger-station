@@ -1,6 +1,9 @@
 #include "data/loaders/regisetr-entity.hpp"
 
 void registerEntity() {
+    EntityFactory::instance().registerClass(Cashier::staticClass(), Cashier::deserialize);
+    EntityFactory::instance().registerClass(Passenger::staticClass(), Passenger::deserialize);
+    EntityFactory::instance().registerClass(Dispatcher::staticClass(), Dispatcher::deserialize);
     EntityFactory::instance().registerClass(Driver::staticClass(), Driver::deserialize);
     EntityFactory::instance().registerClass(Locomotive::staticClass(), Locomotive::deserialize);
     EntityFactory::instance().registerClass(HeadDepartment::staticClass(), HeadDepartment::deserialize);

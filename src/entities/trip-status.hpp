@@ -17,7 +17,9 @@ private:
 
 public:
     TripStatus();
-    TripStatus(const Status status, const std::string& reason, const Date& delay_time = Date(0, 0));
+    TripStatus(
+        const Status& status, const std::string& reason, 
+        const Date& delay_time = Date(0, 0));
 
     ~TripStatus() = default;
 
