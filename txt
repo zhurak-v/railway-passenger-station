@@ -1,155 +1,312 @@
- // 1. Департамент і керівник
-    auto head = std::make_shared<HeadDepartment>("#hdp-0001", "Olena", SEX(SEX::FEMALE), Date(1975, 3, 10), Date(2000, 5, 1), 1, 30000.0);
-    auto department = std::make_shared<Department>("#dpm-0001", "Transport Department");
+auto dispatcher = std::make_shared<Dispatcher>(generateId(), "Inna", SEX(SEX::FEMALE), Date(1975, 12, 15), Date(2001, 1, 5), 1, 35500.0);
+    auto cashier = std::make_shared<Cashier>(generateId(), "Maria", SEX(SEX::FEMALE), Date(1980, 12, 15), Date(2001, 1, 5), 1, 35500.0);
 
-    // 2. Водії
-    auto driver1 = std::make_shared<Driver>("#drv-0001", "Petro", SEX(SEX::MALE), Date(1980, 2, 14), Date(2005, 3, 1), 2, 25000.0, std::vector<Date>{Date(2022, 5, 2, 8, 28)});
-    auto driver2 = std::make_shared<Driver>("#drv-0002", "Mykola", SEX(SEX::MALE), Date(1985, 6, 20), Date(2010, 8, 15), 2, 27000.0, std::vector<Date>{Date(2022, 5, 2, 8, 28)});
-    auto driver3 = std::make_shared<Driver>("#drv-0003", "Serhii", SEX(SEX::MALE), Date(1990, 1, 5), Date(2015, 11, 30), 2, 26000.0, std::vector<Date>{Date(2018, 5, 2, 8, 28)});
+    auto head = std::make_shared<HeadDepartment>(generateId(), "Anna", SEX(SEX::FEMALE), Date(1974, 12, 15), Date(2001, 1, 5), 1, 35500.0);
+    auto department = std::make_shared<Department>("#dpm-0021", "Main Department");
 
-    // 3. Локомотиви (із прив'язкою до станції через окремий зв'язок)
-    auto loco1 = std::make_shared<Locomotive>("#lcm-1001", Date(), std::vector<Date>{Date(2025, 6, 2, 9, 30)}, std::vector<Date>{Date(2024, 5, 2, 8, 28)}, 120, 70);
-    auto loco2 = std::make_shared<Locomotive>("#lcm-1002", Date(), std::vector<Date>{Date(2025, 6, 2, 9, 30)}, std::vector<Date>{Date(2024, 5, 2, 8, 28)}, 110, 60);
-    auto loco3 = std::make_shared<Locomotive>("#lcm-1003", Date(), std::vector<Date>{Date(2025, 6, 2, 9, 30)}, std::vector<Date>{Date(2024, 5, 2, 8, 28)}, 130, 75);
+    auto driver1 = std::make_shared<Driver>(generateId(), "Taras", SEX(SEX::MALE), Date(1982, 5, 12), Date(2008, 9, 10), 2, 24800.0, std::vector<Date>{Date(2023, 6, 3, 7, 15)});
+    auto driver2 = std::make_shared<Driver>(generateId(), "Vasyl", SEX(SEX::MALE), Date(1987, 11, 23), Date(2011, 12, 2), 2, 26500.0, std::vector<Date>{Date(2023, 8, 12, 6, 45)});
+    auto driver3 = std::make_shared<Driver>(generateId(), "Yurii", SEX(SEX::MALE), Date(1991, 3, 17), Date(2016, 2, 28), 2, 25900.0, std::vector<Date>{Date(2022, 9, 14, 5, 30)});
+    auto driver4 = std::make_shared<Driver>(generateId(), "Andrii", SEX(SEX::MALE), Date(1994, 9, 25), Date(2020, 7, 1), 2, 25400.0, std::vector<Date>{Date(2024, 4, 8, 10, 10)});
+    auto driver5 = std::make_shared<Driver>(generateId(), "Ihor", SEX(SEX::MALE), Date(1980, 2, 10), Date(2006, 3, 15), 2, 27000.0, std::vector<Date>{Date(2023, 12, 1, 8, 00)});
+    auto driver6 = std::make_shared<Driver>(generateId(), "Mykola", SEX(SEX::MALE), Date(1985, 6, 20), Date(2010, 5, 9), 2, 26200.0, std::vector<Date>{Date(2024, 1, 18, 6, 40)});
+    auto driver7 = std::make_shared<Driver>(generateId(), "Petro", SEX(SEX::MALE), Date(1990, 1, 5), Date(2015, 6, 6), 2, 25000.0, std::vector<Date>{Date(2023, 10, 22, 9, 30)});
+    auto driver8 = std::make_shared<Driver>(generateId(), "Serhii", SEX(SEX::MALE), Date(1989, 4, 14), Date(2013, 11, 25), 2, 25500.0, std::vector<Date>{Date(2024, 3, 11, 7, 50)});
+    auto driver9 = std::make_shared<Driver>(generateId(), "Oleh", SEX(SEX::MALE), Date(1992, 8, 18), Date(2018, 1, 20), 2, 24700.0, std::vector<Date>{Date(2023, 5, 6, 5, 15)});
+    auto driver10 = std::make_shared<Driver>(generateId(), "Volodymyr", SEX(SEX::MALE), Date(1986, 10, 30), Date(2009, 9, 10), 2, 26600.0, std::vector<Date>{Date(2024, 2, 2, 6, 20)});
+
+    auto tech1 = std::make_shared<Technician>(generateId(), "Natalia", SEX(SEX::FEMALE), Date(1980, 1, 11), Date(2007, 3, 3), 1, 28000.0);
+    auto tech2 = std::make_shared<Technician>(generateId(), "Oksana", SEX(SEX::FEMALE), Date(1972, 7, 30), Date(1999, 9, 7), 1, 30000.0);
+    auto tech3 = std::make_shared<Technician>(generateId(), "Lidia", SEX(SEX::FEMALE), Date(1972, 7, 30), Date(1999, 3, 1), 1, 30000.0);
+    auto tech4 = std::make_shared<Technician>(generateId(), "Ivan", SEX(SEX::MALE), Date(1990, 9, 6), Date(2012, 6, 1), 6, 26000.0);
+
+    auto staff1 = std::make_shared<Staff>(generateId(), "Roman", SEX(SEX::MALE), Date(1978, 2, 2), Date(2004, 6, 6), 1, 20500.0);
+    auto staff2 = std::make_shared<Staff>(generateId(), "Bohdan", SEX(SEX::MALE), Date(1996, 4, 4), Date(2018, 5, 5), 1, 21200.0);
+    auto staff3 = std::make_shared<Staff>(generateId(), "Karina", SEX(SEX::FEMALE), Date(1985, 3, 15), Date(2010, 7, 12), 2, 19800.0);
+    auto staff4 = std::make_shared<Staff>(generateId(), "Oleksandr", SEX(SEX::MALE), Date(1990, 11, 23), Date(2015, 9, 1), 3, 22500.0);
+    auto staff5 = std::make_shared<Staff>(generateId(), "Natalia", SEX(SEX::FEMALE), Date(1982, 5, 10), Date(2009, 4, 17), 1, 20750.0);
+    auto staff6 = std::make_shared<Staff>(generateId(), "Ihor", SEX(SEX::MALE), Date(1975, 8, 30), Date(2000, 3, 3), 2, 23000.0);
+    auto staff7 = std::make_shared<Staff>(generateId(), "Olha", SEX(SEX::FEMALE), Date(1994, 6, 25), Date(2020, 10, 5), 3, 19000.0);
+    auto staff8 = std::make_shared<Staff>(generateId(), "Dmytro", SEX(SEX::MALE), Date(1988, 12, 1), Date(2013, 1, 20), 2, 21500.0);
+    auto staff9 = std::make_shared<Staff>(generateId(), "Ivan", SEX(SEX::MALE), Date(1989, 12, 3), Date(2013, 1, 20), 4, 21500.0);
+    auto staff10 = std::make_shared<Staff>(generateId(), "Viktor", SEX(SEX::MALE), Date(1988, 4, 12), Date(2011, 2, 20), 4, 21500.0);
+
+    auto tech_brigade = std::make_shared<TechnicianBrigade>(generateId(), "Dnipro Maintenance Team");
+
+    auto loco_brigade1 = std::make_shared<LocomotiveBrigade>(generateId(), "Locomotive Brigade 1");
+    auto loco_brigade2 = std::make_shared<LocomotiveBrigade>(generateId(), "Locomotive Brigade 2");
+    auto loco_brigade3 = std::make_shared<LocomotiveBrigade>(generateId(), "Locomotive Brigade 3");
+    auto loco_brigade4 = std::make_shared<LocomotiveBrigade>(generateId(), "Locomotive Brigade 4");
+    auto loco_brigade5 = std::make_shared<LocomotiveBrigade>(generateId(), "Locomotive Brigade 5");
+
+    auto loco1 = std::make_shared<Locomotive>(generateId(), Date(2015, 6, 11, 0, 0),
+                                              std::vector<Date>{
+                                                  Date(2020, 6, 11, 0, 0), Date(2025, 6, 11, 0, 0)},
+                                              std::vector<Date>{
+                                                  Date(2018, 5, 3, 0, 0)},
+                                              1000, 650);
+
+    auto loco2 = std::make_shared<Locomotive>(generateId(), Date(2001, 1, 1, 0, 0),
+                                              std::vector<Date>{
+                                                  Date(2006, 1, 1, 0, 0), Date(2006, 1, 1, 0, 0), Date(2011, 1, 1, 0, 0), Date(2016, 1, 1, 0, 0)},
+                                              std::vector<Date>{
+                                                  Date(2020, 5, 3, 0, 0)},
+                                              1000, 650);
+
+    auto loco3 = std::make_shared<Locomotive>(generateId(), Date(2001, 1, 1, 0, 0),
+                                              std::vector<Date>{
+                                                  Date(2007, 1, 1, 0, 0), Date(2007, 1, 1, 0, 0), Date(2012, 1, 1, 0, 0), Date(2017, 1, 1, 0, 0)},
+                                              std::vector<Date>{
+                                                  Date(2020, 5, 3, 0, 0)},
+                                              920, 520);
+
+    auto loco4 = std::make_shared<Locomotive>(generateId(), Date(2003, 3, 15, 0, 0),
+                                              std::vector<Date>{
+                                                  Date(2008, 4, 10, 0, 0), Date(2013, 4, 10, 0, 0), Date(2018, 4, 10, 0, 0)},
+                                              std::vector<Date>{
+                                                  Date(2021, 6, 5, 0, 0), Date(2023, 6, 5, 0, 0)},
+                                              940, 540);
+
+    auto loco5 = std::make_shared<Locomotive>(generateId(), Date(2005, 7, 22, 0, 0),
+                                              std::vector<Date>{
+                                                  Date(2010, 8, 1, 0, 0), Date(2015, 8, 1, 0, 0), Date(2020, 8, 1, 0, 0)},
+                                              std::vector<Date>{
+                                                  Date(2022, 10, 12, 0, 0)},
+                                              910, 500);
+
+    auto ivano_frankivsk = std::make_shared<Station>(generateId(), "Ivano-Frankivsk", Position(50, -10));
+    auto dnipro = std::make_shared<Station>(generateId(), "Dnipro", Position(30, -10));
+    auto odesa = std::make_shared<Station>(generateId(), "Odesa", Position(-20, -30));
+    auto kyiv = std::make_shared<Station>(generateId(), "Kyiv", Position(0, 0));
+    auto krakiv = std::make_shared<Station>(generateId(), "Krakiv", Position(-70, -20));
+
+    auto routeDniproKyiv = std::make_shared<Route>(generateId(), "Dnipro-Kyiv", TypeRoute(TypeRoute::Domestic));
+    auto tripMorning1 = std::make_shared<Trip>(generateId(), "Dnipro-Kyiv Morning", Date(2025, 7, 1, 6, 40), Date(0, 20), TripStatus(Status::Delayed, "delayed due to bad weather conditions", Date(1, 10)));
+    auto tripEvening1 = std::make_shared<Trip>(generateId(), "Dnipro-Kyiv Evening", Date(2025, 7, 1, 18, 30), Date(0, 15), TripStatus());
+
+    auto routeKyivIvanoFronkivsk = std::make_shared<Route>(generateId(), "Kyiv-Ivano-Frankivsk", TypeRoute(TypeRoute::Tourist));
+    auto tripMorning2 = std::make_shared<Trip>(generateId(), "Kyiv-Ivano-Frankivsk Morning", Date(2025, 6, 17, 7, 00), Date(0, 15), TripStatus(Status::Canceled, "air alarm"));
+    auto tripEvening2 = std::make_shared<Trip>(generateId(), "Kyiv-Ivano-Frankivsk Evening", Date(2025, 6, 17, 19, 30), Date(0, 15), TripStatus());
+
+    auto routeOdesaKrakiv = std::make_shared<Route>(generateId(), "Odesa-Krakiv", TypeRoute(TypeRoute::International));
+    auto tripMorning3 = std::make_shared<Trip>(generateId(), "Odesa-Krakiv Morning", Date(2025, 8, 28, 5, 00), Date(0, 15), TripStatus(Status::Delayed, "delayed due to bad weather conditions", Date(2, 0)));
+    auto tripEvening3 = std::make_shared<Trip>(generateId(), "Odesa-Krakiv Evening", Date(2025, 8, 28, 18, 00), Date(0, 15), TripStatus());
+
+    auto train1 = std::make_shared<Train>(generateId(), TrainType(TrainType::PASSANGERS));
+    auto train2 = std::make_shared<Train>(generateId(), TrainType(TrainType::FAST));
+    auto train3 = std::make_shared<Train>(generateId(), TrainType(TrainType::PASSANGERS));
+    auto train4 = std::make_shared<Train>(generateId(), TrainType(TrainType::FAST));
+    auto train5 = std::make_shared<Train>(generateId(), TrainType(TrainType::FAST));
+
+    auto passenger1 = std::make_shared<Passenger>(generateId(), false, SEX(SEX::FEMALE), Date(1988, 10, 20));
+    auto passenger2 = std::make_shared<Passenger>(generateId(), true, SEX(SEX::MALE), Date(2001, 12, 1));
+    auto passenger3 = std::make_shared<Passenger>(generateId(), false, SEX(SEX::FEMALE), Date(2006, 10, 30));
+    auto passenger4 = std::make_shared<Passenger>(generateId(), true, SEX(SEX::MALE), Date(2007, 7, 27));
+    auto passenger5 = std::make_shared<Passenger>(generateId(), false, SEX(SEX::FEMALE), Date(1999, 11, 22));
+    auto passenger6 = std::make_shared<Passenger>(generateId(), true, SEX(SEX::MALE), Date(2002, 1, 1));
+    auto passenger7 = std::make_shared<Passenger>(generateId(), false, SEX(SEX::FEMALE), Date(1965, 5, 18));
+    auto passenger8 = std::make_shared<Passenger>(generateId(), true, SEX(SEX::MALE), Date(2003, 6, 22));
+    auto passenger9 = std::make_shared<Passenger>(generateId(), true, SEX(SEX::MALE), Date(2003, 6, 22));
+    auto passenger10 = std::make_shared<Passenger>(generateId(), true, SEX(SEX::MALE), Date(2003, 6, 22));
+    auto passenger11 = std::make_shared<Passenger>(generateId(), true, SEX(SEX::FEMALE), Date(2004, 9, 22));
+    auto passenger12 = std::make_shared<Passenger>(generateId(), true, SEX(SEX::MALE), Date(2001, 12, 21));
+
+    auto ticket1 = std::make_shared<Ticket>(generateId(), 120, Date(2025, 7, 1, 5, 45), TicketStatus(true, Date(2025, 7, 1, 7, 0)));
+    auto ticket2 = std::make_shared<Ticket>(generateId(), 220, Date(2025, 7, 1, 14, 30));
+    auto ticket3 = std::make_shared<Ticket>(generateId(), 120, Date(2025, 4, 1, 5, 45));
+    auto ticket4 = std::make_shared<Ticket>(generateId(), 220, Date(2025, 6, 1, 18, 0));
+    auto ticket5 = std::make_shared<Ticket>(generateId(), 120, Date(2025, 5, 6, 5, 45));
+    auto ticket6 = std::make_shared<Ticket>(generateId(), 220, Date(2025, 4, 1, 18, 0));
+    auto ticket7 = std::make_shared<Ticket>(generateId(), 120, Date(2025, 3, 2, 5, 45), TicketStatus(true, Date(2025, 6, 17, 8, 00)));
+    auto ticket8 = std::make_shared<Ticket>(generateId(), 220, Date(2025, 5, 1, 18, 0));
+    auto ticket9 = std::make_shared<Ticket>(generateId(), 220, Date(2025, 6, 2, 18, 0));
+    auto ticket10 = std::make_shared<Ticket>(generateId(), 200, Date(2025, 4, 2, 14, 0));
+    auto ticket11 = std::make_shared<Ticket>(generateId(), 200, Date(2025, 4, 2, 14, 0));
+    auto ticket12 = std::make_shared<Ticket>(generateId(), 100, Date(2025, 6, 1, 10, 0));
 
 
-
-    // 4. Технічна бригада
-    auto tech1 = std::make_shared<Technician>("#tch-14514", "Anna", SEX(SEX::FEMALE), Date(1975, 3, 10), Date(2000, 5, 1), 1, 20000.0);
-    auto tech2 = std::make_shared<Technician>("#hdp-47885642", "Maria", SEX(SEX::FEMALE), Date(1970, 3, 1), Date(2005, 5, 1), 1, 30000.0);
-    auto tech_brigade = std::make_shared<TechnicianBrigade>("tbr-1461654", "Kyiv Maintenance Team");
-
-    // 4. Локомотивна бригада
-    auto staff1 = std::make_shared<Staff>("#hdp-184641", "Alex", SEX(SEX::MALE), Date(1960, 3, 10), Date(2005, 5, 1), 1, 20000.0);
-    auto staff2 = std::make_shared<Staff>("#hdp-8614", "Anton", SEX(SEX::MALE), Date(1995, 3, 10), Date(2000, 5, 1), 1, 20000.0);
-    auto loco_brigade1 = std::make_shared<LocomotiveBrigade>("lbr-15826", "Locomotive Brigade 1");
-
-    auto staff3 = std::make_shared<Staff>("#hdp-43124", "Alex", SEX(SEX::MALE), Date(1960, 3, 10), Date(2005, 5, 1), 1, 20000.0);
-    auto staff4 = std::make_shared<Staff>("#hdp-4525425", "Elon", SEX(SEX::MALE), Date(1990, 3, 10), Date(2000, 5, 1), 1, 20000.0);
-    auto loco_brigade2 = std::make_shared<LocomotiveBrigade>("lbr-42523", "Locomotive Brigade 2");
-
-    auto staff5 = std::make_shared<Staff>("#hdp-23415", "John", SEX(SEX::MALE), Date(1960, 3, 10), Date(2005, 5, 1), 1, 20000.0);
-    auto staff6 = std::make_shared<Staff>("#hdp-4531524", "Elon", SEX(SEX::MALE), Date(1990, 3, 10), Date(2000, 5, 1), 1, 20000.0);
-    auto loco_brigade3 = std::make_shared<LocomotiveBrigade>("#lbr-3424", "Locomotive Brigade 3");
-
-    // 5. Станції
-    auto kyiv = std::make_shared<Station>("#sta-KYIV", "Kyiv", Position(0, 0));
-    auto lviv = std::make_shared<Station>("#sta-LVIV", "Lviv", Position(-50, 0));
-    auto kharkiv = std::make_shared<Station>("#sta-KHAR", "Kharkiv", Position(80, 30));
-
-    // 6. Маршрути
-    auto routeLvivKyivKharkiv = std::make_shared<Route>("#rte-003", "Lviv-Kyiv-Kharkiv", TypeRoute(TypeRoute::Domestic));
-
-    // 7. Рейси
-    auto tripLvivKyivKharkivMorning = std::make_shared<Trip>("#trp-005", "Lviv-Kyiv-Kharkiv Morning", Date(2025, 6, 2, 9, 30), Date(0, 15), TripStatus(Status::Delayed, "Delayed", Date(2, 15)));
-    auto tripLvivKyivKharkivEvening = std::make_shared<Trip>("#trp-006", "Lviv-Kyiv-Kharkiv Evening", Date(2025, 6, 2, 17, 30));
-
-    // 8. Поїзди
-    auto train1 = std::make_shared<Train>("#trn-001", TrainType(TrainType::PASSANGERS));
-    auto train2 = std::make_shared<Train>("#trn-002", TrainType(TrainType::FAST));
-    auto train3 = std::make_shared<Train>("#trn-003", TrainType(TrainType::PASSANGERS));
-
-    auto ticket1 = std::make_shared<Ticket>("#tck-001", 100, Date(2025, 6, 2, 7, 30), TicketStatus(true, Date(2025, 06, 02, 12, 45)));
-    auto ticket2 = std::make_shared<Ticket>("#tck-002", 200, Date());
-    auto ticket3 = std::make_shared<Ticket>("#tck-003", 300, Date());
-
-    auto passenger1 = std::make_shared<Passenger>("#psg-1876", true, SEX(SEX::MALE), Date(1990, 3, 5));
-    auto passenger2 = std::make_shared<Passenger>("#psg-8468429", false, SEX(SEX::MALE), Date(1999, 1, 8));
-    auto passenger3 = std::make_shared<Passenger>("#psg-41864", true, SEX(SEX::FEMALE), Date(2006, 2, 11));
-
-    // 9. Зв'язки
     OneToOne<Department, HeadDepartment> department_to_head_department;
     department_to_head_department.link(department, head);
 
-    OneToOne<Ticket, Passenger> ticket_to_passenger;
-    ticket_to_passenger.link(ticket1, passenger1);
-    ticket_to_passenger.link(ticket2, passenger2);
-    ticket_to_passenger.link(ticket3, passenger3);
-
-    OneToOne<LocomotiveBrigade, Locomotive> locomotive_brigade_to_locomotive;
-    locomotive_brigade_to_locomotive.link(loco_brigade1, loco1);
-    locomotive_brigade_to_locomotive.link(loco_brigade2, loco2);
-    locomotive_brigade_to_locomotive.link(loco_brigade3, loco3);
-
-    OneToMany<LocomotiveBrigade, Staff> locomotive_brigade_to_staffs;
-    locomotive_brigade_to_staffs.link(loco_brigade1, staff1);
-    locomotive_brigade_to_staffs.link(loco_brigade1, staff2);
-    locomotive_brigade_to_staffs.link(loco_brigade2, staff3);
-    locomotive_brigade_to_staffs.link(loco_brigade2, staff5);
-    locomotive_brigade_to_staffs.link(loco_brigade3, staff6);
-
     OneToMany<Department, Employee> department_to_employee;
+    department_to_employee.link(department, head);
     department_to_employee.link(department, driver1);
     department_to_employee.link(department, driver2);
     department_to_employee.link(department, driver3);
+    department_to_employee.link(department, driver4);
+    department_to_employee.link(department, driver5);
+    department_to_employee.link(department, driver6);
+    department_to_employee.link(department, driver7);
+    department_to_employee.link(department, driver8);
+    department_to_employee.link(department, driver9);
+    department_to_employee.link(department, driver10);
+    department_to_employee.link(department, tech1);
+    department_to_employee.link(department, tech2);
+    department_to_employee.link(department, tech3);
+    department_to_employee.link(department, tech4);
+    department_to_employee.link(department, staff1);
+    department_to_employee.link(department, staff2);
+    department_to_employee.link(department, staff3);
+    department_to_employee.link(department, staff4);
+    department_to_employee.link(department, staff5);
+    department_to_employee.link(department, staff6);
+    department_to_employee.link(department, staff7);
+    department_to_employee.link(department, staff8);
+    department_to_employee.link(department, staff9);
+    department_to_employee.link(department, staff10);
+    department_to_employee.link(department, dispatcher);
+    department_to_employee.link(department, cashier);
 
     OneToMany<Station, Locomotive> station_to_locomotives;
-    station_to_locomotives.link(lviv, loco1);
-    station_to_locomotives.link(kyiv, loco2);
-    station_to_locomotives.link(kharkiv, loco3);
+    station_to_locomotives.link(krakiv, loco1);
+    station_to_locomotives.link(ivano_frankivsk, loco2);
+    station_to_locomotives.link(dnipro, loco3);
+    station_to_locomotives.link(odesa, loco4);
+    station_to_locomotives.link(kyiv, loco5);
 
     OneToMany<Locomotive, Driver> locomotive_to_drivers;
     locomotive_to_drivers.link(loco1, driver1);
-    locomotive_to_drivers.link(loco2, driver2);
-    locomotive_to_drivers.link(loco3, driver3);
+    locomotive_to_drivers.link(loco1, driver2);
+    locomotive_to_drivers.link(loco2, driver3);
+    locomotive_to_drivers.link(loco2, driver4);
+    locomotive_to_drivers.link(loco3, driver5);
+    locomotive_to_drivers.link(loco3, driver6);
+    locomotive_to_drivers.link(loco4, driver7);
+    locomotive_to_drivers.link(loco5, driver8);
+    locomotive_to_drivers.link(loco5, driver9);
+    locomotive_to_drivers.link(loco5, driver10);
 
     OneToMany<TechnicianBrigade, Locomotive> tech_brigade_to_locomotives;
     tech_brigade_to_locomotives.link(tech_brigade, loco1);
     tech_brigade_to_locomotives.link(tech_brigade, loco2);
     tech_brigade_to_locomotives.link(tech_brigade, loco3);
+    tech_brigade_to_locomotives.link(tech_brigade, loco4);
+    tech_brigade_to_locomotives.link(tech_brigade, loco5);
 
     OneToMany<TechnicianBrigade, Technician> tech_brigade_to_technician;
     tech_brigade_to_technician.link(tech_brigade, tech1);
     tech_brigade_to_technician.link(tech_brigade, tech2);
+    tech_brigade_to_technician.link(tech_brigade, tech3);
+    tech_brigade_to_technician.link(tech_brigade, tech4);
 
-    ManyToMany<Route, Station> routes_to_stations;
-    routes_to_stations.link(routeLvivKyivKharkiv, lviv);
-    routes_to_stations.link(routeLvivKyivKharkiv, kyiv);
-    routes_to_stations.link(routeLvivKyivKharkiv, kharkiv);
+    OneToMany<LocomotiveBrigade, Locomotive> locomotive_brigade_to_locomotive;
+    locomotive_brigade_to_locomotive.link(loco_brigade1, loco1);
+    locomotive_brigade_to_locomotive.link(loco_brigade2, loco2);
+    locomotive_brigade_to_locomotive.link(loco_brigade3, loco3);
+    locomotive_brigade_to_locomotive.link(loco_brigade4, loco4);
+    locomotive_brigade_to_locomotive.link(loco_brigade5, loco5);
+
+    OneToMany<LocomotiveBrigade, Staff> locomotive_brigade_to_staffs;
+    locomotive_brigade_to_staffs.link(loco_brigade1, staff1);
+    locomotive_brigade_to_staffs.link(loco_brigade1, staff2);
+    locomotive_brigade_to_staffs.link(loco_brigade2, staff3);
+    locomotive_brigade_to_staffs.link(loco_brigade2, staff4);
+    locomotive_brigade_to_staffs.link(loco_brigade3, staff5);
+    locomotive_brigade_to_staffs.link(loco_brigade3, staff6);
+    locomotive_brigade_to_staffs.link(loco_brigade4, staff7);
+    locomotive_brigade_to_staffs.link(loco_brigade4, staff8);
+    locomotive_brigade_to_staffs.link(loco_brigade5, staff9);
+    locomotive_brigade_to_staffs.link(loco_brigade5, staff10);
+
+    OneToMany<Route, Station> routes_to_stations;
+    routes_to_stations.link(routeDniproKyiv, dnipro);
+    routes_to_stations.link(routeDniproKyiv, kyiv);
+
+    routes_to_stations.link(routeKyivIvanoFronkivsk, kyiv);
+    routes_to_stations.link(routeKyivIvanoFronkivsk, ivano_frankivsk);
+
+    routes_to_stations.link(routeOdesaKrakiv, odesa);
+    routes_to_stations.link(routeOdesaKrakiv, krakiv);
 
     OneToMany<Route, Trip> route_to_trips;
-    route_to_trips.link(routeLvivKyivKharkiv, tripLvivKyivKharkivMorning);
-    route_to_trips.link(routeLvivKyivKharkiv, tripLvivKyivKharkivEvening);
+    route_to_trips.link(routeDniproKyiv, tripMorning1);
+    route_to_trips.link(routeDniproKyiv, tripEvening1);
 
-    ManyToMany<Locomotive, Trip> locomotives_to_trips;
-    locomotives_to_trips.link(loco1, tripLvivKyivKharkivMorning);
-    locomotives_to_trips.link(loco2, tripLvivKyivKharkivMorning);
-    locomotives_to_trips.link(loco2, tripLvivKyivKharkivEvening);
+    route_to_trips.link(routeKyivIvanoFronkivsk, tripMorning2);
+    route_to_trips.link(routeKyivIvanoFronkivsk, tripEvening2);
 
-    OneToOne<Train, Locomotive> trains_to_locomotive;
+    route_to_trips.link(routeOdesaKrakiv, tripMorning3);
+    route_to_trips.link(routeOdesaKrakiv, tripEvening3);
+
+    OneToMany<Locomotive, Trip> locomotives_to_trips;
+    locomotives_to_trips.link(loco1, tripMorning1);
+    locomotives_to_trips.link(loco2, tripEvening1);
+    locomotives_to_trips.link(loco3, tripMorning2);
+    locomotives_to_trips.link(loco4, tripEvening2);
+    locomotives_to_trips.link(loco5, tripMorning3);
+    locomotives_to_trips.link(loco5, tripEvening3);
+
+    OneToMany<Train, Locomotive> trains_to_locomotive;
     trains_to_locomotive.link(train1, loco1);
     trains_to_locomotive.link(train2, loco2);
     trains_to_locomotive.link(train3, loco3);
+    trains_to_locomotive.link(train4, loco4);
+    trains_to_locomotive.link(train5, loco5);
 
     OneToMany<Trip, Ticket> trip_to_tickets;
-    trip_to_tickets.link(tripLvivKyivKharkivMorning, ticket1);
-    trip_to_tickets.link(tripLvivKyivKharkivEvening, ticket2);
-    trip_to_tickets.link(tripLvivKyivKharkivEvening, ticket3);
+    trip_to_tickets.link(tripMorning1, ticket1);
+    trip_to_tickets.link(tripEvening1, ticket2);
 
-    // 10. Збереження
-    saveEntitiesByType({
-        head, department,
-        driver1, driver2, driver3,
-        loco1, loco2, loco3,
-        tech1, tech2,
-        tech_brigade, staff1, staff2, staff3, staff4, staff5, staff6,
-        loco_brigade1, loco_brigade2, loco_brigade3,
-        kyiv, lviv, kharkiv,
-        routeLvivKyivKharkiv,
-        tripLvivKyivKharkivMorning, tripLvivKyivKharkivEvening,
-        train1, train2, train3, ticket1, ticket2, ticket3
-    });
+    trip_to_tickets.link(tripMorning2, ticket3);
+    trip_to_tickets.link(tripEvening2, ticket4);
+
+    trip_to_tickets.link(tripMorning3, ticket5);
+    trip_to_tickets.link(tripEvening3, ticket6);
+
+    trip_to_tickets.link(tripMorning1, ticket7);
+    trip_to_tickets.link(tripEvening1, ticket8);
+
+    trip_to_tickets.link(tripMorning2, ticket9);
+    trip_to_tickets.link(tripEvening2, ticket10);
+
+    trip_to_tickets.link(tripMorning3, ticket11);
+    trip_to_tickets.link(tripEvening3, ticket12);
+
+    OneToMany<Ticket, Passenger> ticket_to_passenger;
+    ticket_to_passenger.link(ticket1, passenger1);
+    ticket_to_passenger.link(ticket2, passenger2);
+    ticket_to_passenger.link(ticket3, passenger3);
+    ticket_to_passenger.link(ticket4, passenger4);
+    ticket_to_passenger.link(ticket5, passenger5);
+    ticket_to_passenger.link(ticket6, passenger6);
+    ticket_to_passenger.link(ticket7, passenger7);
+    ticket_to_passenger.link(ticket8, passenger8);
+    ticket_to_passenger.link(ticket9, passenger9);
+    ticket_to_passenger.link(ticket10, passenger10);
+    ticket_to_passenger.link(ticket11, passenger11);
+    ticket_to_passenger.link(ticket12, passenger12);
+
+    saveEntitiesByType({head, department,
+                        driver1, driver2, driver3, driver4,
+                        driver5, driver6, driver7, driver8,
+                        driver9, driver10,
+                        tech1, tech2, tech3, tech4, staff1, staff2,
+                        staff3, staff4, staff5, staff6, staff7,
+                        staff8, staff9, staff10,
+                        tech_brigade, loco_brigade1, loco_brigade2,
+                        loco_brigade3, loco_brigade4, loco_brigade5,
+                        loco1, loco2, loco3, loco4, loco5,
+                        dnipro, odesa, kyiv, ivano_frankivsk, krakiv,
+                        routeDniproKyiv, routeKyivIvanoFronkivsk, routeOdesaKrakiv,
+                        tripMorning1, tripMorning1, tripMorning2, tripMorning2, tripMorning3, tripMorning3,
+                        train1, train2, train3, train4, train5,
+                        passenger1, passenger2, passenger4, passenger5, passenger6,
+                        passenger7, passenger8, passenger9, passenger10, passenger11,
+                        ticket1, ticket2, ticket4, ticket5, ticket6,
+                        ticket7, ticket8, ticket9, ticket10, ticket11,
+                        dispatcher, cashier});
 
     saveLinks(department_to_head_department);
     saveLinks(department_to_employee);
     saveLinks(station_to_locomotives);
     saveLinks(locomotive_to_drivers);
     saveLinks(tech_brigade_to_locomotives);
+    saveLinks(tech_brigade_to_technician);
+    saveLinks(locomotive_brigade_to_locomotive);
+    saveLinks(locomotive_brigade_to_staffs);
     saveLinks(routes_to_stations);
     saveLinks(route_to_trips);
     saveLinks(locomotives_to_trips);
     saveLinks(trains_to_locomotive);
     saveLinks(trip_to_tickets);
-    saveLinks(locomotive_brigade_to_locomotive);
-    saveLinks(locomotive_brigade_to_staffs);
-    saveLinks(tech_brigade_to_technician);
+    saveLinks(ticket_to_passenger);

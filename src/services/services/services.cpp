@@ -118,6 +118,10 @@ std::vector<std::shared_ptr<Employee>> Services::getAllEmployees() const
     {
         employees.push_back(std::static_pointer_cast<Employee>(cashier));
     }
+    for (const auto &staff : staff_repository.getAll())
+    {
+        employees.push_back(std::static_pointer_cast<Employee>(staff));
+    }
 
     return employees;
 }
@@ -138,6 +142,9 @@ std::shared_ptr<Employee> Services::getEmployeeById(const std::string &id) const
 
     if (const auto cashier = cashier_repository.findById(id))
         return cashier;
+
+    if (const auto staff = staff_repository.findById(id))
+        return staff;
 
     return nullptr;
 }

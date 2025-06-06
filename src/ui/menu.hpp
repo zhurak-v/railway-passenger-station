@@ -11,70 +11,70 @@ private:
     void handleUserChoice() const;
 
 private:
-    void getAllEmployees() const;
-    void getAllHeadDepartment() const;
-    void getEmployeesByDepartment() const;
-    void getEmployeesByExp() const;
-    void getEmployeesBySex() const;
-    void getEmployeesByAge() const;
-    void getEmployeesByHasChild() const;
-    void getEmployeesByChildCount() const;
-    void getEmployeesBySalary() const;
+    void getAllEmployeesCommand() const;
+    void getAllHeadDepartmentCommand() const;
+    void getEmployeesByDepartmentCommand() const;
+    void getEmployeesByExpCommand() const;
+    void getEmployeesBySexCommand() const;
+    void getEmployeesByAgeCommand() const;
+    void getEmployeesByHasChildCommand() const;
+    void getEmployeesByChildCountCommand() const;
+    void getEmployeesBySalaryCommand() const;
 
-    void getEmployeesByBrigade() const;
-    void getEmployeesByAllDepartments() const;
-    void getEmployeesByServicingLocomotive() const;
-    void getEmployeesByAverageSalaryInBrigade() const;
+    void getEmployeesByBrigadeCommand() const;
+    void getEmployeesByAllDepartmentsCommand() const;
+    void getEmployeesByServicingLocomotiveCommand() const;
+    void getEmployeesByAverageSalaryInBrigadeCommand() const;
     
-    void getDriversByPassedMedInsp() const;
-    void getDriversBySex() const;
-    void getDriversByAge() const;
-    void getDriversBySalary() const;
+    void getDriversByPassedMedInspCommand() const;
+    void getDriversBySexCommand() const;
+    void getDriversByAgeCommand() const;
+    void getDriversBySalaryCommand() const;
 
-    void getLocomotivesByStation() const;
-    void getLocomotivesAtStationInTime() const;
-    void getLocomotivesByCompletedRoutes() const;
+    void getLocomotivesByStationCommand() const;
+    void getLocomotivesAtStationInTimeCommand() const;
+    void getLocomotivesByCompletedRoutesCommand() const;
     
-    void getLocomotiveByPassedTechInsp() const;
-    void getLocomotiveByRepairInTime() const;
-    void getLocomotiveByRepairCount() const;
-    void getLocomotivesByCompletedRoutesBeforeRepair() const;
-    void getLocomotiveByAge() const;
+    void getLocomotiveByPassedTechInspCommand() const;
+    void getLocomotiveByRepairInTimeCommand() const;
+    void getLocomotiveByRepairCountCommand() const;
+    void getLocomotivesByCompletedRoutesBeforeRepairCommand() const;
+    void getLocomotiveByAgeCommand() const;
 
-    void getTrainsByRoute() const; 
-    void getTrainsByRouteDistance() const;
-    void getTrainsByticketPrice() const;
-    void getTrainsByRouteByRouteDistanceByticketPrice() const;
+    void getTrainsByRouteCommand() const; 
+    void getTrainsByRouteDistanceCommand() const;
+    void getTrainsByticketPriceCommand() const;
+    void getTrainsByRouteByRouteDistanceByticketPriceCommand() const;
 
-    void getCanceledTrips() const;
-    void getCanceledTripsByRoute() const;
-    void getTripsByTwoStationsInOrder() const;
+    void getCanceledTripsCommand() const;
+    void getCanceledTripsByRouteCommand() const;
+    void getTripsByTwoStationsInOrderCommand() const;
 
-    void getDelayedTrips() const;
-    void getDelayedTripsByReason() const;
-    void getDelayedTripsByRoute() const;
-    void getReturnedTicketsForAllDelayedTrips() const;
+    void getDelayedTripsCommand() const;
+    void getDelayedTripsByReasonCommand() const;
+    void getDelayedTripsByRouteCommand() const;
+    void getReturnedTicketsForAllDelayedTripsCommand() const;
 
-    void getSoldTicketsByRoute() const;
-    void getSoldTicketsByRouteDistance() const;
-    void getSoldTicketsByTicketPrice() const;
+    void getSoldTicketsByRouteCommand() const;
+    void getSoldTicketsByRouteDistanceCommand() const;
+    void getSoldTicketsByTicketPriceCommand() const;
 
-    void getRoutesByCategory() const;
-    void getRoutesByCategoryPositon() const;
+    void getRoutesByCategoryCommand() const;
+    void getRoutesByCategoryPositonCommand() const;
 
-    void getPassengersByTrip() const;
-    void getPassengersByLeft() const;
-    void getPassengersByLeftForeign() const;
-    void getPassengersByHasBaggage() const;
-    void getPassengersBySex() const;
+    void getPassengersByTripCommand() const;
+    void getPassengersByLeftCommand() const;
+    void getPassengersByLeftForeignCommand() const;
+    void getPassengersByHasBaggageCommand() const;
+    void getPassengersBySexCommand() const;
 
-    void getUnredeemedTicketByTrip() const;
-    void getUnredeemedTicketByRoute() const;
-    void getUnredeemedTicketByDate() const;
+    void getUnredeemedTicketByTripCommand() const;
+    void getUnredeemedTicketByRouteCommand() const;
+    void getUnredeemedTicketByDateCommand() const;
 
-    void getReturnedTicketsByTrip() const;
-    void getReturnedTicketsByDate() const;
-    void getReturnedTicketsByRoute() const;
+    void getReturnedTicketsByTripCommand() const;
+    void getReturnedTicketsByDateCommand() const;
+    void getReturnedTicketsByRouteCommand() const;
 
 public:
     Menu(

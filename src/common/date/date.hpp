@@ -14,7 +14,7 @@ private:
     int minute;
     bool timeOnly = false;
 
-    void normalize();
+    void normalize(); 
 
 public:
     Date();

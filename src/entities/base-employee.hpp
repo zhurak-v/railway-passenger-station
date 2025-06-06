@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <memory>
 #include <vector>
 #include "entities/base.hpp"
 #include "common/date/date.hpp"

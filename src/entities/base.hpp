@@ -1,5 +1,5 @@
 #pragma once
-#include <iostream>
+#include <memory>
 #include <string>
 
 class Base {
@@ -16,8 +16,4 @@ public:
     virtual std::string getClass() const = 0;
     static std::string staticClass();
     virtual std::string serialize() const = 0;
-
-    auto get() {
-        return this;
-    }
 };

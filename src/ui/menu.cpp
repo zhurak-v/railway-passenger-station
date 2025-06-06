@@ -89,168 +89,168 @@ void Menu::handleUserChoice() const {
 
     switch (choice) {
         case 1:
-            getAllEmployees();
+            getAllEmployeesCommand();
             break;
         case 2:
-            getAllHeadDepartment();
+            getAllHeadDepartmentCommand();
             break;
         case 3:
-            getEmployeesByDepartment();
+            getEmployeesByDepartmentCommand();
             break;
         case 4:
-            getEmployeesByExp();
+            getEmployeesByExpCommand();
             break;
         case 5:
-            getEmployeesBySex();
+            getEmployeesBySexCommand();
             break;
         case 6:
-            getEmployeesByAge();
+            getEmployeesByAgeCommand();
             break;
         case 7:
-            getEmployeesByHasChild();
+            getEmployeesByHasChildCommand();
             break;
         case 8:
-            getEmployeesByChildCount();
+            getEmployeesByChildCountCommand();
             break;
         case 9:
-            getEmployeesBySalary();
+            getEmployeesBySalaryCommand();
             break;
 
         case 10:
-            getEmployeesByBrigade();
+            getEmployeesByBrigadeCommand();
             break;
         case 11:
-            getEmployeesByAllDepartments();
+            getEmployeesByAllDepartmentsCommand();
             break;
         case 12:
-            getEmployeesByServicingLocomotive();
+            getEmployeesByServicingLocomotiveCommand();
             break;
         case 13:
-            getEmployeesByAverageSalaryInBrigade();
+            getEmployeesByAverageSalaryInBrigadeCommand();
             break;
 
         case 14:
-            getDriversByPassedMedInsp();
+            getDriversByPassedMedInspCommand();
             break;
         case 15:
-            getDriversBySex();
+            getDriversBySexCommand();
             break;
         case 16:
-            getDriversByAge();
+            getDriversByAgeCommand();
             break;
         case 17:
-            getDriversBySalary();
+            getDriversBySalaryCommand();
             break;
 
         case 18:
-            getLocomotivesByStation();
+            getLocomotivesByStationCommand();
             break;
         case 19:
-            getLocomotivesAtStationInTime();
+            getLocomotivesAtStationInTimeCommand();
             break;
         case 20:
-            getLocomotivesByCompletedRoutes();
+            getLocomotivesByCompletedRoutesCommand();
             break;
         case 21:
-            getLocomotiveByPassedTechInsp();
+            getLocomotiveByPassedTechInspCommand();
             break;
 
         case 22:
-            getLocomotiveByRepairInTime();
+            getLocomotiveByRepairInTimeCommand();
             break;
         case 23:
-            getLocomotiveByRepairCount();
+            getLocomotiveByRepairCountCommand();
             break;
         case 24:
-            getLocomotivesByCompletedRoutesBeforeRepair();
+            getLocomotivesByCompletedRoutesBeforeRepairCommand();
             break;
         case 25:
-            getLocomotiveByAge();
+            getLocomotiveByAgeCommand();
             break;
             
         case 26:
-            getTrainsByRoute();
+            getTrainsByRouteCommand();
             break;
         case 27:
-            getTrainsByRouteDistance();
+            getTrainsByRouteDistanceCommand();
             break;
         case 28:
-            getTrainsByticketPrice();
+            getTrainsByticketPriceCommand();
             break;
         case 29:
-            getTrainsByRouteByRouteDistanceByticketPrice();
+            getTrainsByRouteByRouteDistanceByticketPriceCommand();
             break;
 
         case 30:
-            getCanceledTrips();
+            getCanceledTripsCommand();
             break;
         case 31:
-            getCanceledTripsByRoute();
+            getCanceledTripsByRouteCommand();
             break;
         case 32:
-            getTripsByTwoStationsInOrder();
+            getTripsByTwoStationsInOrderCommand();
             break;
         case 33:
-            getDelayedTrips();
+            getDelayedTripsCommand();
             break;
         case 34:
-            getDelayedTripsByReason();
+            getDelayedTripsByReasonCommand();
             break;
         case 35:
-            getDelayedTripsByRoute();
+            getDelayedTripsByRouteCommand();
             break;  
         case 36:
-            getReturnedTicketsForAllDelayedTrips();
+            getReturnedTicketsForAllDelayedTripsCommand();
             break; 
 
         case 37:
-            getSoldTicketsByRoute();
+            getSoldTicketsByRouteCommand();
             break; 
         case 38:
-            getSoldTicketsByRouteDistance();
+            getSoldTicketsByRouteDistanceCommand();
             break; 
         case 39:
-            getSoldTicketsByTicketPrice();
+            getSoldTicketsByTicketPriceCommand();
             break; 
 
         case 40:
-            getRoutesByCategory();
+            getRoutesByCategoryCommand();
             break; 
         case 41:
-            getRoutesByCategoryPositon();
+            getRoutesByCategoryPositonCommand();
             break;
              
         case 42:
-            getPassengersByTrip();
+            getPassengersByTripCommand();
             break; 
         case 43:
-            getPassengersByLeft();
+            getPassengersByLeftCommand();
             break;
         case 44:
-            getPassengersByLeftForeign();
+            getPassengersByLeftForeignCommand();
             break;
         case 45:
-            getPassengersByHasBaggage();
+            getPassengersByHasBaggageCommand();
             break; 
 
         case 46:
-            getUnredeemedTicketByTrip();
+            getUnredeemedTicketByTripCommand();
             break;
         case 47:
-            getUnredeemedTicketByRoute();
+            getUnredeemedTicketByRouteCommand();
             break;
         case 48:
-            getUnredeemedTicketByDate();
+            getUnredeemedTicketByDateCommand();
             break;
             
         case 49:
-            getReturnedTicketsByTrip();
+            getReturnedTicketsByTripCommand();
             break;
         case 50:
-            getReturnedTicketsByDate();
+            getReturnedTicketsByDateCommand();
             break;
         case 51:
-            getReturnedTicketsByRoute();
+            getReturnedTicketsByRouteCommand();
             break;
 
         default:
@@ -258,7 +258,7 @@ void Menu::handleUserChoice() const {
     }
 }
 
-void Menu::getLocomotivesByStation() const {
+void Menu::getLocomotivesByStationCommand() const {
     std::string id;
     std::cout << "Введіть ID станції: ";
     std::cin >> id;
@@ -270,7 +270,7 @@ void Menu::getLocomotivesByStation() const {
     std::cout << "Кількість " << locomtives.size() << std::endl;
 }
 
-void Menu::getLocomotivesAtStationInTime() const {
+void Menu::getLocomotivesAtStationInTimeCommand() const {
     std::string id;
     std::cout << "Введіть ID станції: ";
     std::cin >> id;
@@ -285,7 +285,7 @@ void Menu::getLocomotivesAtStationInTime() const {
     std::cout << "Кількість " << locomtives.size() << std::endl;
 }
 
-void Menu::getLocomotivesByCompletedRoutes() const {
+void Menu::getLocomotivesByCompletedRoutesCommand() const {
     std::string count;
     std::cout << "Введіть кількість скоєних рейсів: ";
     std::cin >> count;
@@ -297,7 +297,7 @@ void Menu::getLocomotivesByCompletedRoutes() const {
     std::cout << "Кількість " << locomtives.size() << std::endl;
 }
 
-void Menu::getLocomotiveByPassedTechInsp() const {
+void Menu::getLocomotiveByPassedTechInspCommand() const {
     std::string from;
     std::cout << "Введіть ліву межу часового діапазону у форматі YYYY-MM-DD-HH:MM: ";
     std::cin >> from;
@@ -314,21 +314,21 @@ void Menu::getLocomotiveByPassedTechInsp() const {
     std::cout << "Кількість " << locomtives.size() << std::endl;
 }
 
-void Menu::getAllEmployees() const {
+void Menu::getAllEmployeesCommand() const {
     auto employees = services.getAllEmployees();
     for (const auto& employee : employees) {
         std::cout << "Працівник: " << employee->getId() << " " << employee->getFullName() << std::endl;
     }
     std::cout << "Кількість " << employees.size() << std::endl;
 }
-void Menu::getAllHeadDepartment() const {
+void Menu::getAllHeadDepartmentCommand() const {
     auto head_departments = services.getAllHeadDepartment();
     for (const auto& head_department : head_departments) {
         std::cout << "Нчальник відділу: " <<  head_department->getId() << " " << head_department->getFullName() << std::endl;
     }
     std::cout << "Кількість " << head_departments.size() << std::endl;
 }
-void Menu::getEmployeesByDepartment() const {
+void Menu::getEmployeesByDepartmentCommand() const {
     std::string id;
     std::cout << "Введіть ID відділу: ";
     std::cin >> id;
@@ -339,7 +339,7 @@ void Menu::getEmployeesByDepartment() const {
     std::cout << "Кількість " << employees.size() << std::endl;
 }
 
-void Menu::getEmployeesByExp() const {
+void Menu::getEmployeesByExpCommand() const {
     int exp;
     std::cout << "Введіть стаж роботи в роках: ";
     std::cin >> exp;
@@ -350,7 +350,7 @@ void Menu::getEmployeesByExp() const {
     std::cout << "Кількість " << employees.size() << std::endl;
 }
 
-void Menu::getEmployeesBySex() const {
+void Menu::getEmployeesBySexCommand() const {
     std::string sex;
     std::cout << "Введіть Стать працівника (F or M): ";
     std::cin >> sex;
@@ -361,7 +361,7 @@ void Menu::getEmployeesBySex() const {
     }
     std::cout << "Кількість " << employees.size() << std::endl;
 }
-void Menu::getEmployeesByAge() const {
+void Menu::getEmployeesByAgeCommand() const {
     int age;
     std::cout << "Введіть вік працівника в роках: ";
     std::cin >> age;
@@ -372,7 +372,7 @@ void Menu::getEmployeesByAge() const {
     }
     std::cout << "Кількість " << employees.size() << std::endl;
 }
-void Menu::getEmployeesByHasChild() const {
+void Menu::getEmployeesByHasChildCommand() const {
     std::string has_children;
     std::cout << "Чи є діти (Y or N)";
     std::cin >> has_children;
@@ -384,7 +384,7 @@ void Menu::getEmployeesByHasChild() const {
     std::cout << "Кількість " << employees.size() << std::endl;
 }
 
-void Menu::getEmployeesByChildCount() const {
+void Menu::getEmployeesByChildCountCommand() const {
     int child_count;
     std::cout << "Введіть кількість дітей: ";
     std::cin >> child_count;
@@ -396,7 +396,7 @@ void Menu::getEmployeesByChildCount() const {
     std::cout << "Кількість " << employees.size() << std::endl;
 }    
 
-void Menu::getEmployeesBySalary() const {
+void Menu::getEmployeesBySalaryCommand() const {
     double salary;
     std::cout << "Введіть розмір заробітньої плати: ";
     std::cin >> salary;
@@ -407,7 +407,7 @@ void Menu::getEmployeesBySalary() const {
     }
     std::cout << "Кількість " << employees.size() << std::endl;
 }    
-void Menu::getEmployeesByBrigade() const {
+void Menu::getEmployeesByBrigadeCommand() const {
     std::string id;
     std::cout << "Введіть ID бригади: ";
     std::cin >> id;
@@ -418,14 +418,14 @@ void Menu::getEmployeesByBrigade() const {
     std::cout << "Кількість " << employees.size() << std::endl;
 }
 
-void Menu::getEmployeesByAllDepartments() const {
+void Menu::getEmployeesByAllDepartmentsCommand() const {
     auto employees = services.getEmployeesByAllDepartments();
     for (const auto& employee : employees) {
         std::cout << "Працівник: " <<  employee->getId() << " " << employee->getFullName() << std::endl;
     }
     std::cout << "Кількість " << employees.size() << std::endl;
 }
-void Menu::getEmployeesByServicingLocomotive() const {
+void Menu::getEmployeesByServicingLocomotiveCommand() const {
     std::string id;
     std::cout << "Введіть ID локомотиву: ";
     std::cin >> id;
@@ -436,7 +436,7 @@ void Menu::getEmployeesByServicingLocomotive() const {
     std::cout << "Кількість " << employees.size() << std::endl;
 }
 
-void Menu::getEmployeesByAverageSalaryInBrigade() const {
+void Menu::getEmployeesByAverageSalaryInBrigadeCommand() const {
     double salary;
     std::cout << "Введіть розмір середньої заробітньої плати в бригаді: ";
     std::cin >> salary;
@@ -448,7 +448,7 @@ void Menu::getEmployeesByAverageSalaryInBrigade() const {
     std::cout << "Кількість " << employees.size() << std::endl;
 }
 
-void Menu::getDriversByPassedMedInsp() const {
+void Menu::getDriversByPassedMedInspCommand() const {
     int year;
     std::cout << "Введіть рік проходження медогляду: ";
     std::cin >> year;
@@ -462,7 +462,7 @@ void Menu::getDriversByPassedMedInsp() const {
     }
     std::cout << "Кількість " << drivers.size() << std::endl;
 }
-void Menu::getDriversBySex() const {
+void Menu::getDriversBySexCommand() const {
     std::string sex;
     std::cout << "Введіть Стать працівника (F or M): ";
     std::cin >> sex;
@@ -474,7 +474,7 @@ void Menu::getDriversBySex() const {
     std::cout << "Кількість " << drivers.size() << std::endl;
 }
 
-void Menu::getDriversByAge() const {
+void Menu::getDriversByAgeCommand() const {
     int age;
     std::cout << "Введіть вік працівника в роках: ";
     std::cin >> age;
@@ -485,7 +485,7 @@ void Menu::getDriversByAge() const {
     }
     std::cout << "Кількість " << drivers.size() << std::endl;
 }
-void Menu::getDriversBySalary() const {
+void Menu::getDriversBySalaryCommand() const {
     double salary;
     std::cout << "Введіть розмір заробітньої плати: ";
     std::cin >> salary;
@@ -496,7 +496,7 @@ void Menu::getDriversBySalary() const {
     }
     std::cout << "Кількість " << drivers.size() << std::endl;
 } 
-void Menu::getLocomotiveByRepairInTime() const {
+void Menu::getLocomotiveByRepairInTimeCommand() const {
     std::string date;
     std::cout << "Введіть дату відправлення у ремонт у форматі YYYY-MM-DD-HH:MM: ";
     std::cin >> date;
@@ -509,7 +509,7 @@ void Menu::getLocomotiveByRepairInTime() const {
     }
     std::cout << "Кількість " << locomtives.size() << std::endl;
 }
-void Menu::getLocomotiveByRepairCount() const {
+void Menu::getLocomotiveByRepairCountCommand() const {
     int count;
     std::cout << "Введіть кількість ремонтів: ";
     std::cin >> count;
@@ -520,7 +520,7 @@ void Menu::getLocomotiveByRepairCount() const {
     }
     std::cout << "Кількість " << locomtives.size() << std::endl;
 }
-void Menu::getLocomotivesByCompletedRoutesBeforeRepair() const {
+void Menu::getLocomotivesByCompletedRoutesBeforeRepairCommand() const {
     int count;
     std::cout << "Введіть кількість рейсів до ремонту: ";
     std::cin >> count;
@@ -531,7 +531,7 @@ void Menu::getLocomotivesByCompletedRoutesBeforeRepair() const {
     }
     std::cout << "Кількість " << locomtives.size() << std::endl;
 }
-void Menu::getLocomotiveByAge() const {
+void Menu::getLocomotiveByAgeCommand() const {
     int age;
     std::cout << "Введіть вік локомотиву в роках: ";
     std::cin >> age;
@@ -543,7 +543,7 @@ void Menu::getLocomotiveByAge() const {
     std::cout << "Кількість " << locomtives.size() << std::endl;
 }
 
-void Menu::getTrainsByRoute() const {
+void Menu::getTrainsByRouteCommand() const {
     std::string id;
     std::cout << "Введіть ID маршруту: ";
     std::cin >> id;
@@ -554,7 +554,7 @@ void Menu::getTrainsByRoute() const {
     }
     std::cout << "Кількість " << trains.size() << std::endl;
 }
-void Menu::getTrainsByRouteDistance() const {
+void Menu::getTrainsByRouteDistanceCommand() const {
     double distance;
     std::cout << "Введіть дистанцію маршруту: ";
     std::cin >> distance;
@@ -565,7 +565,7 @@ void Menu::getTrainsByRouteDistance() const {
     }
     std::cout << "Кількість " << trains.size() << std::endl;
 }
-void Menu::getTrainsByticketPrice() const {
+void Menu::getTrainsByticketPriceCommand() const {
     double price;
     std::cout << "Введіть дистанцію маршруту: ";
     std::cin >> price;
@@ -576,7 +576,7 @@ void Menu::getTrainsByticketPrice() const {
     }
     std::cout << "Кількість " << trains.size() << std::endl;
 }
-void Menu::getTrainsByRouteByRouteDistanceByticketPrice() const {
+void Menu::getTrainsByRouteByRouteDistanceByticketPriceCommand() const {
     std::string id;
     std::cout << "Введіть ID маршруту: ";
     std::cin >> id;
@@ -593,14 +593,14 @@ void Menu::getTrainsByRouteByRouteDistanceByticketPrice() const {
     }
     std::cout << "Кількість " << trains.size() << std::endl;
 }
-void Menu::getCanceledTrips() const {
+void Menu::getCanceledTripsCommand() const {
     auto trips = services.getCanceledTrips();
     for (const auto& trip : trips) {
         std::cout << "Рейс: " << trip->getId() << std::endl;
     }
     std::cout << "Кількість " << trips.size() << std::endl;
 }
-void Menu::getCanceledTripsByRoute() const {
+void Menu::getCanceledTripsByRouteCommand() const {
     std::string id;
     std::cout << "Введіть ID маршруту: ";
     std::cin >> id;
@@ -610,7 +610,7 @@ void Menu::getCanceledTripsByRoute() const {
     }
     std::cout << "Кількість " << trips.size() << std::endl;
 }
-void Menu::getTripsByTwoStationsInOrder() const {
+void Menu::getTripsByTwoStationsInOrderCommand() const {
     std::string id1;
     std::cout << "Введіть ID першої станції: ";
     std::cin >> id1;
@@ -624,14 +624,14 @@ void Menu::getTripsByTwoStationsInOrder() const {
     std::cout << "Кількість " << trips.size() << std::endl;
 }
 
-void Menu::getDelayedTrips() const {
+void Menu::getDelayedTripsCommand() const {
     auto trips = services.getDelayedTrips();
     for (const auto& trip : trips) {
         std::cout << "Рейс: " << trip->getId() << std::endl;
     }
     std::cout << "Кількість " << trips.size() << std::endl;
 }
-void Menu::getDelayedTripsByReason() const {
+void Menu::getDelayedTripsByReasonCommand() const {
     std::string reason;
     std::cout << "Введіть причину затримання: ";
     std::cin >> reason;
@@ -641,7 +641,7 @@ void Menu::getDelayedTripsByReason() const {
     }
     std::cout << "Кількість " << trips.size() << std::endl;
 }
-void Menu::getDelayedTripsByRoute() const {
+void Menu::getDelayedTripsByRouteCommand() const {
     std::string id;
     std::cout << "Введіть id маршруту: ";
     std::cin >> id;
@@ -651,14 +651,14 @@ void Menu::getDelayedTripsByRoute() const {
     }
     std::cout << "Кількість " << trips.size() << std::endl;
 }
-void Menu::getReturnedTicketsForAllDelayedTrips() const {
+void Menu::getReturnedTicketsForAllDelayedTripsCommand() const {
     auto tickets = services.getReturnedTicketsForAllDelayedTrips();
     for (const auto& ticket : tickets) {
         std::cout << "Квиток: " << ticket->getId() <<  std::endl;
     }
     std::cout << "Кількість " << tickets.size() << std::endl;
 }
-void Menu::getSoldTicketsByRoute() const {
+void Menu::getSoldTicketsByRouteCommand() const {
     std::string id;
     std::cout << "Введіть id Маршруту: ";
     std::cin >> id;
@@ -673,7 +673,7 @@ void Menu::getSoldTicketsByRoute() const {
         std::cout << "Квиток: " << ticket->getId() <<  std::endl;
     }
 }
-void Menu::getSoldTicketsByRouteDistance() const {
+void Menu::getSoldTicketsByRouteDistanceCommand() const {
     double distance;
     std::cout << "Введіть id Маршруту: ";
     std::cin >> distance;
@@ -688,7 +688,7 @@ void Menu::getSoldTicketsByRouteDistance() const {
         std::cout << "Квиток: " << ticket->getId() <<  std::endl;
     }
 }
-void Menu::getSoldTicketsByTicketPrice() const {
+void Menu::getSoldTicketsByTicketPriceCommand() const {
     double price;
     std::cout << "Введіть id Маршруту: ";
     std::cin >> price;
@@ -704,7 +704,7 @@ void Menu::getSoldTicketsByTicketPrice() const {
     }
 }
 
-void Menu::getRoutesByCategory() const {
+void Menu::getRoutesByCategoryCommand() const {
     std::string category;
     std::cout << "Введіть Категорію Маршруту (Domestic, International, Tourist, Special): ";
     std::cin >> category;
@@ -721,7 +721,7 @@ void Menu::getRoutesByCategory() const {
     }
 }
 
-void Menu::getRoutesByCategoryPositon() const {
+void Menu::getRoutesByCategoryPositonCommand() const {
     std::cout << "Введіть Категорії Маршруту в певній послідовності (приклад: Domestic International Tourist Special): ";
     
     std::string line;
@@ -747,7 +747,7 @@ void Menu::getRoutesByCategoryPositon() const {
     }
 }
 
-void Menu::getPassengersByTrip() const {
+void Menu::getPassengersByTripCommand() const {
     std::string id;
     std::cout << "Введіть id Рейсу: ";
     std::cin >> id;
@@ -757,7 +757,7 @@ void Menu::getPassengersByTrip() const {
     }
     std::cout << "Кількість " << passengers.size() << std::endl;
 }
-void Menu::getPassengersByLeft() const {
+void Menu::getPassengersByLeftCommand() const {
     std::string date;
     std::cout << "Введіть дату виїзду у форматиі YYYY-MM-DD-HH:MM: ";
     std::cin >> date;
@@ -767,7 +767,7 @@ void Menu::getPassengersByLeft() const {
     }
     std::cout << "Кількість " << passengers.size() << std::endl;
 }
-void Menu::getPassengersByLeftForeign() const {
+void Menu::getPassengersByLeftForeignCommand() const {
     std::string date;
     std::cout << "Введіть дату виїзду у форматиі YYYY-MM-DD-HH:MM: ";
     std::cin >> date;
@@ -778,7 +778,7 @@ void Menu::getPassengersByLeftForeign() const {
     std::cout << "Кількість " << passengers.size() << std::endl;
 }
 
-void Menu::getPassengersByHasBaggage() const {
+void Menu::getPassengersByHasBaggageCommand() const {
     std::string has_baggage;
     std::cout << "Чи задв пасажир свій багаж (Y or N): ";
     std::cin >> has_baggage;
@@ -788,7 +788,7 @@ void Menu::getPassengersByHasBaggage() const {
     }
     std::cout << "Кількість " << passengers.size() << std::endl;
 }
-void Menu::getPassengersBySex() const {
+void Menu::getPassengersBySexCommand() const {
     std::string sex;
     std::cout << "Введіть Стать працівника (F or M): ";
     std::cin >> sex;
@@ -800,7 +800,7 @@ void Menu::getPassengersBySex() const {
     std::cout << "Кількість " << passengers.size() << std::endl;
 }
 
-void Menu::getUnredeemedTicketByTrip() const {
+void Menu::getUnredeemedTicketByTripCommand() const {
     std::string id;
     std::cout << "Введіть id рейсу: ";
     std::cin >> id;
@@ -811,7 +811,7 @@ void Menu::getUnredeemedTicketByTrip() const {
     }
     std::cout << "Кількість " << tickets.size() << std::endl;
 }
-void Menu::getUnredeemedTicketByRoute() const {
+void Menu::getUnredeemedTicketByRouteCommand() const {
     std::string id;
     std::cout << "Введіть id маршруту: ";
     std::cin >> id;
@@ -822,7 +822,7 @@ void Menu::getUnredeemedTicketByRoute() const {
     }
     std::cout << "Кількість " << tickets.size() << std::endl;
 }
-void Menu::getUnredeemedTicketByDate() const {
+void Menu::getUnredeemedTicketByDateCommand() const {
     std::string date;
     std::cout << "Введіть зазнеачену дату у форматиі YYYY-MM-DD-HH:MM: ";
     std::cin >> date;
@@ -833,7 +833,7 @@ void Menu::getUnredeemedTicketByDate() const {
     }
     std::cout << "Кількість " << tickets.size() << std::endl;
 }
-void Menu::getReturnedTicketsByTrip() const {
+void Menu::getReturnedTicketsByTripCommand() const {
     std::string id;
     std::cout << "Введіть id рейсу: ";
     std::cin >> id;
@@ -844,7 +844,7 @@ void Menu::getReturnedTicketsByTrip() const {
     }
     std::cout << "Кількість " << tickets.size() << std::endl;
 }
-void Menu::getReturnedTicketsByRoute() const {
+void Menu::getReturnedTicketsByRouteCommand() const {
     std::string id;
     std::cout << "Введіть id маршруту: ";
     std::cin >> id;
@@ -855,7 +855,7 @@ void Menu::getReturnedTicketsByRoute() const {
     }
     std::cout << "Кількість " << tickets.size() << std::endl;
 }
-void Menu::getReturnedTicketsByDate() const {
+void Menu::getReturnedTicketsByDateCommand() const {
     std::string date;
     std::cout << "Введіть зазнеачену дату у форматиі YYYY-MM-DD-HH:MM: ";
     std::cin >> date;
