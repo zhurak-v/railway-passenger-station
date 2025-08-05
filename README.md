@@ -1,1 +1,2 @@
-# Railway Passenger Station
+# railway-passenger-station
+Курсова робота на тему: Моделювання та аналіз аіс залізничної пасажирської станції

@@ -1,5 +1,0 @@
-<map id="Trip" name="Trip">
-<area shape="rect" id="Node000001" title=" " alt="" coords="9,80,53,107"/>
-<area shape="rect" id="Node000002" href="$class_base.html" title=" " alt="" coords="5,5,57,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="34,48,34,80,28,80,28,48"/>
-</map>

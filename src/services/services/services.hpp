@@ -5,22 +5,7 @@
 #include "common/utils/find-station-index.hpp"
 #include "data/loaders/link-loader.hpp"
 
-#include "data/repositories/driver-repository.hpp"
-#include "data/repositories/head-department-repository.hpp"
-#include "data/repositories/technician-repository.hpp"
-#include "data/repositories/locomotive-staff-repository.hpp"
-#include "data/repositories/cashier-repository.hpp"
-#include "data/repositories/passenger-repository.hpp"
-#include "data/repositories/dispatcher-repository.hpp"
-#include "data/repositories/locomotive-repository.hpp"
-#include "data/repositories/train-repository.hpp"
-#include "data/repositories/department-repository.hpp"
-#include "data/repositories/station-repository.hpp"
-#include "data/repositories/route-repository.hpp"
-#include "data/repositories/trip-repository.hpp"
-#include "data/repositories/ticket-repository.hpp"
-#include "data/repositories/technician-brigade-repository.hpp"
-#include "data/repositories/locomotive-brigade-repository.hpp"
+#include "data/repositories/repositories.hpp"
 
 class Services
 {
@@ -78,167 +63,78 @@ public:
         PassengerRepository &passenger_repository);
     ~Services() = default;
 
-
 public:
     std::vector<std::shared_ptr<Employee>> getAllEmployees() const;
 
 public:
-    std::shared_ptr<Employee> getEmployeeById(const std::string& id) const;
-    std::shared_ptr<Driver> getDriverById(const std::string& id) const;
-    std::shared_ptr<HeadDepartment> getHeadDepartmentById(const std::string& id) const;
-    std::shared_ptr<Technician> getTechnicianById(const std::string& id) const;
-    std::shared_ptr<Dispatcher> getDispatcherById(const std::string& id) const;
-    std::shared_ptr<Cashier> getCashierById(const std::string& id) const;
-    
+    std::shared_ptr<Employee> getEmployeeById(const std::string &id) const;
+    std::shared_ptr<Driver> getDriverById(const std::string &id) const;
+    std::shared_ptr<HeadDepartment> getHeadDepartmentById(const std::string &id) const;
+    std::shared_ptr<Technician> getTechnicianById(const std::string &id) const;
+    std::shared_ptr<Dispatcher> getDispatcherById(const std::string &id) const;
+    std::shared_ptr<Cashier> getCashierById(const std::string &id) const;
+
 public:
     std::vector<std::shared_ptr<Employee>> getEmployeesByExp(int exp) const;
     std::vector<std::shared_ptr<Employee>> getEmployeesByAge(int age) const;
-    std::vector<std::shared_ptr<Employee>> getEmployeesBySex(const SEX& sex) const;
+    std::vector<std::shared_ptr<Employee>> getEmployeesBySex(const SEX &sex) const;
     std::vector<std::shared_ptr<Employee>> getEmployeesByChildCount(int child_count) const;
     std::vector<std::shared_ptr<Employee>> getEmployeesByHasChild(bool is_has_child) const;
     std::vector<std::shared_ptr<Employee>> getEmployeesBySalary(double salary) const;
-    std::vector<std::shared_ptr<Employee>> getEmployeesByDepartment(const std::string& id) const;
-    std::vector<std::shared_ptr<Employee>> getEmployeesByBrigade(const std::string& id) const;
+    std::vector<std::shared_ptr<Employee>> getEmployeesByDepartment(const std::string &id) const;
+    std::vector<std::shared_ptr<Employee>> getEmployeesByBrigade(const std::string &id) const;
     std::vector<std::shared_ptr<Employee>> getEmployeesByAllDepartments() const;
-    std::vector<std::shared_ptr<Employee>> getEmployeesByServicingLocomotive(const std::string& id) const;
+    std::vector<std::shared_ptr<Employee>> getEmployeesByServicingLocomotive(const std::string &id) const;
     std::vector<std::shared_ptr<Employee>> getEmployeesByAverageSalaryInBrigade(double salary) const;
+
 public:
     std::vector<std::shared_ptr<HeadDepartment>> getAllHeadDepartment() const;
-
     std::vector<std::shared_ptr<Driver>> getDriversByPassedMedInsp(const int year, const bool is_passed) const;
-    std::vector<std::shared_ptr<Driver>> getDriversBySex(const SEX& sex) const;
+    std::vector<std::shared_ptr<Driver>> getDriversBySex(const SEX &sex) const;
     std::vector<std::shared_ptr<Driver>> getDriversByAge(int age) const;
     std::vector<std::shared_ptr<Driver>> getDriversBySalary(double salary) const;
 
 public:
-    std::vector<std::shared_ptr<Station>> getStationsByRoute(
-        const std::string &id) const;
-    std::vector<std::shared_ptr<Route>> getRoutesByStation(
-        const std::string &id) const;
-
-    std::vector<std::shared_ptr<Trip>> getTripsByRoute(
-        const std::string &id) const;
-
-    std::shared_ptr<Route> getRouteByTrip(
-        const std::string &id) const;
-
-    std::vector<std::shared_ptr<Locomotive>> getLocomotivesAtStationInTime(
-        const std::string &id,
-        const Date &time) const;
-
-    std::vector<std::shared_ptr<Locomotive>> getLocomotivesByStation(
-        const std::string &id) const;
-
-    std::vector<std::shared_ptr<Locomotive>> getLocomotivesByCompletedRoutes(
-        const int completed_routest) const;
-
-    std::vector<std::shared_ptr<Locomotive>> getLocomotivesByCompletedRoutesBeforeRepair(
-        const int completed_routes_before_repair) const;
-
-    std::vector<std::pair<std::shared_ptr<Locomotive>, Date>>
-    getLocomotivesArrivalTimeAtStation(
-        const std::string &id) const;
-
-    std::vector<std::shared_ptr<Locomotive>> getLocomotiveByPassedTechInsp(
-        const Date &from, const Date &to) const;
-
-    std::vector<std::shared_ptr<Locomotive>> getLocomotiveByRepairInTime(
-        const Date &repair_date) const;
-
-    std::vector<std::shared_ptr<Locomotive>> getLocomotiveByRepairCount(
-        const int repair_count) const;
-
-    std::vector<std::shared_ptr<Locomotive>> getLocomotiveByAge(
-        const int age) const;
-
-    std::vector<std::shared_ptr<Train>> getTrainsByRoute(
-        const std::string &id) const;
-
-    std::vector<std::shared_ptr<Train>> getTrainsByRouteDistance(
-        const double distance) const;
-
-    std::vector<std::shared_ptr<Train>> getTrainsByticketPrice(
-        const double price) const;
-
-    std::vector<std::shared_ptr<Train>> getTrainsByRouteByRouteDistanceByticketPrice(
-        const std::string &id,
-        const double distance,
-        const double price) const;
-
+    std::vector<std::shared_ptr<Station>> getStationsByRoute(const std::string &id) const;
+    std::vector<std::shared_ptr<Route>> getRoutesByStation(const std::string &id) const;
+    std::vector<std::shared_ptr<Trip>> getTripsByRoute(const std::string &id) const;
+    std::shared_ptr<Route> getRouteByTrip(const std::string &id) const;
+    std::vector<std::shared_ptr<Locomotive>> getLocomotivesAtStationInTime(const std::string &id, const Date &time) const;
+    std::vector<std::shared_ptr<Locomotive>> getLocomotivesByStation(const std::string &id) const;
+    std::vector<std::shared_ptr<Locomotive>> getLocomotivesByCompletedRoutes(const int completed_routest) const;
+    std::vector<std::shared_ptr<Locomotive>> getLocomotivesByCompletedRoutesBeforeRepair(const int completed_routes_before_repair) const;
+    std::vector<std::pair<std::shared_ptr<Locomotive>, Date>> getLocomotivesArrivalTimeAtStation(const std::string &id) const;
+    std::vector<std::shared_ptr<Locomotive>> getLocomotiveByPassedTechInsp(const Date &from, const Date &to) const;
+    std::vector<std::shared_ptr<Locomotive>> getLocomotiveByRepairInTime(const Date &repair_date) const;
+    std::vector<std::shared_ptr<Locomotive>> getLocomotiveByRepairCount(const int repair_count) const;
+    std::vector<std::shared_ptr<Locomotive>> getLocomotiveByAge(const int age) const;
+    std::vector<std::shared_ptr<Train>> getTrainsByRoute(const std::string &id) const;
+    std::vector<std::shared_ptr<Train>> getTrainsByRouteDistance(const double distance) const;
+    std::vector<std::shared_ptr<Train>> getTrainsByticketPrice(const double price) const;
+    std::vector<std::shared_ptr<Train>> getTrainsByRouteByRouteDistanceByticketPrice(const std::string &id, const double distance, const double price) const;
     std::vector<std::shared_ptr<Trip>> getCanceledTrips() const;
 
-    std::vector<std::shared_ptr<Trip>> getCanceledTripsByRoute(
-        const std::string &id) const;
-
-    std::vector<std::shared_ptr<Trip>> Services::getTripsByTwoStationsInOrder(
-        const std::string &stationA_id,
-        const std::string &stationB_id) const;
-
+    std::vector<std::shared_ptr<Trip>> getCanceledTripsByRoute(const std::string &id) const;
+    std::vector<std::shared_ptr<Trip>> Services::getTripsByTwoStationsInOrder(const std::string &stationA_id, const std::string &stationB_id) const;
     std::vector<std::shared_ptr<Trip>> getDelayedTrips() const;
-
-    std::vector<std::shared_ptr<Trip>> getDelayedTripsByReason(
-        const std::string &reason) const;
-
-    std::vector<std::shared_ptr<Trip>> getDelayedTripsByRoute(
-        const std::string &id) const;
-
-    std::vector<std::shared_ptr<Ticket>> getSoldTicketsByRoute(
-        const std::string &id,
-        const Date &start, const Date &end) const;
-
-    std::vector<std::shared_ptr<Ticket>> getSoldTicketsByRouteDistance(
-        const double distance,
-        const Date &start, const Date &end) const;
-
-    std::vector<std::shared_ptr<Ticket>> getSoldTicketByTicketPrice(
-        const double price,
-        const Date &start, const Date &end) const;
-
-    std::vector<std::shared_ptr<Ticket>> getUnredeemedTicketByTrip(
-        const std::string &id) const;
-
-    std::vector<std::shared_ptr<Ticket>> getUnredeemedTicketByRoute(
-        const std::string &id) const;
-
+    std::vector<std::shared_ptr<Trip>> getDelayedTripsByReason(const std::string &reason) const;
+    std::vector<std::shared_ptr<Trip>> getDelayedTripsByRoute(const std::string &id) const;
+    std::vector<std::shared_ptr<Ticket>> getSoldTicketsByRoute(const std::string &id, const Date &start, const Date &end) const;
+    std::vector<std::shared_ptr<Ticket>> getSoldTicketsByRouteDistance(const double distance, const Date &start, const Date &end) const;
+    std::vector<std::shared_ptr<Ticket>> getSoldTicketByTicketPrice(const double price, const Date &start, const Date &end) const;
+    std::vector<std::shared_ptr<Ticket>> getUnredeemedTicketByTrip(const std::string &id) const;
+    std::vector<std::shared_ptr<Ticket>> getUnredeemedTicketByRoute(const std::string &id) const;
     std::vector<std::shared_ptr<Ticket>> getReturnedTicketsForAllDelayedTrips() const;
-
-    std::vector<std::shared_ptr<Ticket>> getUnredeemedTicketByDate(
-        const Date &date) const;
-
-    std::vector<std::shared_ptr<Route>> getRoutesByCategory(
-        const TypeRoute& category
-    ) const;
-    
-    std::vector<std::shared_ptr<Route>> getRoutesByCategoryPositon(
-        const std::vector<TypeRoute>& position
-    ) const;
-
-    std::vector<std::shared_ptr<Passenger>> getPassengersByTrip(
-        const std::string& id
-    ) const;
-
-    std::vector<std::shared_ptr<Passenger>> getPassengersByLeft(
-        const Date& date
-    ) const;
-    std::vector<std::shared_ptr<Passenger>> getPassengersByLeftForeign(
-        const Date& date
-    ) const;
-
-    std::vector<std::shared_ptr<Passenger>> getPassengersByHasBaggage(
-        const bool has_baggage
-    ) const;
-    std::vector<std::shared_ptr<Passenger>> getPassengersBySex(
-        const SEX& sex
-    ) const;
-    std::vector<std::shared_ptr<Passenger>> getPassengersByAge(
-        const int age
-    ) const;
-    std::vector<std::shared_ptr<Ticket>> getReturnedTicketsByTrip(
-        const std::string &id) const;
-        
-    std::vector<std::shared_ptr<Ticket>> getReturnedTicketsByDate(
-        const Date& date) const;
-
-    std::vector<std::shared_ptr<Ticket>> getReturnedTicketsByRoute(
-        const std::string &id) const;
+    std::vector<std::shared_ptr<Ticket>> getUnredeemedTicketByDate(const Date &date) const;
+    std::vector<std::shared_ptr<Route>> getRoutesByCategory(const TypeRoute &category) const;
+    std::vector<std::shared_ptr<Route>> getRoutesByCategoryPositon(const std::vector<TypeRoute> &position) const;
+    std::vector<std::shared_ptr<Passenger>> getPassengersByTrip(const std::string &id) const;
+    std::vector<std::shared_ptr<Passenger>> getPassengersByLeft(const Date &date) const;
+    std::vector<std::shared_ptr<Passenger>> getPassengersByLeftForeign(const Date &date) const;
+    std::vector<std::shared_ptr<Passenger>> getPassengersByHasBaggage( const bool has_baggage) const;
+    std::vector<std::shared_ptr<Passenger>> getPassengersBySex( const SEX &sex) const;
+    std::vector<std::shared_ptr<Passenger>> getPassengersByAge(const int age) const;
+    std::vector<std::shared_ptr<Ticket>> getReturnedTicketsByTrip(const std::string &id) const;
+    std::vector<std::shared_ptr<Ticket>> getReturnedTicketsByDate(const Date &date) const;
+    std::vector<std::shared_ptr<Ticket>> getReturnedTicketsByRoute(const std::string &id) const;
 };

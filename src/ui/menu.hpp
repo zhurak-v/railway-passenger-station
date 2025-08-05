@@ -33,6 +33,7 @@ private:
 
     void getLocomotivesByStationCommand() const;
     void getLocomotivesAtStationInTimeCommand() const;
+    void getLocomotivesArrivalTimeAtStationCommand() const;
     void getLocomotivesByCompletedRoutesCommand() const;
     
     void getLocomotiveByPassedTechInspCommand() const;
@@ -67,6 +68,7 @@ private:
     void getPassengersByLeftForeignCommand() const;
     void getPassengersByHasBaggageCommand() const;
     void getPassengersBySexCommand() const;
+    void getPassengersByAgeCommand() const;
 
     void getUnredeemedTicketByTripCommand() const;
     void getUnredeemedTicketByRouteCommand() const;

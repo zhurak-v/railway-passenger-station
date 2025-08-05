@@ -21,6 +21,7 @@ Date calculateArrivalTime(
         arrival_time.addHours(hours);
 
         if (i != start_index + 1) {
+            arrival_time.addHours(trip.getBreakDuration().getHour());
             arrival_time.addMinutes(trip.getBreakDuration().getMinute());
         }
 

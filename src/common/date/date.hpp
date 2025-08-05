@@ -58,6 +58,10 @@ public:
     static int differenceInDays(const Date& a, const Date& b);
     static int differenceInYears(const Date& a, const Date& b);
 
+    static bool isSameDay(const Date &a, const Date &b);
+    static int compareDates(const Date &a, const Date &b);
+    static bool isInRange(const Date &target, const Date &from, const Date &to);
+
     static Date fromHours(double hours);
 
     bool isTimeOnly() const;

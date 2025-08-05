@@ -67,3 +67,8 @@ cmake-build-*/
 *.bak
 *.swp
 *~
+
+# Doxygen
+html
+latex
+Doxyfile

@@ -25,7 +25,6 @@ private:
     TypeRoute type_route;
 
 public:
-public:
     Route(
         const std::string &id,
         const std::string &route_name,

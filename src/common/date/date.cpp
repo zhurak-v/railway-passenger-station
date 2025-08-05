@@ -187,6 +187,34 @@ void Date::removeDays(double days) {
     addMinutes(-static_cast<int>(days * 1440 + 0.5));
 }
 
+bool Date::isSameDay(const Date &a, const Date &b) {
+    return a.getYear() == b.getYear() &&
+           a.getMonth() == b.getMonth() &&
+           a.getDay() == b.getDay();
+}
+int Date::compareDates(const Date &a, const Date &b) {
+    if (a.getYear() != b.getYear())
+        return a.getYear() - b.getYear();
+
+    if (a.getMonth() != b.getMonth())
+        return a.getMonth() - b.getMonth();
+
+    if (a.getDay() != b.getDay())
+        return a.getDay() - b.getDay();
+
+    if (a.getHour() != b.getHour())
+        return a.getHour() - b.getHour();
+
+    if (a.getMinute() != b.getMinute())
+        return a.getMinute() - b.getMinute();
+
+    return 0;
+}
+
+bool Date::isInRange(const Date &target, const Date &from, const Date &to) {
+    return compareDates(target, from) >= 0 && compareDates(target, to) <= 0;
+}
+
 int Date::differenceInMinutes(const Date& a, const Date& b) {
     std::tm ta = {}, tb = {};
     ta.tm_year = a.year - 1900;
